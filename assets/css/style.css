@@ -1,3 +1,24 @@
+/* Asterix wildcard selector to override default styles added by the browser */
 body {
     background: blue;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Generic project styles */
+    color: #131516; /* avoid completly black to make easier for the eyes */
+}
+
+.drawing-area {
+    background-color: white;
+}
+
+.input-output-area {
+    background-color: lightgrey;
 }
