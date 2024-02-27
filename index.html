@@ -19,8 +19,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <!-- link to 3W Schools Style sheet for tool tip-->
+    <!-- Link to 3W Schools Style sheet for tool tip-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Link to 3W Schools Style sheet for plotly (used for the drawing) -->
+    <!-- What should I put here!? -->
     <!-- link to Style sheet -->
     <link rel="stylesheet" href="assets/css/style.css">
     <title>WINGIT</title>
@@ -35,7 +37,10 @@
             <img src="assets/images/wingit-logo.png" alt="Logo">
 
             <!-- drawing -->
-            <!-- put equations for drawing here -->
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Or should this really go in the header -->
+            <div id="myPlot" style="width:100%;max-width:700px"></div>
+
+
         </div>
 
     </section>
@@ -48,15 +53,16 @@
             <!-- Nr. of Panels -->
             <div>
                 <p class="w3-tooltip"><b>Nr. of Panels</b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">Nr. of Panels</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">Nr. of Panels</span><span class="dot"></span></p>
                 <br>
                 <label for="nr-of-panels">Nr. of Panels</label>
-                <input type="number" id="nr-of-panels" name="nr-of-panels" min="1" max="20" value="10"> <!-- step="3" -->
+                <input type="number" id="nr-of-panels" name="nr-of-panels" min="1" max="20" value="10">
+                <!-- step="3" -->
             </div>
             <!-- AR -->
             <div>
                 <p class="w3-tooltip"><b>AR</b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">AR = Aspect Ratio</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">AR = Aspect Ratio</span><span class="dot"></span></p>
                 <br>
                 <label for="ar-cw">CW</label>
                 <input type="number" id="ar-cw" name="ar-cw" min="1" max="20" value="10"> <!-- step="3" -->
@@ -70,7 +76,8 @@
             <!-- b_half -->
             <div>
                 <p class="w3-tooltip"><b>b<sub>half</span></b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">b<sub>half</sub>= Half of Span (right wing half)</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">b<sub>half</sub>= Half of Span (right wing half)</span><span
+                        class="dot"></span></p>
                 <br>
                 <label for="bhalf-cw">CW</label>
                 <input type="number" id="bhalf-cw" name="bhalf-cw" min="1" max="20" value="10"> <!-- step="3" -->
@@ -84,7 +91,8 @@
             <!-- S_half -->
             <div>
                 <p class="w3-tooltip"><b>S<sub>half</sub></b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">S<sub>half</sub>= Half of Wing area (right wing half)</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">S<sub>half</sub>= Half of Wing area (right wing half)</span><span
+                        class="dot"></span></p>
                 <br>
 
                 <label for="shalf-cw">CW</label>
@@ -99,7 +107,7 @@
             <!-- c_smc -->
             <div>
                 <p class="w3-tooltip"><b>c<sub>smc</sub></b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">c<sub>smc</sub>= Standard Mean Chord</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">c<sub>smc</sub>= Standard Mean Chord</span><span class="dot"></span></p>
                 <br>
                 <label for="csmc-cw">CW</label>
                 <input type="number" id="csmc-cw" name="csmc-cw" min="1" max="20" value="10"> <!-- step="3" -->
@@ -113,7 +121,7 @@
             <!-- c_root -->
             <div>
                 <p class="w3-tooltip"><b>c<sub>root</sub></b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">c<sub>root</sub>= Root Chord</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">c<sub>root</sub>= Root Chord</span><span class="dot"></span></p>
                 <br>
                 <label for="croot-cw">CW</label>
                 <input type="number" id="croot-cw" name="croot-cw" min="1" max="20" value="10"> <!-- step="3" -->
@@ -127,7 +135,7 @@
             <!-- c_tip -->
             <div>
                 <p class="w3-tooltip"><b>c<sub>tip</sub></b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">c<sub>tip</sub>= Tip Chord</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">c<sub>tip</sub>= Tip Chord</span><span class="dot"></span></p>
                 <br>
                 <label for="ctip-cw">CW</label>
                 <input type="number" id="ctip-cw" name="ctip-cw" min="1" max="20" value="10"> <!-- step="3" -->
@@ -141,7 +149,7 @@
             <!-- λ -->
             <div>
                 <p class="w3-tooltip"><b>λ</b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">λ= Taper Ratio</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">λ= Taper Ratio</span><span class="dot"></span></p>
                 <br>
                 <label for="lambda-cw">CW</label>
                 <input type="number" id="bhalf-cw" name="lambda-cw" min="1" max="20" value="10"> <!-- step="3" -->
@@ -155,7 +163,8 @@
             <!-- x_Λ -->
             <div>
                 <p class="w3-tooltip"><b>x<sub>Λ</sub></b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">x<sub>Λ</sub>= Chord position (starting at Leading Edge) for sweep</span><span class="dot"></span></p>
+                        class="w3-text w3-tag">x<sub>Λ</sub>= Chord position (starting at Leading Edge) for
+                        sweep</span><span class="dot"></span></p>
                 <br>
                 <label for="xdelta-cw">CW</label>
                 <input type="number" id="xdelta-cw" name="xdelta-cw" min="1" max="20" value="10"> <!-- step="3" -->
@@ -169,7 +178,8 @@
             <!-- Λ -->
             <div>
                 <p class="w3-tooltip"><b>Λ</b><span style="position:absolute;left:0;bottom:18px"
-                    class="w3-text w3-tag">Λ= Sweep angle measured at x<sub>Λ</sub></span><span class="dot"></span></p>
+                        class="w3-text w3-tag">Λ= Sweep angle measured at x<sub>Λ</sub></span><span class="dot"></span>
+                </p>
                 <br>
                 <label for="delta-cw">CW</label>
                 <input type="number" id="delta-cw" name="delta-cw" min="1" max="20" value="10"> <!-- step="3" -->

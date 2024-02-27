@@ -12,13 +12,14 @@ body {
     display: flex;
     flex-direction: column;
     /* Generic project styles */
-    color: #131516; /* avoid completly black to make easier for the eyes */
+    color: #131516;
+    /* avoid completly black to make easier for the eyes */
     /* Font from Google fonts using link (placed in index.html header) */
     font-family: "Noto Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-variation-settings: "wdth" 100;
+    font-variation-settings: "wdth"100;
 }
 
 
@@ -37,4 +38,8 @@ body {
     border-radius: 50%;
     display: inline-block;
     margin-left: 10px
-  }
+}
+
+myPlot-Overide {
+    color-line: black;
+}
