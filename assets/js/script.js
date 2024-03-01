@@ -1,81 +1,63 @@
 console.log("connected!")
 
-// 
 
-function checkInput() {
-
-}
-
-function calculateDerivedParameters() {
-  let bHalf = parseInt(document.getElementById('bHalf').innerText);
-  let cRoot = parseInt(document.getElementById('cRoot').innerText);
-  let cTip = document.getElementById("cTip").innerText;
-}
-
-function
-
-
-function checkInput() {
-
-}
-
-onclick event!!!
 
   function calcDerivedParam() {
-    let bHalf = parseInt(document.getElementById('bHalf').innerText);
-    let cRoot = parseInt(document.getElementById('cRoot').innerText);
-    let cTip = parseInt(document.getElementById('cTip').innerText);
-    let cRoot = parseInt(document.getElementById('cRoot').innerText);
-    let delta = parseInt(document.getElementById('delta').innerText);
-    let xDelta = parseInt(document.getElementById('xDelta').innerText);
-    let xDelta = parseInt(document.getElementById('xDelta').innerText);
+    // Get indata parameters for Panel 1
+    let bHalfP1 = parseInt(document.getElementById('bhalf-p1').innerText);
+    let cRootP1 = parseInt(document.getElementById('croot-p1').innerText);
+    let cTipP1 = parseInt(document.getElementById('ctip-p1').innerText);
+    let xDeltaP1 = parseInt(document.getElementById('xdelta-p1').innerText);
+    let deltaP1 = parseInt(document.getElementById('delta-p1').innerText);
+    // Calculate parameters for Panel 1
+    let lambdaP1 = cTipP1 / cRootP1;
+    let cSmcP1 = (cRootP1 + cTipP1) / 2;
+    let sHalfP1 = cRootP1 * cTipP1;
+    let arP1 = bHalfP1 / cSmcP1;
+
+
+    // Get indata parameters for Panel 2
+    let bHalfP2 = parseInt(document.getElementById('bhalf-p2').innerText);
+    let cRootP2 = parseInt(document.getElementById('croot-p2').innerText);
+    let cTipP2 = parseInt(document.getElementById('ctip-p2').innerText);
+    let xDeltaP2 = parseInt(document.getElementById('xdelta-p2').innerText);
+    let deltaP2 = parseInt(document.getElementById('delta-p2').innerText);
+    // Calculate parameters for Panel 2
+    let lambdaP2 = cTipP2 / cRootP2;
+    let cSmcP2 = (cRootP2 + cTipP2) / 2;
+    let sHalfP2 = cRootP2 * cTipP2;
+    let arP2 = bHalfP2 / cSmcP2;
+
+    // Get indata parameters for Panel 3
+    let bHalfP3 = parseInt(document.getElementById('bhalf-p3').innerText);
+    let cRootP3 = parseInt(document.getElementById('croot-p3').innerText);
+    let cTipP3 = parseInt(document.getElementById('ctip-p3').innerText);
+    let xDeltaP3 = parseInt(document.getElementById('xdelta-p3').innerText);
+    let deltaP3 = parseInt(document.getElementById('delta-p3').innerText);
+    // Calculate parameters for Panel 3
+    let lambdaP3 = cTipP3 / cRootP3;
+    let cSmcP3 = (cRootP3 + cTipP3) / 2;
+    let sHalfP3 = cRootP3 * cTipP3;
+    let arP3 = bHalfP3 / cSmcP3;
+
+    // Calculate parameters for Complete wing (cw)
+    let bHalfCw = bHalfP1 + bHalfP2 + bHalfP3;
+    let cRootCw = cRootP1;
+    let cTipCw = cTipP3;
+    let xDeltaCw = "N/A";
+    let deltaCw = "N/A";
+    // Calculate parameters for Complete wing (cw)
+    let lambdaCw = cTipP3 / cRootP1;
+    let cSmcCw = "N/A";
+    let sHalfCw = sHalfP1 + sHalfP2 + sHalfP3; // Switched row between sHalfCw and arCw so that sHalfCw can be used to calculate arCw
+    let arCw = (bHalfCw)^2 / sHalfCw;
   }
 
+// var lengthpara = document.getElementById("lenght");
 
-cSMC = (cRoot + cTip) / 2
-AR = bHalf / cSMC
-sHalf = cRoot * cTip
-lambda = cTip / cRoot
+// element.addEventListener("oninput", calcDerivedParam); // We use oninput instead of onchange since event occurs immediately after the content has been changed, while onchange occurs when the element loses focus. Also there was no use for the third and last parameter: useCapture
 
-bHalfCw
-cRootCw
-cTipCw
-deltaCw
-xDeltaCw
-cSmcCw
-arCw
-sHalfCw
-lambdaCw
 
-bHalfP1
-cRootP1
-cTipP1
-deltaP1
-xDeltaP1
-cSmcP1
-arP1
-sHalfP1
-lambdaP1
-
-bHalfP2
-cRootP2
-cTipP2
-deltaP2
-xDeltaP2
-cSmcP2
-arP2
-sHalfP2
-lambdaP2
-
-bHalfP3
-cRootP3
-cTipP3
-deltaP3
-xDeltaP3
-cSmcP3
-arP3
-sHalfP3
-lambdaP3
 
 
 function calcDrawCoord() {
@@ -136,184 +118,6 @@ function calcDrawCoord() {
   TeRootP3X = TeTipP2X
   TeRootP3Y = TeTipP2Y
 }
-
-
-let cTip = document.getElementById("cTip").innerText;
-
-[AR w, p1, p2, …pn],
-[b_half w, b_half p1, b_half p2, …b_half pn],
-[S_half w, S_half p1, S_half p2, …S_half pn],
-[c_r w, c_r p1, c_r p2, …c_r pn],
-[c_t w, c_t p1, c_t p2, …c_t pn],
-[c_smc w, c_smc p1, c_smc p2, …c_smc pn],
-[λ w, λ p1, λ p2, …λ pn],
-[Λ w, Λ p1, Λ p2, …Λ pn],
-[x_Λ w, x_Λ p1, x_Λ p2, …x_Λ pn]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// CONFIG
-
-const config = {
-  type: 'line',
-  data: data,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart'
-      }
-    }
-  },
-};
-
-// SETUP
-
-const DATA_COUNT = 7;
-const NUMBER_CFG = {
-  count: DATA_COUNT,
-  min: -100,
-  max: 100
-};
-
-const labels = Utils.months({
-  count: 7
-});
-const data = {
-  labels: labels,
-  datasets: [{
-      label: 'Dataset 1',
-      data: Utils.numbers(NUMBER_CFG),
-      borderColor: Utils.CHART_COLORS.red,
-      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
-    },
-    {
-      label: 'Dataset 2',
-      data: Utils.numbers(NUMBER_CFG),
-      borderColor: Utils.CHART_COLORS.blue,
-      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
-    }
-  ]
-};
-
-// ACTION
-
-const actions = [{
-    name: 'Randomize',
-    handler(chart) {
-      chart.data.datasets.forEach(dataset => {
-        dataset.data = Utils.numbers({
-          count: chart.data.labels.length,
-          min: -100,
-          max: 100
-        });
-      });
-      chart.update();
-    }
-  },
-  {
-    name: 'Add Dataset',
-    handler(chart) {
-      const data = chart.data;
-      const dsColor = Utils.namedColor(chart.data.datasets.length);
-      const newDataset = {
-        label: 'Dataset ' + (data.datasets.length + 1),
-        backgroundColor: Utils.transparentize(dsColor, 0.5),
-        borderColor: dsColor,
-        data: Utils.numbers({
-          count: data.labels.length,
-          min: -100,
-          max: 100
-        }),
-      };
-      chart.data.datasets.push(newDataset);
-      chart.update();
-    }
-  },
-  {
-    name: 'Add Data',
-    handler(chart) {
-      const data = chart.data;
-      if (data.datasets.length > 0) {
-        data.labels = Utils.months({
-          count: data.labels.length + 1
-        });
-
-        for (let index = 0; index < data.datasets.length; ++index) {
-          data.datasets[index].data.push(Utils.rand(-100, 100));
-        }
-
-        chart.update();
-      }
-    }
-  },
-  {
-    name: 'Remove Dataset',
-    handler(chart) {
-      chart.data.datasets.pop();
-      chart.update();
-    }
-  },
-  {
-    name: 'Remove Data',
-    handler(chart) {
-      chart.data.labels.splice(-1, 1); // remove the label first
-
-      chart.data.datasets.forEach(dataset => {
-        dataset.data.pop();
-      });
-
-      chart.update();
-    }
-  }
-];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
