@@ -4,53 +4,53 @@ console.log("connected!")
 
   function calcDerivedParam() {
     // Get indata parameters for Panel 1
-    var bHalfP1[1] = parseInt(document.getElementById('bhalf-p1').innerText);
-    var cRootP1[1] = parseInt(document.getElementById('croot-p1').innerText);
-    var cTipP1[1] = parseInt(document.getElementById('ctip-p1').innerText);
-    var xDeltaP1[1] = parseInt(document.getElementById('xdelta-p1').innerText);
-    var deltaP1[1] = parseInt(document.getElementById('delta-p1').innerText);
+    var bHalf[1] = parseInt(document.getElementById('bhalf-p1').innerText);
+    var cRoot[1] = parseInt(document.getElementById('croot-p1').innerText);
+    var cTip[1] = parseInt(document.getElementById('ctip-p1').innerText);
+    var xDelta[1] = parseInt(document.getElementById('xdelta-p1').innerText);
+    var delta[1] = parseInt(document.getElementById('delta-p1').innerText);
     // Calculate parameters for Panel 1
-    var lambdaP1[1] = cTipP1 / cRootP1;
-    var cSmcP1[1] = (cRootP1 + cTipP1) / 2;
-    var sHalfP1[1] = cRootP1 * cTipP1;
-    var arP1[1] = bHalfP1 / cSmcP1;
+    var lambda[1] = cTipP1 / cRootP1;
+    var cSmc[1] = (cRootP1 + cTipP1) / 2;
+    var sHalf[1] = cRootP1 * cTipP1;
+    var ar[1] = bHalfP1 / cSmcP1;
 
 
     // Get indata parameters for Panel 2
-    var bHalfP2[2] = parseInt(document.getElementById('bhalf-p2').innerText);
-    var cRootP2[2] = parseInt(document.getElementById('croot-p2').innerText);
-    var cTipP2[2] = parseInt(document.getElementById('ctip-p2').innerText);
-    var xDeltaP2[2] = parseInt(document.getElementById('xdelta-p2').innerText);
-    var deltaP2[2] = parseInt(document.getElementById('delta-p2').innerText);
+    var bHalf[2] = parseInt(document.getElementById('bhalf-p2').innerText);
+    var cRoot[2] = parseInt(document.getElementById('croot-p2').innerText);
+    var cTip[2] = parseInt(document.getElementById('ctip-p2').innerText);
+    var xDelta[2] = parseInt(document.getElementById('xdelta-p2').innerText);
+    var delta[2] = parseInt(document.getElementById('delta-p2').innerText);
     // Calculate parameters for Panel 2
-    var lambdaP2[2] = cTipP2 / cRootP2;
-    var cSmcP2[2] = (cRootP2 + cTipP2) / 2;
-    var sHalfP2[2] = cRootP2 * cTipP2;
-    var arP2[2] = bHalfP2 / cSmcP2;
+    var lambda[2] = cTipP2 / cRootP2;
+    var cSmc[2] = (cRootP2 + cTipP2) / 2;
+    var sHalf[2] = cRootP2 * cTipP2;
+    var ar[2] = bHalfP2 / cSmcP2;
 
     // Get indata parameters for Panel 3
-    var bHalfP3[3] = parseInt(document.getElementById('bhalf-p3').innerText);
-    var cRootP3[3] = parseInt(document.getElementById('croot-p3').innerText);
-    var cTipP3[3] = parseInt(document.getElementById('ctip-p3').innerText);
-    var xDeltaP3[3] = parseInt(document.getElementById('xdelta-p3').innerText);
-    var deltaP3[3] = parseInt(document.getElementById('delta-p3').innerText);
+    var bHalf[3] = parseInt(document.getElementById('bhalf-p3').innerText);
+    var cRoot[3] = parseInt(document.getElementById('croot-p3').innerText);
+    var cTip[3] = parseInt(document.getElementById('ctip-p3').innerText);
+    var xDelta[3] = parseInt(document.getElementById('xdelta-p3').innerText);
+    var delta[3] = parseInt(document.getElementById('delta-p3').innerText);
     // Calculate parameters for Panel 3
-    var lambdaP3[3] = cTipP3 / cRootP3;
-    var cSmcP3[3] = (cRootP3 + cTipP3) / 2;
-    var sHalfP3[3] = cRootP3 * cTipP3;
-    var arP3[3] = bHalfP3 / cSmcP3;
+    var lambda[3] = cTipP3 / cRootP3;
+    var cSmc[3] = (cRootP3 + cTipP3) / 2;
+    var sHalf[3] = cRootP3 * cTipP3;
+    var ar[3] = bHalfP3 / cSmcP3;
 
     // Calculate parameters for Complete wing (cw)
-    var bHalfCw[0] = bHalfP1 + bHalfP2 + bHalfP3;
-    var cRootCw[0] = cRootP1;
-    var cTipCw[0] = cTipP3;
-    var xDeltaCw[0] = "N/A";
-    var deltaCw[0] = "N/A";
+    var bHalf[0] = bHalfP1 + bHalfP2 + bHalfP3;
+    var cRoot[0] = cRootP1;
+    var cTip[0] = cTipP3;
+    var xDelta[0] = "N/A";
+    var delta[0] = "N/A";
     // Calculate parameters for Complete wing (cw)
-    var lambdaCw[0] = cTipP3 / cRootP1;
-    var cSmcCw[0] = "N/A";
-    var sHalfCw[0] = sHalfP1 + sHalfP2 + sHalfP3; // Switched row between sHalfCw and arCw so that sHalfCw can be used to calculate arCw
-    var arCw[0] = (bHalfCw)^2 / sHalfCw;
+    var lambda[0] = cTipP3 / cRootP1;
+    var cSmc[0] = "N/A";
+    var sHalf[0] = sHalfP1 + sHalfP2 + sHalfP3; // Switched row between sHalfCw and arCw so that sHalfCw can be used to calculate arCw
+    var ar[0] = (bHalfCw)^2 / sHalfCw;
   }
 
 // var lengthpara = document.getElementById("lenght");
