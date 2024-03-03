@@ -1,6 +1,6 @@
 /* Asterix wildcard selector to override default styles added by the browser */
 body {
-    background: blue;
+    /* background: blue; */
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -31,6 +31,28 @@ body {
     background-color: lightgrey;
 }
 
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 90%; */
+    max-width: 100%;
+    padding: 10px;  
+    /* height: auto; */
+}
+
+.parameterHead {
+    text-align: center;
+}
+
+.parameterSub {
+    padding-left: 5%;
+    /* max-width */
+}
+
+input[type=number] {
+    width: 50px;
+}
 .dot {
     height: 10px;
     width: 10px;
@@ -42,4 +64,41 @@ body {
 
 myPlot-Overide {
     color-line: black;
+}
+
+
+/* MEDIA QUERYS */
+
+/* Media query: large or landscape phones (576px and up) */
+@media screen and (min-width: 576px) {
+
+}
+
+    /* Media query: tablets and larger (768px and up) */
+@media screen and (min-width: 768px) {
+    .container {
+        display: flex;
+        /* width: 50%; */
+      }
+      
+      .drawing-area {
+        flex: 1;
+        border: 2px solid blueviolet;
+        /* margin: 10px; */
+      }
+      
+      .input-output-area {
+        border: 2px solid red;
+        width: 300px;
+        /* margin-right: 20px; */
+      }
+}
+    
+    /* Large devices (laptops and desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+
+}
+
+    @media screen and (min-width: 1200px) {
+
 }

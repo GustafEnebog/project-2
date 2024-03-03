@@ -18,7 +18,7 @@ form - event
 
 
 
-// Testing for how tot calculate bHalf for complete Wing
+// Get the inputs from the html-form
 function calcBHalf() {
   var bHalf[1] = parseInt(document.getElementById('bhalf-p1').innerText);
   var bHalf[2] = parseInt(document.getElementById('bhalf-p2').innerText);
@@ -85,32 +85,38 @@ if (lambda[1] != "" && lambda[3] != "") {
 // cSmc for Panel 1
 if (cSmc[1] != "") {
   var cSmc[1] = (cRoot[1] + cTip[1]) / 2;
+}
 
 // cSmc for Panel 2
 if (cSmc[2] != "") {
   var cSmc[2] = (cRoot[2] + cTip[2]) / 2;
+}
 
 // cSmc for Panel 3
 if (cSmc[3] != "") {
   var cSmc[3] = (cRoot[3] + cTip[3]) / 2;
+}
 
 // cSmc for Complete wing
 if (cSmc[1] != "" && cSmc[2] != "" && cSmc[3] != "" && bHalf[3] != "" && bHalf[3] != "" && bHalf[3] != "") {
-  var cSmc[0] = ((bHalf[1]*(cSmc[1])) + (bHalf[2]*(cSmc[2])) + (bHalf[3]*(cSmc[3]))) / (bHalf[1] + bHalf[2] + bHalf[3]);
+  var cSmc[0] = ((bHalf[1] * (cSmc[1])) + (bHalf[2] * (cSmc[2])) + (bHalf[3] * (cSmc[3]))) / (bHalf[1] + bHalf[2] + bHalf[3]);
 }
 
 // Calculate sHalf from above input (and cSmc from directly above)
 // sHalf for Panel 1
 if (sHalf[1] != "") {
   var sHalf[1] = cSmc[1] * bHalf[1];
+}
 
 // sHalf for Panel 2
 if (sHalf[2] != "") {
   var sHalf[2] = cSmc[2] * bHalf[2];
+}
 
 // sHalf for Panel 3
 if (sHalf[3] != "") {
   var sHalf[3] = cSmc[3] * bHalf[3];
+}
 
 // sHalf for Complete wing (using also parameters calculated in imediate above rows)
 if (sHalf[1] != "" && sHalf[2] != "" && sHalf[3]) {
@@ -121,14 +127,17 @@ if (sHalf[1] != "" && sHalf[2] != "" && sHalf[3]) {
 // ar for Panel 1
 if (bHalf[1] != "" && sHalf[1] != "") {
   var ar[1] = bHalf[1] ** 2 / sHalf[1];
+}
 
 // ar for Panel 2
 if (bHalf[2] != "" && sHalf[2] != "") {
   var ar[2] = bHalf[2] ** 2 / sHalf[2];
+}
 
 // ar for Panel 3
 if (bHalf[3] != "" && sHalf[3] != "") {
   var ar[3] = bHalf[3] ** 2 / sHalf[3];
+}
 
 // ar for Complete wing
 if (bHalf[0] != "" && sHalf[0] != "") {
@@ -138,10 +147,12 @@ if (bHalf[0] != "" && sHalf[0] != "") {
 
 function calcDrawCoord() {
   // Sweep line Panel 1
-  const sweepP1X[0] = cRootP1 * 0.01 * xDeltaP1
-  const sweepP1Y[0] = 0
-  const sweepP1X[1] = sweepRootP1X + bhalfP1 * sin(deltaP1) // Check if rad or deg is default in Java Script!
-  const sweepP1Y[1] = bhalfP1
+  if (cRootP1 != "" && xDeltaP1 != "" && sweepRootP1X != "" && bhalfP1 != "" && deltaP1 != "" && bhalfP1 != "") {
+    const sweepP1X[0] = cRootP1 * 0.01 * xDeltaP1
+    const sweepP1Y[0] = 0
+    const sweepP1X[1] = sweepRootP1X + bhalfP1 * sin(deltaP1) // Check if rad or deg is default in Java Script!
+    const sweepP1Y[1] = bhalfP1
+  }
 
   // Sweep line Panel 2
   const sweepP2X[0] = cRootP2 * 0.01 * xDeltaP2
@@ -195,7 +206,7 @@ function calcDrawCoord() {
   const P3Y[3] = TeTipP2Y
 }
 
-.addEventListener('oninput', input - output - form); // do I need an element first on this row
+.addEventListener('oninput', input - output - form); // do I need an element first on this row. Should I use "changes" instead of "oninput"
 
 
 

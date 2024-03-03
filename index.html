@@ -29,153 +29,165 @@
 </head>
 
 <body>
-    <!-- DRAWING AREA -->
-    <section>
-        <div class="drawing-area">
-            <!-- logo -->
-            <img src="assets/images/wingit-logo.png" alt="Logo">
+    <div class="container">
+        <!-- DRAWING AREA -->
+        <section>
+            <div class="drawing-area">
+                <!-- logo -->
+                <img src="assets/images/wingit-logo.png" alt="Logo" id="logo">
 
-            <!-- drawing -->
-            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Or should this really go in the header -->
-            <div id="myPlot" style="width:100%;max-width:700px"></div>
+                <!-- drawing -->
+                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                <!-- Or should this really go in the header -->
+                <div id="myPlot" style="width:100%;max-width:700px"></div>
 
 
-        </div>
-
-    </section>
-
-    <!-- INPUT/OUTPUT AREA -->
-    <section>
-        <div class="input-output-area" id="input-output-form">
-            <!-- Nr. of Panels -->
-            <div>
-                <p class="w3-tooltip"><b>Nr. of Panels</b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">Nr. of Panels</span><span class="dot"></span></p>
-                <br>
-                <label for="nr-of-panels">Nr. of Panels</label>
-                <input type="number" id="nr-of-panels" name="nr-of-panels" min="1" max="20" value="10">
-                <!-- step="3" -->
             </div>
 
-            <!-- b_half -->
-            <div>
-                <p class="w3-tooltip"><b>b<sub>half</span></b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">b<sub>half</sub>= Half of Span (right wing half)</span><span
-                        class="dot"></span></p>
-                <br>
-                <p id="bHalf[0]"></p>
-                <label for="bhalf-p1">P1</label>
-                <input type="number" id="bhalf-p1" name="bhalf-p1" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="bhalf-p2">P2</label>
-                <input type="number" id="bhalf-p2" name="bhalf-p2" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="bhalf-p3">P3</label>
-                <input type="number" id="bhalf-p3" name="bhalf-p3" min="1" max="20" value="10"> <!-- step="3" -->
-            </div>
+        </section>
 
-            <!-- c_root -->
-            <div>
-                <p class="w3-tooltip"><b>c<sub>root</sub></b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">c<sub>root</sub>= Root Chord</span><span class="dot"></span></p>
-                <br>
-                <p id="cRoot[0]"></p>
-                <label for="croot-p1">P1</label>
-                <input type="number" id="croot-p1" name="croot-p1" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="croot-p2">P2</label>
-                <input type="number" id="croot-p2" name="croot-p2" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="croot-p3">P3</label>
-                <input type="number" id="croot-p3" name="croot-p3" min="1" max="20" value="10"> <!-- step="3" -->
-            </div>
-            
-            <!-- c_tip -->
-            <div>
-                <p class="w3-tooltip"><b>c<sub>tip</sub></b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">c<sub>tip</sub>= Tip Chord</span><span class="dot"></span></p>
-                <br>
-                <p id="cTip[0]"></p>
-                <label for="ctip-p1">P1</label>
-                <input type="number" id="ctip-p1" name="ctip-p1" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="ctip-p2">P2</label>
-                <input type="number" id="ctip-p2" name="ctip-p2" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="ctip-p3">P3</label>
-                <input type="number" id="ctip-p3" name="ctip-p3" min="1" max="20" value="10"> <!-- step="3" -->
-            </div>
-            
-                        <!-- x_Λ -->
-            <div>
-                <p class="w3-tooltip"><b>x<sub>Λ</sub></b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">x<sub>Λ</sub>= Chord position (starting at Leading Edge) for
-                        sweep</span><span class="dot"></span></p>
-                <br>
-                <p id="xDelta[0]"></p>
-                <label for="xdelta-p1">P1</label>
-                <input type="number" id="xdelta-p1" name="xdelta-p1" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="xdelta-p2">P2</label>
-                <input type="number" id="xdelta-p2" name="xdelta-p2" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="xdelta-p3">P3</label>
-                <input type="number" id="xdelta-p3" name="xdelta-p3" min="1" max="20" value="10"> <!-- step="3" -->
-            </div>
+        <!-- INPUT/OUTPUT AREA -->
+        <section>
+            <div class="input-output-area" id="input-output-form">
+                <!-- Nr. of Panels -->
+                <div>
+                    <p class="w3-tooltip"><b>Nr. of Panels</b><span style="position:absolute;left:0;bottom:18px"
+                            class="w3-text w3-tag">Nr. of Panels</span><span class="dot"></span></p>
+                    <br>
+                    <label for="nr-of-panels">Nr. of Panels</label>
+                    <input type="number" id="nr-of-panels" name="nr-of-panels"> <!-- min="1" max="20" value="10" -->
+                    <!-- step="3" -->
+                </div>
 
-            <!-- Λ -->
-            <div>
-                <p class="w3-tooltip"><b>Λ</b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">Λ= Sweep angle measured at x<sub>Λ</sub></span><span class="dot"></span>
-                </p>
-                <br>
-                <p id="delta[1]"></p>
-                <label for="delta-p1">P1</label>
-                <input type="number" id="delta-p1" name="delta-p1" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="delta-p2">P2</label>
-                <input type="number" id="delta-p2" name="delta-p2" min="1" max="20" value="10"> <!-- step="3" -->
-                <label for="delta-p3">P3</label>
-                <input type="number" id="delta-p3" name="delta-p3" min="1" max="20" value="10"> <!-- step="3" -->
-            </div>
+                <!-- b_half -->
+                <div>
+                    <div class="parameterHead">
+                        <p class="w3-tooltip"><b>b<sub>half</span></b><span style="position:absolute;left:0;bottom:18px"
+                                class="w3-text w3-tag">b<sub>half</sub>= Half of Span (right wing half)</span><span
+                                class="dot"></span></p>
+                    </div>
+                    <br>
+                    <p id="bHalf[0]"></p>
+                    <label for="bhalf-p1" class="parameterSub">P1</label>
+                    <input type="number" id="bhalf-p1" name="bhalf-p1">
+                    <label for="bhalf-p2" class="parameterSub">P2</label>
+                    <input type="number" id="bhalf-p2" name="bhalf-p2">
+                    <label for="bhalf-p3" class="parameterSub">P3</label>
+                    <input type="number" id="bhalf-p3" name="bhalf-p3">
+                </div>
 
-            <!-- Lambda -->
-            <div>
-                <p class="w3-tooltip"><b>Lambda</sub></b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">c<sub>tip</sub>= Tip Chord</span><span class="dot"></span></p>
-                <br>
-                <p id="lambda[0]"></p>
-                <p id="lambda[1]"></p>
-                <p id="lambda[2]"></p>
-                <p id="lambda[3]"></p>
-            </div>
+                <!-- c_root -->
+                <div>
+                    <p class="w3-tooltip" class="parameterHead"><b>c<sub>root</sub></b><span
+                            style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">c<sub>root</sub>= Root
+                            Chord</span><span class="dot"></span></p>
+                    <br>
+                    <p id="cRoot[0]"></p>
+                    <label for="croot-p1" class="parameterSub">P1</label>
+                    <input type="number" id="croot-p1" name="croot-p1">
+                    <label for="croot-p2" class="parameterSub">P2</label>
+                    <input type="number" id="croot-p2" name="croot-p2">
+                    <label for="croot-p3" class="parameterSub">P3</label>
+                    <input type="number" id="croot-p3" name="croot-p3">
+                </div>
 
-            <!-- c_smc -->
-            <div>
-                <p class="w3-tooltip"><b>c<sub>smc</sub></sub></b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">c<sub>tip</sub>= Tip Chord</span><span class="dot"></span></p>
-                <br>
-                <p id="cSmc[0]"></p>
-                <p id="cSmc[1]"></p>
-                <p id="cSmc[2]"></p>
-                <p id="cSmc[3]"></p>
-            </div>
+                <!-- c_tip -->
+                <div>
+                    <p class="w3-tooltip" class="parameterHead"><b>c<sub>tip</sub></b><span
+                            style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">c<sub>tip</sub>= Tip
+                            Chord</span><span class="dot"></span></p>
+                    <br>
+                    <p id="cTip[0]"></p>
+                    <label for="ctip-p1" class="parameterSub">P1</label>
+                    <input type="number" id="ctip-p1" name="ctip-p1">
+                    <label for="ctip-p2" class="parameterSub">P2</label>
+                    <input type="number" id="ctip-p2" name="ctip-p2">
+                    <label for="ctip-p3" class="parameterSub">P3</label>
+                    <input type="number" id="ctip-p3" name="ctip-p3">
+                </div>
 
-            <!-- s_half-->
-            <div>
-                <p class="w3-tooltip"><b>S<sub>half</sub></sub></b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">c<sub>tip</sub>= Tip Chord</span><span class="dot"></span></p>
-                <br>
-                <p id="sHalf[0]"></p>
-                <p id="sHalf[1]"></p>
-                <p id="sHalf[2]"></p>
-                <p id="sHalf[3]"></p>
-            </div>
+                <!-- x_Λ -->
+                <div>
+                    <p class="w3-tooltip" class="parameterHead"><b>x<sub>Λ</sub></b><span
+                            style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">x<sub>Λ</sub>= Chord
+                            position (starting at Leading Edge) for
+                            sweep</span><span class="dot"></span></p>
+                    <br>
+                    <p id="xDelta[0]"></p>
+                    <label for="xdelta-p1" class="parameterSub">P1</label>
+                    <input type="number" id="xdelta-p1" name="xdelta-p1">
+                    <label for="xdelta-p2" class="parameterSub">P2</label>
+                    <input type="number" id="xdelta-p2" name="xdelta-p2">
+                    <label for="xdelta-p3" class="parameterSub">P3</label>
+                    <input type="number" id="xdelta-p3" name="xdelta-p3">
+                </div>
 
-            <!-- AR -->
-            <div>
-                <p class="w3-tooltip"><b>AR</b><span style="position:absolute;left:0;bottom:18px"
-                        class="w3-text w3-tag">c<sub>tip</sub>= Tip Chord</span><span class="dot"></span></p>
-                <br>
-                <p id="ar[0]"></p>
-                <p id="ar[1]"></p>
-                <p id="ar[2]"></p>
-                <p id="ar[3]"></p>
-            </div>
-        </div>
-    </section>
+                <!-- Λ -->
+                <div>
+                    <p class="w3-tooltip" class="parameterHead"><b>Λ</b><span
+                            style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">Λ= Sweep angle measured
+                            at x<sub>Λ</sub></span><span class="dot"></span>
+                    </p>
+                    <br>
+                    <p id="delta[1]"></p>
+                    <label for="delta-p1" class="parameterSub">P1</label>
+                    <input type="number" id="delta-p1" name="delta-p1">
+                    <label for="delta-p2" class="parameterSub">P2</label>
+                    <input type="number" id="delta-p2" name="delta-p2">
+                    <label for="delta-p3" class="parameterSub">P3</label>
+                    <input type="number" id="delta-p3" name="delta-p3">
+                </div>
 
+                <!-- Lambda -->
+                <div>
+                    <p class="w3-tooltip" class="parameterHead" class="parameterSub"><b>Lambda</sub></b><span
+                            style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">c<sub>tip</sub>= Tip
+                            Chord</span><span class="dot"></span></p>
+                    <br>
+                    <p id="lambda[0]"></p>
+                    <p id="lambda[1]"></p>
+                    <p id="lambda[2]"></p>
+                    <p id="lambda[3]"></p>
+                </div>
+
+                <!-- c_smc -->
+                <div>
+                    <p class="w3-tooltip" class="parameterHead" class="parameterSub"><b>c<sub>smc</sub></sub></b><span
+                            style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">c<sub>tip</sub>= Tip
+                            Chord</span><span class="dot"></span></p>
+                    <br>
+                    <p id="cSmc[0]"></p>
+                    <p id="cSmc[1]"></p>
+                    <p id="cSmc[2]"></p>
+                    <p id="cSmc[3]"></p>
+                </div>
+
+                <!-- s_half-->
+                <div>
+                    <p class="w3-tooltip" class="parameterHead" class="parameterSub"><b>S<sub>half</sub></sub></b><span
+                            style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">c<sub>tip</sub>= Tip
+                            Chord</span><span class="dot"></span></p>
+                    <br>
+                    <p id="sHalf[0]"></p>
+                    <p id="sHalf[1]"></p>
+                    <p id="sHalf[2]"></p>
+                    <p id="sHalf[3]"></p>
+                </div>
+
+                <!-- AR -->
+                <div>
+                    <p class="w3-tooltip" class="parameterHead" class="parameterSub"><b>AR</b><span
+                            style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">c<sub>tip</sub>= Tip
+                            Chord</span><span class="dot"></span></p>
+                    <br>
+                    <p id="ar[0]"></p>
+                    <p id="ar[1]"></p>
+                    <p id="ar[2]"></p>
+                    <p id="ar[3]"></p>
+                </div>
+            </div>
+        </section>
+    </div>
     <!-- Link to script file -->
     <script src="assets/js/script.js"></script>
 </body>
