@@ -10,83 +10,130 @@ var cSmc
 var sHalf
 var ar
 
+form - event
+
+
+
+
+
 
 
 // Testing for how tot calculate bHalf for complete Wing
-function calcBHalfCw() {
+function calcBHalf() {
   var bHalf[1] = parseInt(document.getElementById('bhalf-p1').innerText);
   var bHalf[2] = parseInt(document.getElementById('bhalf-p2').innerText);
   var bHalf[3] = parseInt(document.getElementById('bhalf-p3').innerText);
-  if (bHalf[1]  != "" && bHalf[2]  != "" && bHalf[3]  != "" &&) {
-    var bHalf[0] = bHalfP1 + bHalfP2 + bHalfP3;
+  if (bHalf[1] != "" && bHalf[2] != "" && bHalf[3] != "" && ) {
+    var bHalf[0] = bHalf[1] + bHalf[2] + bHalf[3];
   }
 }
 
-bHalf[1].addEventListener("oninput", calcBHalfCw);
-bHalf[1].addEventListener("oninput", calcBHalfCw);
-bHalf[1].addEventListener("oninput", calcBHalfCw);
-// addEventListener("click", displayDate);
-// element.addEventListener("oninput", calcDerivedParam);
-
-
-
-
-function calcDerivedParam() {
-  // Get indata parameters for Panel 1
-  var bHalf[1] = parseInt(document.getElementById('bhalf-p1').innerText);
+function calcCRoot() {
   var cRoot[1] = parseInt(document.getElementById('croot-p1').innerText);
-  var cTip[1] = parseInt(document.getElementById('ctip-p1').innerText);
-  var xDelta[1] = parseInt(document.getElementById('xdelta-p1').innerText);
-  var delta[1] = parseInt(document.getElementById('delta-p1').innerText);
-  // Calculate parameters for Panel 1
-  var lambda[1] = cTipP1 / cRootP1;
-  var cSmc[1] = (cRootP1 + cTipP1) / 2;
-  var sHalf[1] = cRootP1 * cTipP1;
-  var ar[1] = bHalfP1 / cSmcP1;
-
-
-  // Get indata parameters for Panel 2
-  var bHalf[2] = parseInt(document.getElementById('bhalf-p2').innerText);
   var cRoot[2] = parseInt(document.getElementById('croot-p2').innerText);
-  var cTip[2] = parseInt(document.getElementById('ctip-p2').innerText);
-  var xDelta[2] = parseInt(document.getElementById('xdelta-p2').innerText);
-  var delta[2] = parseInt(document.getElementById('delta-p2').innerText);
-  // Calculate parameters for Panel 2
-  var lambda[2] = cTipP2 / cRootP2;
-  var cSmc[2] = (cRootP2 + cTipP2) / 2;
-  var sHalf[2] = cRootP2 * cTipP2;
-  var ar[2] = bHalfP2 / cSmcP2;
-
-  // Get indata parameters for Panel 3
-  var bHalf[3] = parseInt(document.getElementById('bhalf-p3').innerText);
   var cRoot[3] = parseInt(document.getElementById('croot-p3').innerText);
-  var cTip[3] = parseInt(document.getElementById('ctip-p3').innerText);
-  var xDelta[3] = parseInt(document.getElementById('xdelta-p3').innerText);
-  var delta[3] = parseInt(document.getElementById('delta-p3').innerText);
-  // Calculate parameters for Panel 3
-  var lambda[3] = cTipP3 / cRootP3;
-  var cSmc[3] = (cRootP3 + cTipP3) / 2;
-  var sHalf[3] = cRootP3 * cTipP3;
-  var ar[3] = bHalfP3 / cSmcP3;
-
-  // Calculate parameters for Complete wing (cw)
-  var bHalf[0] = bHalfP1 + bHalfP2 + bHalfP3;
-  var cRoot[0] = cRootP1;
-  var cTip[0] = cTipP3;
-  var xDelta[0] = "N/A";
-  var delta[0] = "N/A";
-  // Calculate parameters for Complete wing (cw)
-  var lambda[0] = cTipP3 / cRootP1;
-  var cSmc[0] = "N/A";
-  var sHalf[0] = sHalfP1 + sHalfP2 + sHalfP3; // Switched row between sHalfCw and arCw so that sHalfCw can be used to calculate arCw
-  var ar[0] = (bHalfCw) ^ 2 / sHalfCw;
+  if (cRoot[1] != "") {
+    var cRoot[0] = cRoot[1];
+  }
 }
 
-// var lengthpara = document.getElementById("lenght");
+function calcCTip() {
+  var cTip[1] = parseInt(document.getElementById('cTip-p1').innerText);
+  var cTip[2] = parseInt(document.getElementById('cTip-p2').innerText);
+  var cTip[3] = parseInt(document.getElementById('cTip-p3').innerText);
+  if (cTip[3] != "") {
+    var cTip[0] = cTip[3];
+  }
+}
 
-// element.addEventListener("oninput", calcDerivedParam); // We use oninput instead of onchange since event occurs immediately after the content has been changed, while onchange occurs when the element loses focus. Also there was no use for the third and last parameter: useCapture
+function calcXDelta() {
+  var xDelta[1] = parseInt(document.getElementById('xdelta-p1').innerText);
+  var xDelta[2] = parseInt(document.getElementById('xdelta-p2').innerText);
+  var xDelta[3] = parseInt(document.getElementById('xdelta-p3').innerText);
+  var xDelta[0] = "n/a";
+}
 
+function calcDelta() {
+  var delta[1] = parseInt(document.getElementById('delta-p1').innerText);
+  var delta[2] = parseInt(document.getElementById('cTip-p2').innerText);
+  var delta[3] = parseInt(document.getElementById('cTip-p3').innerText);
+  var delta[0] = "n/a";
+}
 
+// Calculate lambda from above input
+// Lambda for Panel 1
+if (lambda[1] != "") {
+  var lambda[1] = cTip[1] / cRoot[1];
+}
+
+// Lambda for Panel 2
+if (lambda[2] != "") {
+  var lambda[2] = cTip[2] / cRoot[2];
+}
+
+// Lambda for Panel 3
+if (lambda[3] != "") {
+  var lambda[3] = cTip[3] / cRoot[3];
+}
+
+// Lambda for Complete Wing
+if (lambda[1] != "" && lambda[3] != "") {
+  var lambda[0] = cTip[3] / cRoot[1];
+}
+
+// Calculate cSmc from above input
+// cSmc for Panel 1
+if (cSmc[1] != "") {
+  var cSmc[1] = (cRoot[1] + cTip[1]) / 2;
+
+// cSmc for Panel 2
+if (cSmc[2] != "") {
+  var cSmc[2] = (cRoot[2] + cTip[2]) / 2;
+
+// cSmc for Panel 3
+if (cSmc[3] != "") {
+  var cSmc[3] = (cRoot[3] + cTip[3]) / 2;
+
+// cSmc for Complete wing
+if (cSmc[1] != "" && cSmc[2] != "" && cSmc[3] != "" && bHalf[3] != "" && bHalf[3] != "" && bHalf[3] != "") {
+  var cSmc[0] = ((bHalf[1]*(cSmc[1])) + (bHalf[2]*(cSmc[2])) + (bHalf[3]*(cSmc[3]))) / (bHalf[1] + bHalf[2] + bHalf[3]);
+}
+
+// Calculate sHalf from above input (and cSmc from directly above)
+// sHalf for Panel 1
+if (sHalf[1] != "") {
+  var sHalf[1] = cSmc[1] * bHalf[1];
+
+// sHalf for Panel 2
+if (sHalf[2] != "") {
+  var sHalf[2] = cSmc[2] * bHalf[2];
+
+// sHalf for Panel 3
+if (sHalf[3] != "") {
+  var sHalf[3] = cSmc[3] * bHalf[3];
+
+// sHalf for Complete wing (using also parameters calculated in imediate above rows)
+if (sHalf[1] != "" && sHalf[2] != "" && sHalf[3]) {
+  var sHalf[0] = sHalf[1] + sHalf[2] + sHalf[3];
+}
+
+// Calculate ar from above input
+// ar for Panel 1
+if (bHalf[1] != "" && sHalf[1] != "") {
+  var ar[1] = bHalf[1] ** 2 / sHalf[1];
+
+// ar for Panel 2
+if (bHalf[2] != "" && sHalf[2] != "") {
+  var ar[2] = bHalf[2] ** 2 / sHalf[2];
+
+// ar for Panel 3
+if (bHalf[3] != "" && sHalf[3] != "") {
+  var ar[3] = bHalf[3] ** 2 / sHalf[3];
+
+// ar for Complete wing
+if (bHalf[0] != "" && sHalf[0] != "") {
+  var ar[0] = bHalf[0] ** 2 / sHalf[0];
+}
 
 
 function calcDrawCoord() {
@@ -147,6 +194,13 @@ function calcDrawCoord() {
   const P3X[3] = TeTipP2X
   const P3Y[3] = TeTipP2Y
 }
+
+.addEventListener('oninput', input - output - form); // do I need an element first on this row
+
+
+
+
+
 
 // Define size of graph axis for the drawing. the graph starts at origo so no need to calculate min values for x and y
 const xAxisMaxP[0] = max(P1X);
