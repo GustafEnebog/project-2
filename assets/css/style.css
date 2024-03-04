@@ -78,16 +78,21 @@ myPlot-Overide {
 @media screen and (min-width: 768px) {
     .container {
         display: flex;
+        flex-direction: row;
+        /* flex-wrap: nowrap; */
         /* width: 50%; */
       }
       
       .drawing-area {
+        /* display: flex; */
         flex: 1;
         border: 2px solid blueviolet;
+        align-items: stretch;
         /* margin: 10px; */
       }
       
       .input-output-area {
+        /* display: flex; */
         border: 2px solid red;
         width: 300px;
         /* margin-right: 20px; */

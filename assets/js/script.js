@@ -1,14 +1,14 @@
-console.log("connected!")
+console.log("connected!");
 
-var bHalf
-var cRoot
-var cTip
-var xDelta
-var delta
-var lambda
-var cSmc
-var sHalf
-var ar
+var bHalf;
+var cRoot;
+var cTip;
+var xDelta;
+var delta;
+var lambda;
+var cSmc;
+var sHalf;
+var ar;
 
 
 function calcMega() {
@@ -21,6 +21,7 @@ function calcMega() {
       var bHalf[0] = bHalf[1] + bHalf[2] + bHalf[3];
     }
   }
+  calcBHalf()
 
   function calcCRoot() {
     var cRoot[1] = parseInt(document.getElementById('croot-p1').innerText);
@@ -30,6 +31,7 @@ function calcMega() {
       var cRoot[0] = cRoot[1];
     }
   }
+  calcCRoot()
 
   function calcCTip() {
     var cTip[1] = parseInt(document.getElementById('cTip-p1').innerText);
@@ -39,6 +41,7 @@ function calcMega() {
       var cTip[0] = cTip[3];
     }
   }
+  calcCTip()
 
   function calcXDelta() {
     var xDelta[1] = parseInt(document.getElementById('xdelta-p1').innerText);
@@ -46,6 +49,7 @@ function calcMega() {
     var xDelta[3] = parseInt(document.getElementById('xdelta-p3').innerText);
     var xDelta[0] = "n/a";
   }
+  calcXDelta()
 
   function calcDelta() {
     var delta[1] = parseInt(document.getElementById('delta-p1').innerText);
@@ -53,6 +57,7 @@ function calcMega() {
     var delta[3] = parseInt(document.getElementById('cTip-p3').innerText);
     var delta[0] = "n/a";
   }
+  calcDelta()
 
   // Calculate lambda from above input
   // Lambda for Panel 1
@@ -207,7 +212,7 @@ function calcMega() {
   }
 }
 
-.addEventListener('oninput', calcMega); // do I need an element first on this row. Should I use "changes" instead of "oninput"
+document.body.addEventListener('oninput', calcMega); // do I need an element first on this row. Should I use "changes" instead of "oninput"
 
 
 
@@ -248,6 +253,32 @@ const layout = {
     range: [0, 26]
   } // , title: "lateral"},                                                        yAxisMax
   // title: "WING with x nr. of panels"
+};
+
+// Display using Plotly
+Plotly.newPlot("myPlot", data, layout);
+
+
+
+
+
+
+
+const xArray = [50,60,70,80,90,100,110,120,130,140,150];
+const yArray = [7,8,8,9,9,9,10,11,14,14,15];
+
+// Define Data
+const data = [{
+  x: xArray,
+  y: yArray,
+  mode:"lines"
+}];
+
+// Define Layout
+const layout = {
+  xaxis: {range: [40, 160], title: "Square Meters"},
+  yaxis: {range: [5, 16], title: "Price in Millions"},  
+  title: "House Prices vs. Size"
 };
 
 // Display using Plotly
