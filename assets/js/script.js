@@ -167,14 +167,16 @@ let P2Y = [null, null, null, null];
 let P3X = [null, null, null, null];
 let P3Y = [null, null, null, null];
 
+// Conversion factor (since java script uses radians instead of degrees) to be used in sin trigonoetric function below
+const degToRad = (Math.PI / 180);
+
 // function calcDrawCoord() {
   // Sweep line Panel 1
   function calcSweepP1() {
   if (cRoot[1] != "" && xDelta[1] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[1] != "") {
     sweepP1X[0] = cRoot[1] * 0.01 * xDelta[1];
     sweepP1Y[0] = 0;
-    deltaP1Rad = (Math.PI / 180) * delta[1];
-    sweepP1X[1] = cRoot[1] * 0.01 * xDelta[1] + bHalf[1] * Math.sin(deltaP1Rad); // Check if rad or deg is default in Java Script!
+    sweepP1X[1] = cRoot[1] * 0.01 * xDelta[1] + bHalf[1] * Math.sin(degToRad * delta[1]);
     sweepP1Y[1] = bHalf[1];
   }
   }
@@ -184,8 +186,7 @@ let P3Y = [null, null, null, null];
   if (cRoot[2] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
     sweepP2X[0] = cRoot[2] * 0.01 * xDelta[2];
     sweepP2Y[0] = bHalf[1];
-    deltaP2Rad = (Math.PI / 180) * delta[2];
-    sweepP2X[1] = cRoot[2] * 0.01 * xDelta[2] + bHalf[1] * Math.sin(deltaP2Rad); // Check if rad or deg is default in Java Script!
+    sweepP2X[1] = cRoot[2] * 0.01 * xDelta[2] + bHalf[1] * Math.sin(degToRad * delta[1]);
     sweepP2Y[1] = bHalf[1] + bHalf[2];
   }
   }
@@ -195,8 +196,7 @@ let P3Y = [null, null, null, null];
   if (cRoot[3] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
     sweepP3X[0] = cRoot[3] * 0.01 * xDelta[3];
     sweepP3Y[0] = bHalf[1] + bHalf[2];
-    deltaP3Rad = (Math.PI / 180) * delta[3];
-    sweepP3X[1] = cRoot[3] * 0.01 * xDelta[3] + bHalf[3] * Math.sin(deltaP3Rad); // Check if rad or deg is default in Java Script!
+    sweepP3X[1] = cRoot[3] * 0.01 * xDelta[3] + bHalf[3] * Math.sin(degToRad * delta[1]);
     sweepP3Y[1] = bHalf[1] + bHalf[2] + bHalf[3];
   }
   }
@@ -249,28 +249,28 @@ let P3Y = [null, null, null, null];
 //-------------------- LET IT ALL HAPPEN (EVENTLISTENER)! --------------------
 function funcForEvent() {
   console.log("funcForEvent");
-  calcBHalf()
-  calcCRoot()
-  calcCTip()
-  calcXDelta()
-  calcDelta()
-  calcLambda()
-  calcCSmc()
-  calcSHalf()
-  calcAr()
-  calcSweepP1()
-  calcSweepP2()
-  calcSweepP3()
-  calcP1()
-  calcP2()
-  calcP3()
+  calcBHalf();
+  calcCRoot();
+  calcCTip();
+  calcXDelta();
+  calcDelta();
+  calcLambda();
+  calcCSmc();
+  calcSHalf();
+  calcAr();
+  calcSweepP1();
+  calcSweepP2();
+  calcSweepP3();
+  calcP1();
+  calcP2();
+  calcP3();
 }
 
 // Alternative 2 - Is it correct!? VariableInput.addEventListener('change', funcForEvent);
 document.body.addEventListener('oninput', funcForEvent); // do I need an element first on this row. Should I use "changes" instead of "oninput"
 
 // Alternative 2 - Is it correct!?
-let variableInputs = document.querySelectorAll(".input-output-area");
-for (let i = 0; i < variableInputs.length; i++) {
-  variableInputs[i].addEventListener('change', funcForEvent);
-}
+// let variableInputs = document.querySelectorAll(".input-output-area");
+// for (let i = 0; i < variableInputs.length; i++) {
+//  variableInputs[i].addEventListener('change', funcForEvent);
+// }
