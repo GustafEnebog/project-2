@@ -31,8 +31,8 @@
 <body>
     <div class="container">
         <!-- DRAWING AREA -->
-        <section>
-            <div class="drawing-area">
+        <div class="drawing-area">
+            <section>
                 <!-- logo -->
                 <img src="assets/images/wingit-logo.png" alt="Logo" id="logo">
 
@@ -65,13 +65,12 @@
                     // Display using Plotly
                     Plotly.newPlot("myPlot", data, layout);
                 </script>
-            </div>
-
-        </section>
+            </section>
+        </div>
 
         <!-- INPUT/OUTPUT AREA -->
-        <section>
-            <div class="input-output-area" id="input-output-form">
+        <div class="input-output-area" id="input-output-form">
+            <section>
                 <!-- Nr. of Panels -->
                 <div>
                     <p class="w3-tooltip"><b>Nr. of Panels</b><span style="position:absolute;left:0;bottom:18px"
@@ -114,7 +113,7 @@
                         <!-- <input type="number" id="croot-p2" name="croot-p2"> -->
                         <!-- <label for="croot-p3" class="parameterSub">P3</label> -->
                         <!-- <input type="number" id="croot-p3" name="croot-p3"> -->
-                        <p id="cRoot[0]"></p>
+                        <p id="cRoot[1]"></p>
                         <p id="cRoot[2]"></p>
                         <p id="cRoot[3]"></p>
                     </div>
@@ -178,7 +177,7 @@
                 <!-- Lambda -->
                 <div>
                     <div class="parameterHead">
-                        <p class="w3-tooltip" class="parameterSub"><b>Lambda</b><span
+                        <p class="w3-tooltip"><b>Lambda</b><span
                                 style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">c<sub>tip</sub>= Tip
                                 Chord</span><span class="dot"></span></p>
                     </div>
@@ -208,7 +207,7 @@
                 <!-- s_half-->
                 <div>
                     <div class="parameterHead">
-                        <p class="w3-tooltip" class="parameterSub"><b>S<sub>half</sub></b><span
+                        <p class="w3-tooltip"><b>S<sub>half</sub></b><span
                                 style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">c<sub>tip</sub>= Tip
                                 Chord</span><span class="dot"></span></p>
                     </div>
@@ -234,8 +233,8 @@
                         <p id="ar[3]"></p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
     <!-- Link to script file -->
     <script src="assets/js/script.js"></script>
