@@ -68,13 +68,13 @@ function calcLambda() {
   }
 
   // Labmbda for Panel 2
-  if (cTip[2] != "" && cRoot[2] != "") {
-    lambda[2] = cTip[2] / cRoot[2];
+  if (cTip[2] != "" && cTip[1] != "") {
+    lambda[2] = cTip[2] / cTip[1];
   }
 
   // Labmbda for Panel 3
-  if (cTip[3] != "" && cRoot[3] != "") {
-    lambda[3] = cTip[3] / cRoot[3];
+  if (cTip[3] != "" && cTip[2] != "") {
+    lambda[3] = cTip[3] / cTip[2];
   }
 
   // Labmbda for Complete Wing
