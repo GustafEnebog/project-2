@@ -68,17 +68,17 @@ function calcLambda() {
   }
 
   // Labmbda for Panel 2
-  if (Tip[2] != "" && cRoot[2] != "") {
+  if (cTip[2] != "" && cRoot[2] != "") {
     lambda[2] = cTip[2] / cRoot[2];
   }
 
   // Labmbda for Panel 3
-  if (Tip[3] != "" && cRoot[3] != "") {
+  if (cTip[3] != "" && cRoot[3] != "") {
     lambda[3] = cTip[3] / cRoot[3];
   }
 
   // Labmbda for Complete Wing
-  if (Tip[3] != "" && cRoot[1] != "") {
+  if (cTip[3] != "" && cRoot[1] != "") {
     lambda[0] = cTip[3] / cRoot[1];
   }
 }
@@ -173,11 +173,11 @@ const degToRad = (Math.PI / 180);
 //-------------------- PLOTTING WINGPANEL USING CANVAS - THE STARTING POINT FOR BELOW CODE COMES FROM https://www.w3schools.com/graphics/canvas_shapes.asp --------------------
 // Setting size of canvas
 
-canvasHeight = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
-canvasWidth = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
+// canvasHeight = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
+// canvasWidth = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
 
-myCanvas.height = canvasHeight;
-myCanvas.width = canvasWidth;
+// drawing.height = canvasHeight;
+// drawing.width = canvasWidth;
 
 // Create a canvas:
 const canvas = document.getElementById("drawing");
@@ -217,7 +217,6 @@ function calcSweepP1() {
     // Draw it
     ctx.stroke();
   }
-}
 }
 
 // Sweep line Panel 2
@@ -485,16 +484,14 @@ function funcForEvent() {
   calcP1();
   calcP2();
   calcP3();
-
-  // Add the plot functions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 }
 
 // Alternative 2 - Is it correct!? VariableInput.addEventListener('change', funcForEvent);
-// document.body.addEventListener('oninput', funcForEvent); // do I need an element first on this row. Should I use "changes" instead of "oninput"
+ document.body.addEventListener('oninput', funcForEvent); // do I need an element first on this row. Should I use "changes" instead of "oninput"
 
 // Alternative 2 - Is it correct!?
-let variableInputs = document.querySelectorAll(".input-output-area");
-for (let variableInput of variableInputs) { // for (let i = 0; i < variableInputs.length; i++) {
-  variableInputs[i].addEventListener('change', funcForEvent);
-}
+//let paramInputs = document.querySelectorAll(".paramInput");
+
+//for (let paramInput of paramInputs) { // for (let i = 0; i < variableInputs.length; i++) {
+//paramInput.addEventListener('change', funcForEvent);
+//}
