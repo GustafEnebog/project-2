@@ -486,12 +486,26 @@ function funcForEvent() {
   calcP3();
 }
 
-// Alternative 2 - Is it correct!? VariableInput.addEventListener('change', funcForEvent);
- document.body.addEventListener('oninput', funcForEvent); // do I need an element first on this row. Should I use "changes" instead of "oninput"
+// Alternative 1 - Should I use "changes" instead of "oninput"
+// document.body.addEventListener("click", funcForEvent);
 
-// Alternative 2 - Is it correct!?
+// Alternative 2
 //let paramInputs = document.querySelectorAll(".paramInput");
-
 //for (let paramInput of paramInputs) { // for (let i = 0; i < variableInputs.length; i++) {
 //paramInput.addEventListener('change', funcForEvent);
 //}
+
+// Alternative 3
+// document.getElementById('input-output-form').addEventListener('click', funcForEvent)
+
+// Alternative 4
+
+document.querySelectorAll('.param-input').forEach(function(input) {
+  input.addEventListener('input', funcForEvent);
+  // Check if the Enter key was pressed
+  input.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      funcForEvent();
+    }
+  });
+});
