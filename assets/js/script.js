@@ -64,22 +64,25 @@ function calcLambda() {
   // Labmbda for Panel 1
   if (cTip[1] != "" && cRoot[1] != "") {
     lambda[1] = cTip[1] / cRoot[1];
-    // document.getElementById("lambda[1]").innerHTML = lambda[1];
+    document.getElementById("lambda[1]").innerHTML = lambda[1];
   }
 
   // Labmbda for Panel 2
   if (cTip[2] != "" && cTip[1] != "") {
     lambda[2] = cTip[2] / cTip[1];
+    document.getElementById("lambda[2]").innerHTML = lambda[2];
   }
 
   // Labmbda for Panel 3
   if (cTip[3] != "" && cTip[2] != "") {
     lambda[3] = cTip[3] / cTip[2];
+    document.getElementById("lambda[3]").innerHTML = lambda[3];
   }
 
   // Labmbda for Complete Wing
   if (cTip[3] != "" && cRoot[1] != "") {
     lambda[0] = cTip[3] / cRoot[1];
+    document.getElementById("lambda[0]").innerHTML = lambda[0];
   }
 }
 
@@ -88,21 +91,25 @@ function calcCSmc() {
   // cSmc for Panel 1
   if (cRoot[1] != "" && cTip[1] != "") {
     cSmc[1] = (cRoot[1] + cTip[1]) / 2;
+    document.getElementById("cSmc[1]").innerHTML = cSmc[1];
   }
 
   // cSmc for Panel 2
-  if (cRoot[2] != "" && cTip[2] != "") {
-    cSmc[2] = (cRoot[2] + cTip[2]) / 2;
+  if (cTip[1] != "" && cTip[2] != "") {
+    cSmc[2] = (cTip[1] + cTip[2]) / 2;
+    document.getElementById("cSmc[2]").innerHTML = cSmc[2];
   }
 
   // cSmc for Panel 3
-  if (cRoot[3] != "" && cTip[3] != "") {
-    cSmc[3] = (cRoot[3] + cTip[3]) / 2;
+  if (cTip[2] != "" && cTip[3] != "") {
+    cSmc[3] = (cTip[2] + cTip[3]) / 2;
+    document.getElementById("cSmc[3]").innerHTML = cSmc[3];
   }
 
   // cSmc for Complete wing
   if (cSmc[1] != "" && cSmc[2] != "" && cSmc[3] != "" && bHalf[1] != "" && bHalf[2] != "" && bHalf[3] != "") {
     cSmc[0] = ((bHalf[1] * (cSmc[1])) + (bHalf[2] * (cSmc[2])) + (bHalf[3] * (cSmc[3]))) / (bHalf[1] + bHalf[2] + bHalf[3]);
+    document.getElementById("cSmc[0]").innerHTML = cSmc[0];
   }
 }
 
@@ -111,21 +118,25 @@ function calcSHalf() {
   // sHalf for Panel 1
   if (cSmc[1] != "" && bHalf[1] != "") {
     sHalf[1] = cSmc[1] * bHalf[1];
+    document.getElementById("sHalf[1]").innerHTML = sHalf[1];
   }
 
   // sHalf for Panel 2
   if (cSmc[2] != "" && bHalf[2] != "") {
     sHalf[2] = cSmc[2] * bHalf[2];
+    document.getElementById("sHalf[2]").innerHTML = sHalf[2];
   }
 
   // sHalf for Panel 3
   if (cSmc[3] != "" && bHalf[3] != "") {
     sHalf[3] = cSmc[3] * bHalf[3];
+    document.getElementById("sHalf[3]").innerHTML = sHalf[3];
   }
 
   // sHalf for Complete wing (using also parameters calculated in imediate above rows)
   if (sHalf[1] != "" && sHalf[2] != "" && sHalf[3]) {
     sHalf[0] = sHalf[1] + sHalf[2] + sHalf[3];
+    document.getElementById("sHalf[0]").innerHTML = sHalf[0];
   }
 }
 
@@ -134,21 +145,25 @@ function calcAr() {
   // ar for Panel 1
   if (bHalf[1] != "" && sHalf[1] != "") {
     ar[1] = bHalf[1] ** 2 / sHalf[1];
+    document.getElementById("ar[1]").innerHTML = ar[1];
   }
 
   // ar for Panel 2
   if (bHalf[2] != "" && sHalf[2] != "") {
     ar[2] = bHalf[2] ** 2 / sHalf[2];
+    document.getElementById("ar[2]").innerHTML = ar[2];
   }
 
   // ar for Panel 3
   if (bHalf[3] != "" && sHalf[3] != "") {
     ar[3] = bHalf[3] ** 2 / sHalf[3];
+    document.getElementById("ar[3]").innerHTML = ar[3];
   }
 
   // ar for Complete wing
   if (bHalf[0] != "" && sHalf[0] != "") {
     ar[0] = bHalf[0] ** 2 / sHalf[0];
+    document.getElementById("ar[0]").innerHTML = ar[0];
   }
 }
 
@@ -221,11 +236,11 @@ function calcSweepP1() {
 
 // Sweep line Panel 2
 function calcSweepP2() {
-  if (cRoot[2] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
-    sweepP2X[0] = cRoot[2] * 0.01 * xDelta[2];
+  if (cTip[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
+    sweepP2X[0] = cTip[1] * 0.01 * xDelta[2];
     sweepP2Y[0] = bHalf[1];
 
-    sweepP2X[1] = cRoot[2] * 0.01 * xDelta[2] + bHalf[1] * Math.sin(degToRad * delta[1]);
+    sweepP2X[1] = cTip[1] * 0.01 * xDelta[2] + bHalf[1] * Math.sin(degToRad * delta[1]);
     sweepP2Y[1] = bHalf[1] + bHalf[2];
 
     // ---------- Plot ----------
@@ -249,11 +264,11 @@ function calcSweepP2() {
 
 // Sweep line Panel 3
 function calcSweepP3() {
-  if (cRoot[3] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
-    sweepP3X[0] = cRoot[3] * 0.01 * xDelta[3];
+  if (cTip[2] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
+    sweepP3X[0] = cTip[2] * 0.01 * xDelta[3];
     sweepP3Y[0] = bHalf[1] + bHalf[2];
 
-    sweepP3X[1] = cRoot[3] * 0.01 * xDelta[3] + bHalf[3] * Math.sin(degToRad * delta[1]);
+    sweepP3X[1] = cTip[2] * 0.01 * xDelta[3] + bHalf[3] * Math.sin(degToRad * delta[1]);
     sweepP3Y[1] = bHalf[1] + bHalf[2] + bHalf[3];
 
     // ---------- Plot ----------
@@ -357,7 +372,7 @@ function calcP2() {
     P2X[2] = sweepP2X[1] - cTip[2] * 0.01 * (100 - xDelta[2]);
     P2Y[2] = P1Y[1] + bHalf[2];
 
-    P2X[3] = P1X[1] + cRoot[1];
+    P2X[3] = cTip[1];
     P2Y[3] = P1Y[1];
 
     // ---------- Plot ----------
@@ -417,7 +432,7 @@ function calcP3() {
     P3X[2] = sweepP3X[1] - cTip[3] * 0.01 * (100 - xDelta[3]);
     P3Y[2] = P2Y[1] + bHalf[3];
 
-    P3X[3] = P1X[2] + cRoot[2];
+    P3X[3] = cTip[2];
     P3Y[3] = P2Y[1];
 
     // ---------- Plot ----------
