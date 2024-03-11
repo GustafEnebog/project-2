@@ -180,7 +180,7 @@ myCanvas.height = canvasHeight;
 myCanvas.width = canvasWidth;
 
 // Create a canvas:
-const canvas = document.getElementById("myCanvas");
+const canvas = document.getElementById("drawing");
 const ctx = canvas.getContext("2d");
 
 // Style the line - General
