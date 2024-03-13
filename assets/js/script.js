@@ -212,10 +212,10 @@ function calcSweepP1() {
     sweepP1X[0] = cRoot[1] * 0.01 * xDelta[1];
     sweepP1Y[0] = 0;
 
-    if (delta[1] != 0) {
-      sweepP1X[1] = sweepP1X[0] + bHalf[1] * Math.tan(degToRad * delta[1]);
-    } else {
+    if (delta[1] === 0) {
       sweepP1X[1] = sweepP1X[0];
+    } else {
+      sweepP1X[1] = sweepP1X[0] + bHalf[1] * Math.tan(degToRad * delta[1]);
     }
     sweepP1Y[1] = bHalf[1];
 
@@ -245,10 +245,10 @@ function calcSweepP2() {
     // sweepP2X[0] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2];
     sweepP2Y[0] = bHalf[1];
 
-    if (delta[1] != 0) {
-      sweepP2X[1] = sweepP2X[0] + bHalf[2] * Math.tan(degToRad * delta[2]);
-    } else {
+    if (delta[1] === 0) {
       sweepP2X[1] = sweepP2X[0];
+    } else {
+      sweepP2X[1] = sweepP2X[0] + bHalf[2] * Math.tan(degToRad * delta[2]);
     }
     // sweepP2X[1] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]);
     sweepP2Y[1] = bHalf[1] + bHalf[2];
@@ -279,10 +279,10 @@ function calcSweepP3() {
     // sweepP3X[0] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]) - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3];
     sweepP3Y[0] = bHalf[1] + bHalf[2];
 
-    if (delta[1] != 0) {
-      sweepP3X[1] = sweepP3X[0] + bHalf[3] * Math.tan(degToRad * delta[3]);
-    } else {
+    if (delta[1] === 0) {
       sweepP3X[1] = sweepP3X[0];
+    } else {
+      sweepP3X[1] = sweepP3X[0] + bHalf[3] * Math.tan(degToRad * delta[3]);
     }
     // sweepP3X[1] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]) - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3] + bHalf[3] * Math.sin(degToRad * delta[3]);
     sweepP3Y[1] = bHalf[1] + bHalf[2] + bHalf[3];
@@ -308,9 +308,9 @@ function calcSweepP3() {
 
 
 console.log("Test w sweep");
-console.log(sweepP1X[1]);
-console.log(sweepP2X[1]);
-console.log(sweepP3X[1]);
+console.log(bHalf[1] * Math.tan(degToRad * delta[1]));
+console.log(bHalf[2] * Math.tan(degToRad * delta[2]));
+console.log(bHalf[3] * Math.tan(degToRad * delta[3]));
 
 
 // Panel 1
