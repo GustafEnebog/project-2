@@ -6,18 +6,18 @@ let xDelta = [null, null, null, null];
 let delta = [null, null, null, null];
 
 
+// var canvas = document.getElementById('drawing'); // according to tip from "Faheel" at https://stackoverflow.com/questions/34772957/how-to-make-canvas-responsive
+// var heightRatio = 1,5;
+// canvas.height = canvas.width * heightRatio;
+
 // Get the inputs from the html-form
 function calcBHalf() {
   bHalf[1] = parseInt(document.getElementById('bhalf-p1').value);
   bHalf[2] = parseInt(document.getElementById('bhalf-p2').value);
   bHalf[3] = parseInt(document.getElementById('bhalf-p3').value);
-  //debugger
-  // console.log(bHalf[1] );
-  // console.log(bHalf[2] );
-  // console.log(bHalf[3] );
+
   if (bHalf[1] != "" && bHalf[2] != "" && bHalf[3] != "") {
     bHalf[0] = bHalf[1] + bHalf[2] + bHalf[3];
-    // console.log(bHalf[0] );
   }
 }
 
@@ -212,7 +212,11 @@ function calcSweepP1() {
     sweepP1X[0] = cRoot[1] * 0.01 * xDelta[1];
     sweepP1Y[0] = 0;
 
-    sweepP1X[1] = cRoot[1] * 0.01 * xDelta[1] + bHalf[1] * Math.sin(degToRad * delta[1]);
+    if (delta[1] != 0) {
+      sweepP1X[1] = sweepP1X[0] + bHalf[1] * Math.tan(degToRad * delta[1]);
+    } else {
+      sweepP1X[1] = sweepP1X[0];
+    }
     sweepP1Y[1] = bHalf[1];
 
     // ---------- Plot ----------
@@ -221,7 +225,7 @@ function calcSweepP1() {
 
     // Style the line - Specific
     ctx.lineWidth = "1";
-    ctx.setLineDash([10, 3]); /*dashes are 5px and spaces are 3px*/
+    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
 
     // Define a start point
     ctx.moveTo(sweepP1X[0], sweepP1Y[0]);
@@ -236,11 +240,17 @@ function calcSweepP1() {
 
 // Sweep line Panel 2
 function calcSweepP2() {
-  if (cTip[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
-    sweepP2X[0] = cTip[1] * 0.01 * xDelta[2];
+  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
+    sweepP2X[0] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2];
+    // sweepP2X[0] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2];
     sweepP2Y[0] = bHalf[1];
 
-    sweepP2X[1] = cTip[1] * 0.01 * xDelta[2] + bHalf[1] * Math.sin(degToRad * delta[1]);
+    if (delta[1] != 0) {
+      sweepP2X[1] = sweepP2X[0] + bHalf[2] * Math.tan(degToRad * delta[2]);
+    } else {
+      sweepP2X[1] = sweepP2X[0];
+    }
+    // sweepP2X[1] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]);
     sweepP2Y[1] = bHalf[1] + bHalf[2];
 
     // ---------- Plot ----------
@@ -249,7 +259,7 @@ function calcSweepP2() {
 
     // Style the line - Specific
     ctx.lineWidth = "1";
-    ctx.setLineDash([10, 3]); /*dashes are 5px and spaces are 3px*/
+    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
 
     // Define a start point
     ctx.moveTo(sweepP2X[0], sweepP2Y[0]);
@@ -265,10 +275,16 @@ function calcSweepP2() {
 // Sweep line Panel 3
 function calcSweepP3() {
   if (cTip[2] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
-    sweepP3X[0] = cTip[2] * 0.01 * xDelta[3];
+    sweepP3X[0] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3];
+    // sweepP3X[0] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]) - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3];
     sweepP3Y[0] = bHalf[1] + bHalf[2];
 
-    sweepP3X[1] = cTip[2] * 0.01 * xDelta[3] + bHalf[3] * Math.sin(degToRad * delta[1]);
+    if (delta[1] != 0) {
+      sweepP3X[1] = sweepP3X[0] + bHalf[3] * Math.tan(degToRad * delta[3]);
+    } else {
+      sweepP3X[1] = sweepP3X[0];
+    }
+    // sweepP3X[1] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]) - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3] + bHalf[3] * Math.sin(degToRad * delta[3]);
     sweepP3Y[1] = bHalf[1] + bHalf[2] + bHalf[3];
 
     // ---------- Plot ----------
@@ -277,7 +293,7 @@ function calcSweepP3() {
 
     // Style the line - Specific
     ctx.lineWidth = "1";
-    ctx.setLineDash([10, 3]); /*dashes are 5px and spaces are 3px*/
+    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
 
     // Define a start point
     ctx.moveTo(sweepP3X[0], sweepP3Y[0]);
@@ -290,6 +306,13 @@ function calcSweepP3() {
   }
 }
 
+
+console.log("Test w sweep");
+console.log(sweepP1X[1]);
+console.log(sweepP2X[1]);
+console.log(sweepP3X[1]);
+
+
 // Panel 1
 function calcP1() {
   if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
@@ -297,9 +320,11 @@ function calcP1() {
     P1Y[0] = 0;
 
     P1X[1] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1];
+    // P1X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] - cTip[1] * 0.01 * xDelta[1];
     P1Y[1] = bHalf[1];
 
-    P1X[2] = sweepP1X[1] - cTip[1] * 0.01 * (100 - xDelta[1]);
+    P1X[2] = P1X[1] + cTip[1];
+    // P1X[2] = sweepP1X[1] + cTip[1] * 0.01 * (100 - xDelta[1]);
     P1Y[2] = bHalf[1];
 
     P1X[3] = cRoot[1];
@@ -310,7 +335,7 @@ function calcP1() {
     ctx.beginPath();
 
     // Style the line - Specific
-    ctx.lineWidth = "3";
+    ctx.lineWidth = "2";
 
     // Draw leading edge
     // Define a start point
@@ -367,20 +392,22 @@ function calcP2() {
     P2Y[0] = P1Y[1];
 
     P2X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2];
+    // P2X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2];
     P2Y[1] = P1Y[1] + bHalf[2];
 
-    P2X[2] = sweepP2X[1] - cTip[2] * 0.01 * (100 - xDelta[2]);
+    P2X[2] = P2X[1] + cTip[2];
+    // P2X[2] = sweepP2X[1] + cTip[2] * 0.01 * (100 - xDelta[2]);
     P2Y[2] = P1Y[1] + bHalf[2];
 
-    P2X[3] = cTip[1];
-    P2Y[3] = P1Y[1];
+    P2X[3] = P1X[2]; //+ cTip[2];
+    P2Y[3] = P1Y[2];
 
     // ---------- Plot ----------
     // Define a new path:
     ctx.beginPath();
 
     // Style the line - Specific
-    ctx.lineWidth = "3";
+    ctx.lineWidth = "2";
 
     // Draw leading edge
     // Define a start point
@@ -427,20 +454,22 @@ function calcP3() {
     P3Y[0] = P2Y[1];
 
     P3X[1] = sweepP3X[1] - cTip[3] * 0.01 * xDelta[3];
+    // P3X[1] = sweepP3X[1] - cTip[3] * 0.01 * xDelta[3];
     P3Y[1] = P2Y[1] + bHalf[3];
 
-    P3X[2] = sweepP3X[1] - cTip[3] * 0.01 * (100 - xDelta[3]);
+    P3X[2] = P3X[1] + cTip[3];
+    // P3X[2] = sweepP3X[1] + cTip[3] * 0.01 * (100 - xDelta[3]);
     P3Y[2] = P2Y[1] + bHalf[3];
 
-    P3X[3] = cTip[2];
-    P3Y[3] = P2Y[1];
+    P3X[3] = P2X[2]; // + cTip[3];
+    P3Y[3] = P2Y[2];
 
     // ---------- Plot ----------
     // Define a new path:
     ctx.beginPath();
 
     // Style the line - Specific
-    ctx.lineWidth = "3";
+    ctx.lineWidth = "2";
 
     // Draw leading edge
     // Define a start point
@@ -484,6 +513,7 @@ function calcP3() {
 //-------------------- LET IT ALL HAPPEN (EVENTLISTENER)! --------------------
 function funcForEvent() {
   console.log("funcForEvent");
+  ctx.clearRect(0, 0, 500, 500);
   calcBHalf();
   calcCRoot();
   calcCTip();
@@ -515,10 +545,10 @@ function funcForEvent() {
 
 // Alternative 4
 
-document.querySelectorAll('.param-input').forEach(function(input) {
+document.querySelectorAll('.param-input').forEach(function (input) {
   input.addEventListener('input', funcForEvent);
   // Check if the Enter key was pressed
-  input.addEventListener('keydown', function(event) {
+  input.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       funcForEvent();
     }
