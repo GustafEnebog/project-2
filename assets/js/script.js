@@ -1,6 +1,6 @@
 //-------------------- GETTING INPUT FROM FORM FIELD AND CALCULATING PARAMETERS FOR COMPLETE WING --------------------
 let bHalf = [null, null, null, null];
-let cRoot = [null, null, null, null];
+let cRoot = [null, null];
 let cTip = [null, null, null, null];
 let xDelta = [null, null, null, null];
 let delta = [null, null, null, null];
@@ -27,6 +27,7 @@ function calcCRoot() {
   // cRoot[3] = parseInt(document.getElementById('croot-p3').innerText);
   if (cRoot[1] != "") {
     cRoot[0] = cRoot[1];
+    cRoot[1] = cRoot[1];
   }
 }
 
