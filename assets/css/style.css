@@ -28,6 +28,10 @@ body {
     width: 100%;
 }
 
+#drawing {
+    width: 100%;
+}
+
 .input-output-area {
     background-color: lightgrey;
 }
@@ -48,11 +52,18 @@ body {
 
 .parameterSub {
     padding-left: 5%;
+    padding-bottom: 15%;
+    display: inline;
+    white-space: nowrap;
     /* max-width */
 }
 
 input[type=number] {
     width: 50px;
+}
+
+input {
+    accent-color: green;
 }
 
 .dot {

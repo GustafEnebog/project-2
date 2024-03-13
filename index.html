@@ -38,21 +38,23 @@
                 <img src="assets/images/wingit-logo.png" alt="Logo" id="logo">
 
                 <!-- Drawing using Canvas -->
-                <canvas id="drawing" width="500" height="500" style="border:1px solid grey;"></canvas> <!-- width="200" height="150" -->
+                <canvas id="drawing" style="border:1px solid grey;"></canvas> <!-- width="500" height="500" -->
             </section>
         </div>
         <!-- INPUT/OUTPUT AREA -->
         <div class="input-output-area" id="input-output-form">
             <section>
                 <!-- Nr. of Panels -->
-                <div>
-                    <p class="w3-tooltip"><b>Nr. of Panels</b><span style="position:absolute;left:0;bottom:18px"
-                            class="w3-text w3-tag">Nr. of Panels</span><span class="dot"></span></p>
-                    <br>
-                    <label for="nr-of-panels">Nr. of Panels</label>
-                    <input type="number" class="param-input" id="nr-of-panels" name="nr-of-panels"> <!-- min="1" max="20" value="10" -->
-                    <!-- step="3" -->
-                </div>
+                <!-- <div>  -->
+                <!--     <p class="w3-tooltip"><b>Nr. of Panels</b><span style="position:absolute;left:0;bottom:18px"  -->
+                <!--             class="w3-text w3-tag">Nr. of Panels</span><span class="dot"></span></p>  -->
+                <!--     <br>  -->
+                <!--     <label for="nr-of-panels">Nr. of Panels</label>  -->
+                <!--     <input type="number" class="param-input" id="nr-of-panels" name="nr-of-panels">  -->
+                <!-- </div>  -->
+
+                <!-- min="1" max="20" value="10" --> 
+                <!-- step="3" --> 
 
                 <!-- b_half -->
                 <div>
@@ -62,13 +64,14 @@
                                 class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="bHalf[0]"></p>
-                    </div><label for="bhalf-p1" class="parameterSub">P1</label>
+                        <!--   <p id="bHalf[0]"></p> -->
+                    <label for="bhalf-p1" class="parameterSub">P1</label>
                     <input type="number" class="param-input" id="bhalf-p1" name="bhalf-p1">
                     <label for="bhalf-p2" class="parameterSub">P2</label>
                     <input type="number" class="param-input" id="bhalf-p2" name="bhalf-p2">
                     <label for="bhalf-p3" class="parameterSub">P3</label>
                     <input type="number" class="param-input" id="bhalf-p3" name="bhalf-p3">
+                    </div>
                 </div>
 
                 <!-- c_root -->
@@ -79,9 +82,9 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="cRoot[0]"></p>
+                        <!-- <p id="cRoot[0]"></p> -->
                         <label for="croot-p1" class="parameterSub">P1</label>
-                        <input type="number"  class="param-input" id="croot-p1" name="croot-p1">
+                        <input type="number" class="param-input" id="croot-p1" name="croot-p1">
                         <!-- <label for="croot-p2" class="parameterSub">P2</label> -->
                         <!-- <input type="number" id="croot-p2" name="croot-p2"> -->
                         <!-- <label for="croot-p3" class="parameterSub">P3</label> -->
@@ -100,7 +103,7 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="cTip[0]"></p>
+                        <!-- <p id="cTip[0]"></p> -->
                         <label for="ctip-p1" class="parameterSub">P1</label>
                         <input type="number" class="param-input" id="ctip-p1" name="ctip-p1">
                         <label for="ctip-p2" class="parameterSub">P2</label>
@@ -119,7 +122,7 @@
                                 sweep</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="xDelta[0]"></p>
+                        <!-- <p id="xDelta[0]"></p> -->
                         <label for="xdelta-p1" class="parameterSub">P1</label>
                         <input type="number" class="param-input" id="xdelta-p1" name="xdelta-p1" value="25">
                         <label for="xdelta-p2" class="parameterSub">P2</label>
@@ -137,7 +140,7 @@
                                 at x<sub>Λ</sub></span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="delta[1]"></p>
+                        <!-- <p id="delta[1]"></p> -->
                         <label for="delta-p1" class="parameterSub">P1</label>
                         <input type="number" class="param-input" id="delta-p1" name="delta-p1" value="0">
                         <label for="delta-p2" class="parameterSub">P2</label>
@@ -155,10 +158,10 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="lambda[0]"></p>
-                        <p id="lambda[1]"></p>
-                        <p id="lambda[2]"></p>
-                        <p id="lambda[3]"></p>
+                        <p id="lambda[0]" class="parameterSub">CW:</p>
+                        <p id="lambda[1]" class="parameterSub">P1:</p>
+                        <p id="lambda[2]" class="parameterSub">P2:</p>
+                        <p id="lambda[3]" class="parameterSub">P3:</p>
                     </div>
                 </div>
 
@@ -170,10 +173,10 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="cSmc[0]"></p>
-                        <p id="cSmc[1]"></p>
-                        <p id="cSmc[2]"></p>
-                        <p id="cSmc[3]"></p>
+                        <p id="cSmc[0]" class="parameterSub">CW:</p>
+                        <p id="cSmc[1]" class="parameterSub">P1:</p>
+                        <p id="cSmc[2]" class="parameterSub">P2:</p>
+                        <p id="cSmc[3]" class="parameterSub">P3:</p>
                     </div>
                 </div>
 
@@ -185,10 +188,10 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="sHalf[0]"></p>
-                        <p id="sHalf[1]"></p>
-                        <p id="sHalf[2]"></p>
-                        <p id="sHalf[3]"></p>
+                        <p id="sHalf[0]" class="parameterSub">CW:</p>
+                        <p id="sHalf[1]" class="parameterSub">P1:</p>
+                        <p id="sHalf[2]" class="parameterSub">P2:</p>
+                        <p id="sHalf[3]" class="parameterSub">P3:</p>
                     </div>
                 </div>
 
@@ -200,10 +203,10 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="ar[0]"></p>
-                        <p id="ar[1]"></p>
-                        <p id="ar[2]"></p>
-                        <p id="ar[3]"></p>
+                        <p id="ar[0]" class="parameterSub">CW:</p>
+                        <p id="ar[1]" class="parameterSub">P1:</p>
+                        <p id="ar[2]" class="parameterSub">P2:</p>
+                        <p id="ar[3]" class="parameterSub">P3:</p>
                     </div>
                 </div>
             </section>
