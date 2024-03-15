@@ -191,6 +191,10 @@ const degToRad = (Math.PI / 180);
 
 // canvasHeight = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
 // canvasWidth = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
+var canvas = document.querySelector('canvas'); // Credit to https://www.youtube.com/@KevinPowell (if I remember correctly!)
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 
 // drawing.height = canvasHeight;
 // drawing.width = canvasWidth;

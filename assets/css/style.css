@@ -22,6 +22,9 @@ body {
     font-variation-settings: "wdth"100;
 }
 
+html {
+    color-scheme: dark light;
+}
 
 .drawing-area {
     background-color: white;
@@ -83,10 +86,13 @@ myPlot-Overide {
 /* MEDIA QUERYS */
 
 /* Media query: large or landscape phones (576px and up) */
-@media screen and (min-width: 576px) {}
+/* @media screen and (min-width: 576px) {} */
+@media screen and (576px <= width <= 768px) {}
 
 /* Media query: tablets and larger (768px and up) */
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) { */
+
+@media screen and (768px > width) {
     .container {
         display: flex;
         flex-direction: row;
