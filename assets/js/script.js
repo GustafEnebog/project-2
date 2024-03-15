@@ -191,9 +191,9 @@ const degToRad = (Math.PI / 180);
 
 // canvasHeight = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
 // canvasWidth = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
-var canvas = document.querySelector('canvas'); // Credit to https://www.youtube.com/@KevinPowell (if I remember correctly!)
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// var canvas = document.querySelector('canvas'); // Credit to https://www.youtube.com/@KevinPowell (if I remember correctly!)
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
 
 
 // drawing.height = canvasHeight;
@@ -217,12 +217,17 @@ function calcSweepP1() {
     sweepP1X[0] = cRoot[1] * 0.01 * xDelta[1];
     sweepP1Y[0] = 0;
 
-    if (delta[1] === 0) {
-      sweepP1X[1] = sweepP1X[0];
-    } else {
-      sweepP1X[1] = sweepP1X[0] + bHalf[1] * Math.tan(degToRad * delta[1]);
-    }
+    sweepP1X[1] = sweepP1X[0] + bHalf[1] * Math.tan(degToRad * delta[1]);
     sweepP1Y[1] = bHalf[1];
+
+    // If Display Horizontal is choosen (Transposing x asssignes y and y assignes x)
+    // if (displayHoriz == 1) {
+    //  for (let i = 0; i < 2; i++) {
+    //      let sweepP1XTemp[0] = sweepP1X[0];
+    //      sweepP1X[0] = sweepP1Y[0];
+    //      sweepP1Y[0] = sweepP1XTemp[0];
+    //  }
+    // }
 
     // ---------- Plot ----------
     // Define a new path: 
@@ -247,15 +252,9 @@ function calcSweepP1() {
 function calcSweepP2() {
   if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
     sweepP2X[0] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2];
-    // sweepP2X[0] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2];
     sweepP2Y[0] = bHalf[1];
 
-    if (delta[1] === 0) {
-      sweepP2X[1] = sweepP2X[0];
-    } else {
-      sweepP2X[1] = sweepP2X[0] + bHalf[2] * Math.tan(degToRad * delta[2]);
-    }
-    // sweepP2X[1] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]);
+    sweepP2X[1] = sweepP2X[0] + bHalf[2] * Math.tan(degToRad * delta[2]);
     sweepP2Y[1] = bHalf[1] + bHalf[2];
 
     // ---------- Plot ----------
@@ -281,15 +280,9 @@ function calcSweepP2() {
 function calcSweepP3() {
   if (cTip[2] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
     sweepP3X[0] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3];
-    // sweepP3X[0] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]) - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3];
     sweepP3Y[0] = bHalf[1] + bHalf[2];
 
-    if (delta[1] === 0) {
-      sweepP3X[1] = sweepP3X[0];
-    } else {
-      sweepP3X[1] = sweepP3X[0] + bHalf[3] * Math.tan(degToRad * delta[3]);
-    }
-    // sweepP3X[1] = cRoot[1] * 0.01 * xDelta[1]  +  bHalf[1] * Math.sin(degToRad * delta[1]) - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2] + bHalf[2] * Math.sin(degToRad * delta[2]) - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3] + bHalf[3] * Math.sin(degToRad * delta[3]);
+    sweepP3X[1] = sweepP3X[0] + bHalf[3] * Math.tan(degToRad * delta[3]);
     sweepP3Y[1] = bHalf[1] + bHalf[2] + bHalf[3];
 
     // ---------- Plot ----------
@@ -514,11 +507,17 @@ function calcP3() {
   }
 }
 
+// let displayHoriz = 1
+
+// If Display Horizontal is choosen -> Rotate
+//   if (displayHoriz == 1) {
+//       ctx.rotate(-45 * Math.PI / 180);
+//  }
 
 //-------------------- LET IT ALL HAPPEN (EVENTLISTENER)! --------------------
 function funcForEvent() {
   console.log("funcForEvent");
-  ctx.clearRect(0, 0, 500, 500);
+  ctx.clearRect(0, 0, 500, 500);  // Change the "500" to canvas width and height once the calculations of these has been made
   calcBHalf();
   calcCRoot();
   calcCTip();

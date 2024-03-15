@@ -22,9 +22,9 @@ body {
     font-variation-settings: "wdth"100;
 }
 
-html {
-    color-scheme: dark light;
-}
+/* html { */
+/*    color-scheme: dark light; */
+/* } */
 
 .drawing-area {
     background-color: white;
