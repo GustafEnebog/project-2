@@ -18,6 +18,7 @@ function calcBHalf() {
 
   if (bHalf[1] != "" && bHalf[2] != "" && bHalf[3] != "") {
     bHalf[0] = bHalf[1] + bHalf[2] + bHalf[3];
+    document.getElementById("bHalf[0]").innerHTML = bHalf[0];
   }
 }
 
@@ -27,7 +28,8 @@ function calcCRoot() {
   // cRoot[3] = parseInt(document.getElementById('croot-p3').innerText);
   if (cRoot[1] != "") {
     cRoot[0] = cRoot[1];
-    cRoot[1] = cRoot[1];
+    cRoot[1] = cRoot[1]; // Unique to this parameter since the root chord for the complete wing and the first panel is the same 
+    document.getElementById("cRoot[0]").innerHTML = cRoot[0];
   }
 }
 
@@ -37,6 +39,7 @@ function calcCTip() {
   cTip[3] = parseInt(document.getElementById('ctip-p3').value);
   if (cTip[3] != "") {
     cTip[0] = cTip[3];
+    document.getElementById("cTip[0]").innerHTML = cTip[0];
   }
 }
 
