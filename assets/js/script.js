@@ -5,7 +5,6 @@ let cTip = [null, null, null, null];
 let xDelta = [null, null, null, null];
 let delta = [null, null, null, null];
 
-
 // var canvas = document.getElementById('drawing'); // according to tip from "Faheel" at https://stackoverflow.com/questions/34772957/how-to-make-canvas-responsive
 // var heightRatio = 1,5;
 // canvas.height = canvas.width * heightRatio;
@@ -55,6 +54,12 @@ function calcDelta() {
   delta[2] = parseInt(document.getElementById('delta-p2').value);
   delta[3] = parseInt(document.getElementById('delta-p3').value);
   delta[0] = "n/a";
+}
+
+if (delta[2] > 45) {
+  alert('That is a lot, are you sure you know what you are doing!?');
+} else if (delta[1] > 60) {
+  alert('That is a extremly much, Guess you doing fins on a missile');
 }
 
 //-------------------- CALCULATE OUTPUT USING INPUT FROM FORM FIELD --------------------
@@ -179,15 +184,106 @@ let sweepP2Y = [null, null];
 let sweepP3X = [null, null];
 let sweepP3Y = [null, null];
 
-let P1X = [null, null, null, null];
-let P1Y = [null, null, null, null];
-let P2X = [null, null, null, null];
-let P2Y = [null, null, null, null];
-let P3X = [null, null, null, null];
-let P3Y = [null, null, null, null];
+let outlineP1X = [null, null, null, null];
+let outlineP1Y = [null, null, null, null];
+let outlineP2X = [null, null, null, null];
+let outlineP2Y = [null, null, null, null];
+let outlineP3X = [null, null, null, null];
+let outlineP3Y = [null, null, null, null];
 
 // Conversion factor (since java script uses radians instead of degrees) to be used in sin trigonoetric function below
 const degToRad = (Math.PI / 180);
+
+// Sweep line Panel 1
+function calcSweepP1() {
+  if (cRoot[1] != "" && xDelta[1] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[1] != "") {
+    sweepP1X[0] = cRoot[1] * 0.01 * xDelta[1];
+    sweepP1Y[0] = 0;
+
+    sweepP1X[1] = sweepP1X[0] + bHalf[1] * Math.tan(degToRad * delta[1]);
+    sweepP1Y[1] = bHalf[1];
+  }
+}
+
+// Sweep line Panel 2
+function calcSweepP2() {
+  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
+    sweepP2X[0] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2];
+    sweepP2Y[0] = bHalf[1];
+
+    sweepP2X[1] = sweepP2X[0] + bHalf[2] * Math.tan(degToRad * delta[2]);
+    sweepP2Y[1] = bHalf[1] + bHalf[2];
+  }
+}
+
+// Sweep line Panel 3
+function calcSweepP3() {
+  if (cTip[2] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
+    sweepP3X[0] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3];
+    sweepP3Y[0] = bHalf[1] + bHalf[2];
+
+    sweepP3X[1] = sweepP3X[0] + bHalf[3] * Math.tan(degToRad * delta[3]);
+    sweepP3Y[1] = bHalf[1] + bHalf[2] + bHalf[3];
+  }
+}
+
+// Outline Panel 1
+function calcOutlineP1() {
+  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
+    outlineP1X[0] = 0;
+    outlineP1Y[0] = 0;
+
+    outlineP1X[1] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1];
+    // P1X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] - cTip[1] * 0.01 * xDelta[1];
+    outlineP1Y[1] = bHalf[1];
+
+    outlineP1X[2] = outlineP1X[1] + cTip[1];
+    // P1X[2] = sweepP1X[1] + cTip[1] * 0.01 * (100 - xDelta[1]);
+    outlineP1Y[2] = bHalf[1];
+
+    outlineP1X[3] = cRoot[1];
+    outlineP1Y[3] = 0;
+  }
+}
+
+// Outline Panel 2
+function calcOutlineP2() {
+  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
+    outlineP2X[0] = outlineP1X[1];
+    outlineP2Y[0] = outlineP1Y[1];
+
+    outlineP2X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2];
+    // P2X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2];
+    outlineP2Y[1] = outlineP1Y[1] + bHalf[2];
+
+    outlineP2X[2] = outlineP2X[1] + cTip[2];
+    // P2X[2] = sweepP2X[1] + cTip[2] * 0.01 * (100 - xDelta[2]);
+    outlineP2Y[2] = outlineP1Y[1] + bHalf[2];
+
+    outlineP2X[3] = outlineP1X[2]; //+ cTip[2];
+    outlineP2Y[3] = outlineP1Y[2];
+  }
+}
+
+// Outline Panel 3
+function calcOutlineP3() {
+  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
+    outlineP3X[0] = outlineP2X[1];
+    outlineP3Y[0] = outlineP2Y[1];
+
+    outlineP3X[1] = sweepP3X[1] - cTip[3] * 0.01 * xDelta[3];
+    // P3X[1] = sweepP3X[1] - cTip[3] * 0.01 * xDelta[3];
+    outlineP3Y[1] = outlineP2Y[1] + bHalf[3];
+
+    outlineP3X[2] = outlineP3X[1] + cTip[3];
+    // P3X[2] = sweepP3X[1] + cTip[3] * 0.01 * (100 - xDelta[3]);
+    outlineP3Y[2] = outlineP2Y[1] + bHalf[3];
+
+    outlineP3X[3] = outlineP2X[2]; // + cTip[3];
+    outlineP3Y[3] = outlineP2Y[2];
+  }
+}
+
 
 //-------------------- PLOTTING WINGPANEL USING CANVAS - THE STARTING POINT FOR BELOW CODE COMES FROM https://www.w3schools.com/graphics/canvas_shapes.asp --------------------
 // Setting size of canvas
@@ -202,6 +298,9 @@ const degToRad = (Math.PI / 180);
 // drawing.height = canvasHeight;
 // drawing.width = canvasWidth;
 
+drawing.height = 600;
+drawing.width = 600;
+
 // Create a canvas:
 const canvas = document.getElementById("drawing");
 const ctx = canvas.getContext("2d");
@@ -210,18 +309,9 @@ const ctx = canvas.getContext("2d");
 ctx.strokeStyle = "black";
 ctx.lineCap = "round";
 
-/* The canvas plots are dispersed out into the below functions
-so that as each aspect get printed right away as it becomes available.
-This also has the added benefit that we do not need to write the if-statements twice. */
-
 // Sweep line Panel 1
-function calcSweepP1() {
+function plotSweepP1() {
   if (cRoot[1] != "" && xDelta[1] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[1] != "") {
-    sweepP1X[0] = cRoot[1] * 0.01 * xDelta[1];
-    sweepP1Y[0] = 0;
-
-    sweepP1X[1] = sweepP1X[0] + bHalf[1] * Math.tan(degToRad * delta[1]);
-    sweepP1Y[1] = bHalf[1];
 
     // If Display Horizontal is choosen (Transposing x asssignes y and y assignes x)
     // if (displayHoriz == 1) {
@@ -252,15 +342,9 @@ function calcSweepP1() {
 }
 
 // Sweep line Panel 2
-function calcSweepP2() {
+function plotSweepP2() {
   if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
-    sweepP2X[0] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2];
-    sweepP2Y[0] = bHalf[1];
 
-    sweepP2X[1] = sweepP2X[0] + bHalf[2] * Math.tan(degToRad * delta[2]);
-    sweepP2Y[1] = bHalf[1] + bHalf[2];
-
-    // ---------- Plot ----------
     // Define a new path: 
     ctx.beginPath();
 
@@ -280,15 +364,9 @@ function calcSweepP2() {
 }
 
 // Sweep line Panel 3
-function calcSweepP3() {
+function plotSweepP3() {
   if (cTip[2] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
-    sweepP3X[0] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3];
-    sweepP3Y[0] = bHalf[1] + bHalf[2];
 
-    sweepP3X[1] = sweepP3X[0] + bHalf[3] * Math.tan(degToRad * delta[3]);
-    sweepP3Y[1] = bHalf[1] + bHalf[2] + bHalf[3];
-
-    // ---------- Plot ----------
     // Define a new path: 
     ctx.beginPath();
 
@@ -308,30 +386,10 @@ function calcSweepP3() {
 }
 
 
-console.log("Test w sweep");
-console.log(bHalf[1] * Math.tan(degToRad * delta[1]));
-console.log(bHalf[2] * Math.tan(degToRad * delta[2]));
-console.log(bHalf[3] * Math.tan(degToRad * delta[3]));
-
-
 // Panel 1
-function calcP1() {
+function plotOutlineP1() {
   if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
-    P1X[0] = 0;
-    P1Y[0] = 0;
 
-    P1X[1] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1];
-    // P1X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] - cTip[1] * 0.01 * xDelta[1];
-    P1Y[1] = bHalf[1];
-
-    P1X[2] = P1X[1] + cTip[1];
-    // P1X[2] = sweepP1X[1] + cTip[1] * 0.01 * (100 - xDelta[1]);
-    P1Y[2] = bHalf[1];
-
-    P1X[3] = cRoot[1];
-    P1Y[3] = 0;
-
-    // ---------- Plot ----------
     // Define a new path:
     ctx.beginPath();
 
@@ -340,30 +398,30 @@ function calcP1() {
 
     // Draw leading edge
     // Define a start point
-    ctx.moveTo(P1X[0], P1Y[0]);
+    ctx.moveTo(outlineP1X[0], outlineP1Y[0]);
 
     // Define points
-    ctx.lineTo(P1X[1], P1Y[1]);
+    ctx.lineTo(outlineP1X[1], outlineP1Y[1]);
 
     // Draw it
     ctx.stroke();
 
     // Draw trailing edge
     // Define a start point
-    ctx.moveTo(P1X[2], P1Y[2]);
+    ctx.moveTo(outlineP1X[2], outlineP1Y[2]);
 
     // Define points
-    ctx.lineTo(P1X[3], P1Y[3]);
+    ctx.lineTo(outlineP1X[3], outlineP1Y[3]);
 
     // Draw it
     ctx.stroke();
 
     // Draw wing root chord
     // Define a start point
-    ctx.moveTo(P1X[0], P1Y[0]);
+    ctx.moveTo(outlineP1X[0], outlineP1Y[0]);
 
     // Define points
-    ctx.lineTo(P1X[3], P1Y[3]);
+    ctx.lineTo(outlineP1X[3], outlineP1Y[3]);
 
     // Draw it
     ctx.stroke();
@@ -376,10 +434,10 @@ function calcP1() {
     ctx.lineWidth = "1";
 
     // Define a start point
-    ctx.moveTo(P1X[1], P1Y[1]);
+    ctx.moveTo(outlineP1X[1], outlineP1Y[1]);
 
     // Define points
-    ctx.lineTo(P1X[2], P1Y[2]);
+    ctx.lineTo(outlineP1X[2], outlineP1Y[2]);
 
     // Draw it
     ctx.stroke();
@@ -387,23 +445,9 @@ function calcP1() {
 }
 
 // Panel 2
-function calcP2() {
+function plotOutlineP2() {
   if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
-    P2X[0] = P1X[1];
-    P2Y[0] = P1Y[1];
 
-    P2X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2];
-    // P2X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2];
-    P2Y[1] = P1Y[1] + bHalf[2];
-
-    P2X[2] = P2X[1] + cTip[2];
-    // P2X[2] = sweepP2X[1] + cTip[2] * 0.01 * (100 - xDelta[2]);
-    P2Y[2] = P1Y[1] + bHalf[2];
-
-    P2X[3] = P1X[2]; //+ cTip[2];
-    P2Y[3] = P1Y[2];
-
-    // ---------- Plot ----------
     // Define a new path:
     ctx.beginPath();
 
@@ -412,20 +456,20 @@ function calcP2() {
 
     // Draw leading edge
     // Define a start point
-    ctx.moveTo(P2X[0], P2Y[0]);
+    ctx.moveTo(outlineP2X[0], outlineP2Y[0]);
 
     // Define points
-    ctx.lineTo(P2X[1], P2Y[1]);
+    ctx.lineTo(outlineP2X[1], outlineP2Y[1]);
 
     // Draw it
     ctx.stroke();
 
     // Draw trailing edge
     // Define a start point
-    ctx.moveTo(P2X[2], P2Y[2]);
+    ctx.moveTo(outlineP2X[2], outlineP2Y[2]);
 
     // Define points
-    ctx.lineTo(P2X[3], P2Y[3]);
+    ctx.lineTo(outlineP2X[3], outlineP2Y[3]);
 
     // Draw it
     ctx.stroke();
@@ -438,10 +482,10 @@ function calcP2() {
     ctx.lineWidth = "1";
 
     // Define a start point
-    ctx.moveTo(P2X[1], P2Y[1]);
+    ctx.moveTo(outlineP2X[1], outlineP2Y[1]);
 
     // Define points
-    ctx.lineTo(P2X[2], P2Y[2]);
+    ctx.lineTo(outlineP2X[2], outlineP2Y[2]);
 
     // Draw it
     ctx.stroke();
@@ -449,23 +493,9 @@ function calcP2() {
 }
 
 // Panel 3
-function calcP3() {
+function plotOutlineP3() {
   if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
-    P3X[0] = P2X[1];
-    P3Y[0] = P2Y[1];
 
-    P3X[1] = sweepP3X[1] - cTip[3] * 0.01 * xDelta[3];
-    // P3X[1] = sweepP3X[1] - cTip[3] * 0.01 * xDelta[3];
-    P3Y[1] = P2Y[1] + bHalf[3];
-
-    P3X[2] = P3X[1] + cTip[3];
-    // P3X[2] = sweepP3X[1] + cTip[3] * 0.01 * (100 - xDelta[3]);
-    P3Y[2] = P2Y[1] + bHalf[3];
-
-    P3X[3] = P2X[2]; // + cTip[3];
-    P3Y[3] = P2Y[2];
-
-    // ---------- Plot ----------
     // Define a new path:
     ctx.beginPath();
 
@@ -474,20 +504,20 @@ function calcP3() {
 
     // Draw leading edge
     // Define a start point
-    ctx.moveTo(P3X[0], P3Y[0]);
+    ctx.moveTo(outlineP3X[0], outlineP3Y[0]);
 
     // Define points
-    ctx.lineTo(P3X[1], P3Y[1]);
+    ctx.lineTo(outlineP3X[1], outlineP3Y[1]);
 
     // Draw it
     ctx.stroke();
 
     // Draw trailing edge
     // Define a start point
-    ctx.moveTo(P3X[2], P3Y[2]);
+    ctx.moveTo(outlineP3X[2], outlineP3Y[2]);
 
     // Define points
-    ctx.lineTo(P3X[3], P3Y[3]);
+    ctx.lineTo(outlineP3X[3], outlineP3Y[3]);
 
     // Draw it
     ctx.stroke();
@@ -500,15 +530,16 @@ function calcP3() {
     ctx.lineWidth = "1";
 
     // Define a start point
-    ctx.moveTo(P3X[1], P3Y[1]);
+    ctx.moveTo(outlineP3X[1], outlineP3Y[1]);
 
     // Define points
-    ctx.lineTo(P3X[2], P3Y[2]);
+    ctx.lineTo(outlineP3X[2], outlineP3Y[2]);
 
     // Draw it
     ctx.stroke();
   }
 }
+
 
 // let displayHoriz = 1
 
@@ -533,9 +564,15 @@ function funcForEvent() {
   calcSweepP1();
   calcSweepP2();
   calcSweepP3();
-  calcP1();
-  calcP2();
-  calcP3();
+  calcOutlineP1();
+  calcOutlineP2();
+  calcOutlineP3();
+  plotSweepP1();
+  plotSweepP2();
+  plotSweepP3();
+  plotOutlineP1();
+  plotOutlineP2();
+  plotOutlineP3();
 }
 
 // Alternative 1 - Should I use "changes" instead of "oninput"
