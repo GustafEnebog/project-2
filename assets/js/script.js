@@ -286,6 +286,65 @@ function calcOutlineP3() {
 
 
 //-------------------- PLOTTING WINGPANEL USING CANVAS - THE STARTING POINT FOR BELOW CODE COMES FROM https://www.w3schools.com/graphics/canvas_shapes.asp --------------------
+
+// let outlineP1XTEST = [-1, 0, 1, 2];
+// let testMin;
+// let testMax;
+// console.log(Math.min(...outlineP1XTEST));
+// console.log(Math.max(...outlineP1X));
+// testMin = Math.min(...outlineP1XTEST);
+// testMax = Math.max(...outlineP1XTEST);
+
+testMin = Math.min(...outlineP1X);
+testMax = Math.max(...outlineP1X);
+
+// test = Math.max.apply(...outlineP1X);
+// let testMax2 = Math.max(...outlineP1X[0], ...outlineP1X[1], ...outlineP1X[2], ...outlineP1X[3]);
+// let testMin3 = Math.min(...outlineP1X[0], ...outlineP1X[1], ...outlineP1X[2], ...outlineP1X[3]);
+// Calculate canvas width and height
+// Width
+function getDrawMaxX(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
+  let maxXIntermediate = [];
+  maxXIntermediate[0] = Math.max.apply(null, outlineP1X);
+  maxXIntermediate[1] = Math.max.apply(null, outlineP2X);
+  maxXIntermediate[2] = Math.max.apply(null, outlineP3X);
+  return Math.max.apply(null, maxXIntermediate);
+}
+
+function getDrawMinX(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
+  let minXIntermediate = [0];
+  minXIntermediate[0] = Math.min.apply(null, outlineP1X);
+  minXIntermediate[1] = Math.min.apply(null, outlineP2X);
+  minXIntermediate[2] = Math.min.apply(null, outlineP3X);
+  return Math.min.apply(null, minXIntermediate);
+}
+
+let drawMaxX = getDrawMaxX(outlineP1X, outlineP2X, outlineP3X);
+
+let drawMinX = getDrawMinX(outlineP1X, outlineP2X, outlineP3X);
+let canvasWidth = drawMaxX - drawMinX;
+
+// Height
+function getDrawMaxY(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
+  let maxYIntermediate = [];
+  maxYIntermediate[0] = Math.max.apply(null, outlineP1Y);
+  maxYIntermediate[1] = Math.max.apply(null, outlineP2Y);
+  maxYIntermediate[2] = Math.max.apply(null, outlineP3Y);
+  return Math.max.apply(null, maxYIntermediate);
+}
+
+function getDrawMinY(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
+  let minYIntermediate = [];
+  minYIntermediate[0] = Math.min.apply(null, outlineP1Y);
+  minYIntermediate[1] = Math.min.apply(null, outlineP2Y);
+  minYIntermediate[2] = Math.min.apply(null, outlineP3Y);
+  return Math.min.apply(null, minYIntermediate);
+}
+let drawMaxY = getDrawMaxY(outlineP1Y, outlineP2Y, outlineP3Y);
+let drawMinY = getDrawMinY(outlineP1Y, outlineP2Y, outlineP3Y);
+let canvasHeight = drawMaxY - drawMinY;
+// END OF - Calculate canvas width and height
+
 // Setting size of canvas
 
 // canvasHeight = (Math.max(...plotArrayY) - Math.min(...plotArrayY));

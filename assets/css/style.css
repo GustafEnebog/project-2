@@ -33,6 +33,7 @@ body {
 
 #drawing {
     width: 100%;
+    background-color: aqua;
 }
 
 .input-output-area {
@@ -44,7 +45,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     /* width: 90%; */
-    max-width: 100%;
+    width: 200px;
+    /* max-width: 100%; */
     padding: 10px;
     /* height: auto; */
 }
