@@ -27,6 +27,10 @@
     <!-- link to Style sheet -->
     <link rel="stylesheet" href="assets/css/style.css">
     <title>WINGIT</title>
+    <!-- link for tool tip delays DELETE IF I DONT GET THE DELAY TO WORK!!!!!!!!!! -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -68,7 +72,8 @@
                             class="w3-text w3-tag"><img src="assets/images/help-placeholder-image.png">
                             <!-- Should I do an alt text here!? -->
                             class="dot"></span></p>
-                </div> <!-- https://www.google.com/search?q=change+image+after+click+event+in+css&sca_esv=7de577393d04b1f4&ei=CEn3ZeDbFOK_wPAP_YqNgAs&ved=0ahUKEwjg_42xiPyEAxXiHxAIHX1FA7AQ4dUDCBA&uact=5&oq=change+image+after+click+event+css&gs_lp=Egxnd3Mtd2l6LXNlcnAiImNoYW5nZSBpbWFnZSBhZnRlciBjbGljayBldmVudCBjc3MqAggASABQAFgAcAB4AJABAJgBAKABAKoBALgBAcgBAJgCAKACAJgDAJIHAKAHAA&sclient=gws-wiz-serp#fpstate=ive&vld=cid:8fa0e9b2,vid:yWexyb0VkLI,st:0 -->
+                </div>
+                <!-- https://www.google.com/search?q=change+image+after+click+event+in+css&sca_esv=7de577393d04b1f4&ei=CEn3ZeDbFOK_wPAP_YqNgAs&ved=0ahUKEwjg_42xiPyEAxXiHxAIHX1FA7AQ4dUDCBA&uact=5&oq=change+image+after+click+event+css&gs_lp=Egxnd3Mtd2l6LXNlcnAiImNoYW5nZSBpbWFnZSBhZnRlciBjbGljayBldmVudCBjc3MqAggASABQAFgAcAB4AJABAJgBAKABAKoBALgBAcgBAJgCAKACAJgDAJIHAKAHAA&sclient=gws-wiz-serp#fpstate=ive&vld=cid:8fa0e9b2,vid:yWexyb0VkLI,st:0 -->
                 <div class="parameterSub"></div>
                 <!-- <img src="assets/images/dark-mode-button-stack.png" alt="Dark mode button" id="Dark mode button"> <!-- code snippets for toggling dark mode - light mode button by "CodePhilip" on youtube ( Change Image on a click | Javascript Beginner Projects Tutorial ) -->
 
@@ -80,10 +85,12 @@
 
                 <!-- b_half -->
                 <div>
-                    <div class="parameterHead">
-                        <p class="w3-tooltip"><b>b<sub>half</sub></b><span style="position:absolute;left:0;bottom:18px"
-                                class="w3-text w3-tag">b<sub>half</sub>= Half of Span (right wing half)</span><span
-                                class="dot"></span></p>
+                    <!-- delay for tool tip from: www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_tooltip_delay&stacked=h -->
+                    <div class="parameterHead"> <!--Remove the lass="btn btn-danger btn-md" on row below if I do not get the tool tip to workTest to be removed!!!!!!!-->
+                        <p class="w3-tooltip" class="btn btn-danger btn-md"><b>b<sub>half</sub></b><span
+                                style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">b<sub>half</sub>=
+                                Half of Span (right wing half)</span><span class="dot"></span></p>
+                                <button class="btn btn-danger btn-md">Hover over me (500ms)</button> <!--Test to be removed!!!!!!!-->
                     </div>
                     <div class="parameterSub">
                         <p id="bHalf[0]" class="parameterSub">CW:</p>

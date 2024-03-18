@@ -1,3 +1,9 @@
+
+$(document).ready(function(){
+  // $('.btn-success').tooltip({title: "Hooray!", delay: 1000}); 
+  $('.btn-danger').tooltip({title: "Hooray!", delay: {show: 500, hide: 100}}); 
+});
+
 var mode = document.getElementById("TestButton");
 
 mode.addEventListener("click", function (event) { // Help from Roo
