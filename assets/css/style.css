@@ -51,6 +51,29 @@ body {
     /* height: auto; */
 }
 
+#container {
+    width: 59px;
+    height: 45px;
+    margin: auto;
+    text-align: center;
+}
+
+.dark-mode {
+    width: 59px;
+    height: 45px;
+    background-image: url("../images/light-mode-button-stack.png");
+    /* background: url('assets/images/dark-mode-button.png') no-repeat; */
+    margin: auto;
+}
+
+.light-mode {
+    width: 59px;
+    height: 45px;
+    background-image: url("../images/dark-mode-button-stack.png");
+    /* background: url('assets/images/light-mode-button.png') no-repeat; */
+    margin: auto;
+}
+
 .parameterHead {
     text-align: center;
 }

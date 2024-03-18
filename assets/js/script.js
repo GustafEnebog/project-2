@@ -1,3 +1,18 @@
+var mode = document.getElementById("TestButton");
+
+mode.addEventListener("click", function (event) { // Help from Roo
+  // check if light-mode
+  if (event.target.classList.contains("light-mode")) {
+    event.target.classList.remove("light-mode"); // remove light
+    event.target.classList.add("dark-mode"); // Add dark
+    console.log("Add Dark")
+  } else {
+    event.target.classList.remove("dark-mode"); // Remove dark
+    event.target.classList.add("light-mode"); // Add light
+    console.log("Add Light")
+  }
+});
+
 //-------------------- GETTING INPUT FROM FORM FIELD AND CALCULATING PARAMETERS FOR COMPLETE WING --------------------
 let bHalf = [null, null, null, null];
 let cRoot = [null, null];
@@ -234,6 +249,8 @@ function calcOutlineP1() {
     outlineP1Y[0] = 0;
 
     outlineP1X[1] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1];
+    console.log(sweepP1X[1]); // null
+    console.log(-cTip[1] * 0.01 * xDelta[1]);
     // P1X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] - cTip[1] * 0.01 * xDelta[1];
     outlineP1Y[1] = bHalf[1];
 
@@ -295,8 +312,19 @@ function calcOutlineP3() {
 // testMin = Math.min(...outlineP1XTEST);
 // testMax = Math.max(...outlineP1XTEST);
 
-testMin = Math.min(...outlineP1X);
-testMax = Math.max(...outlineP1X);
+
+// TEST
+// let outlineP1XTEST = [-1, 0, 1, 2];
+// testMin = Math.min(...outlineP1XTEST);
+// testMax = Math.max(...outlineP1XTEST);
+
+// function testing() {
+// testMin = Math.min(...outlineP1X);
+// testMax = Math.max(...outlineP1X);
+// console.log(testMin);
+// console.log(testMax);
+// console.log(outlineP1X);
+// }
 
 // test = Math.max.apply(...outlineP1X);
 // let testMax2 = Math.max(...outlineP1X[0], ...outlineP1X[1], ...outlineP1X[2], ...outlineP1X[3]);
@@ -367,82 +395,6 @@ const ctx = canvas.getContext("2d");
 // Style the line - General
 ctx.strokeStyle = "black";
 ctx.lineCap = "round";
-
-// Sweep line Panel 1
-function plotSweepP1() {
-  if (cRoot[1] != "" && xDelta[1] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[1] != "") {
-
-    // If Display Horizontal is choosen (Transposing x asssignes y and y assignes x)
-    // if (displayHoriz == 1) {
-    //  for (let i = 0; i < 2; i++) {
-    //      let sweepP1XTemp[0] = sweepP1X[0];
-    //      sweepP1X[0] = sweepP1Y[0];
-    //      sweepP1Y[0] = sweepP1XTemp[0];
-    //  }
-    // }
-
-    // ---------- Plot ----------
-    // Define a new path: 
-    ctx.beginPath();
-
-    // Style the line - Specific
-    ctx.lineWidth = "1";
-    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
-
-    // Define a start point
-    ctx.moveTo(sweepP1X[0], sweepP1Y[0]);
-
-    // Define points
-    ctx.lineTo(sweepP1X[1], sweepP1Y[1]);
-
-    // Draw it
-    ctx.stroke();
-  }
-}
-
-// Sweep line Panel 2
-function plotSweepP2() {
-  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
-
-    // Define a new path: 
-    ctx.beginPath();
-
-    // Style the line - Specific
-    ctx.lineWidth = "1";
-    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
-
-    // Define a start point
-    ctx.moveTo(sweepP2X[0], sweepP2Y[0]);
-
-    // Define points
-    ctx.lineTo(sweepP2X[1], sweepP2Y[1]);
-
-    // Draw it
-    ctx.stroke();
-  }
-}
-
-// Sweep line Panel 3
-function plotSweepP3() {
-  if (cTip[2] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
-
-    // Define a new path: 
-    ctx.beginPath();
-
-    // Style the line - Specific
-    ctx.lineWidth = "1";
-    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
-
-    // Define a start point
-    ctx.moveTo(sweepP3X[0], sweepP3Y[0]);
-
-    // Define points
-    ctx.lineTo(sweepP3X[1], sweepP3Y[1]);
-
-    // Draw it
-    ctx.stroke();
-  }
-}
 
 
 // Panel 1
@@ -600,6 +552,92 @@ function plotOutlineP3() {
 }
 
 
+// Sweep line Panel 1
+function plotSweepP1() {
+  if (cRoot[1] != "" && xDelta[1] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[1] != "") {
+
+    // If Display Horizontal is choosen (Transposing x asssignes y and y assignes x)
+    // if (displayHoriz == 1) {
+    //  for (let i = 0; i < 2; i++) {
+    //      let sweepP1XTemp[0] = sweepP1X[0];
+    //      sweepP1X[0] = sweepP1Y[0];
+    //      sweepP1Y[0] = sweepP1XTemp[0];
+    //  }
+    // }
+
+    // ---------- Plot ----------
+    // Define a new path: 
+    ctx.beginPath();
+
+    // Style the line - Specific
+    ctx.lineWidth = "1";
+    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
+
+    // Define a start point
+    ctx.moveTo(sweepP1X[0], sweepP1Y[0]);
+
+    // Define points
+    ctx.lineTo(sweepP1X[1], sweepP1Y[1]);
+
+    // Draw it
+    ctx.stroke();
+
+    // Reset to solid line
+    ctx.setLineDash([]);
+  }
+}
+
+// Sweep line Panel 2
+function plotSweepP2() {
+  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
+
+    // Define a new path: 
+    ctx.beginPath();
+
+    // Style the line - Specific
+    ctx.lineWidth = "1";
+    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
+
+    // Define a start point
+    ctx.moveTo(sweepP2X[0], sweepP2Y[0]);
+
+    // Define points
+    ctx.lineTo(sweepP2X[1], sweepP2Y[1]);
+
+    // Draw it
+    ctx.stroke();
+
+    // Reset to solid line
+    ctx.setLineDash([]);
+  }
+}
+
+// Sweep line Panel 3
+function plotSweepP3() {
+  if (cTip[2] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
+
+    // Define a new path: 
+    ctx.beginPath();
+
+    // Style the line - Specific
+    ctx.lineWidth = "1";
+    ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
+
+    // Define a start point
+    ctx.moveTo(sweepP3X[0], sweepP3Y[0]);
+
+    // Define points
+    ctx.lineTo(sweepP3X[1], sweepP3Y[1]);
+
+    // Draw it
+    ctx.stroke();
+
+    // Reset to solid line
+    ctx.setLineDash([]);
+  }
+}
+
+
 // let displayHoriz = 1
 
 // If Display Horizontal is choosen -> Rotate
@@ -609,8 +647,16 @@ function plotOutlineP3() {
 
 //-------------------- LET IT ALL HAPPEN (EVENTLISTENER)! --------------------
 function funcForEvent() {
-  console.log("funcForEvent");
-  ctx.clearRect(0, 0, 500, 500);  // Change the "500" to canvas width and height once the calculations of these has been made
+  // console.log("funcForEvent");
+  // console.log(testMin);
+  // console.log(testMax);
+  // console.log(outlineP1X);
+  // testing();
+  // let testvar = Math.tan(degToRad * delta[1]);
+  // console.log(bHalf[1]);
+  // console.log(testvar);
+  // console.log(bHalf[1]*testvar);
+  ctx.clearRect(0, 0, 500, 500); // Change the "500" to canvas width and height once the calculations of these has been made
   calcBHalf();
   calcCRoot();
   calcCTip();
