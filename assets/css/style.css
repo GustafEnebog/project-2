@@ -33,7 +33,11 @@ body {
 
 #drawing {
     width: 100%;
-    /* background-color: aqua; */
+    margin-top: 1%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    margin-left: 1%;
+    background-color: aqua;
 }
 
 .input-output-area {
@@ -112,7 +116,7 @@ myPlot-Overide {
 
 /* Media query: large or landscape phones (576px and up) */
 /* @media screen and (min-width: 576px) {} */
-@media screen and (576px <= width <= 768px) {}
+@media screen and (576px <=width <=768px) {}
 
 /* Media query: tablets and larger (768px and up) */
 /* @media screen and (min-width: 768px) { */

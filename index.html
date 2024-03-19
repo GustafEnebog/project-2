@@ -42,7 +42,8 @@
                 <img src="assets/images/wingit-logo.png" alt="Logo" id="logo">
 
                 <!-- Drawing using Canvas -->
-                <canvas id="drawing" style="border:1px solid grey;" width="2000" height="2000"></canvas> <!-- width="500" height="500" -->
+                <canvas id="drawing" style="border:1px solid grey;" width="2000" height="2000"></canvas>
+                <!-- width="500" height="500" -->
             </section>
         </div>
         <!-- INPUT/OUTPUT AREA -->
@@ -67,33 +68,33 @@
                 <!--<img src="assets/images/dark-mode-button.png" alt="Dark mode button" id="Dark mode button"> -->
                 <!--  </div>  -->
 
+
+                <!--  Help and Dark mode  -->
                 <div id="help" class="parameterSub">
-                    <p class="w3-tooltip"><b>Help</b><span style="position:absolute;left:0;bottom:18px"
-                            class="w3-text w3-tag"><img src="assets/images/help-nomenclature-1000px.png">
-                            <!-- Should I do an alt text here!? -->
-                            class="dot"></span></p>
+
+                    <!-- Help - tooltip with nomenclature -->
+                    <p class="w3-tooltip"><b>Help</b><span class="w3-text w3-tag"><img
+                                src="assets/images/help-nomenclature-1000px.png"></span></p> <!-- Should I do an alt text here!? -->
+
+                    <!-- Dark mode / Light mode - button -->
+                    <div id="modeButton" class="light-mode"></div>
                 </div>
                 <!-- https://www.google.com/search?q=change+image+after+click+event+in+css&sca_esv=7de577393d04b1f4&ei=CEn3ZeDbFOK_wPAP_YqNgAs&ved=0ahUKEwjg_42xiPyEAxXiHxAIHX1FA7AQ4dUDCBA&uact=5&oq=change+image+after+click+event+css&gs_lp=Egxnd3Mtd2l6LXNlcnAiImNoYW5nZSBpbWFnZSBhZnRlciBjbGljayBldmVudCBjc3MqAggASABQAFgAcAB4AJABAJgBAKABAKoBALgBAcgBAJgCAKACAJgDAJIHAKAHAA&sclient=gws-wiz-serp#fpstate=ive&vld=cid:8fa0e9b2,vid:yWexyb0VkLI,st:0 -->
-                <div class="parameterSub"></div>
-                <!-- <img src="assets/images/dark-mode-button-stack.png" alt="Dark mode button" id="Dark mode button"> <!-- code snippets for toggling dark mode - light mode button by "CodePhilip" on youtube ( Change Image on a click | Javascript Beginner Projects Tutorial ) -->
-
-
-                <div id="container">
-                    <div id="TestButton" class="light-mode"></div>
-                </div>
-
 
                 <!-- b_half -->
                 <div>
                     <!-- delay for tool tip from: www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_tooltip_delay&stacked=h -->
-                    <div class="parameterHead"> <!--Remove the lass="btn btn-danger btn-md" on row below if I do not get the tool tip to workTest to be removed!!!!!!!-->
+                    <div class="parameterHead">
+                        <!--Remove the lass="btn btn-danger btn-md" on row below if I do not get the tool tip to workTest to be removed!!!!!!!-->
                         <p class="w3-tooltip" class="btn btn-danger btn-md"><b>b<sub>half</sub></b><span
                                 style="position:absolute;left:0;bottom:18px" class="w3-text w3-tag">b<sub>half</sub>=
                                 Half of Span (right wing half)</span><span class="dot"></span></p>
-                                <button class="btn btn-danger btn-md">Hover over me (500ms)</button> <!--Test to be removed!!!!!!!-->
+                        <button class="btn btn-danger btn-md">Hover over me (500ms)</button>
+                        <!--Test to be removed!!!!!!!-->
                     </div>
                     <div class="parameterSub">
-                        <p id="bHalf[0]" class="parameterSub">CW:</p>
+                        <p class="parameterSub">CW:</p>
+                        <p id="bHalf[0]" class="parameterSub"></p>
                         <label for="bhalf-p1" class="parameterSub">P1</label>
                         <input type="number" class="param-input" id="bhalf-p1" name="bhalf-p1" step="0.1" min="0">
                         <label for="bhalf-p2" class="parameterSub">P2</label>
@@ -111,7 +112,8 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="cRoot[0]" class="parameterSub">CW:</p>
+                        <p class="parameterSub">CW:</p>
+                        <p id="cRoot[0]" class="parameterSub"></p>
                         <label for="croot-p1" class="parameterSub">P1</label>
                         <input type="number" class="param-input" id="croot-p1" name="croot-p1" step="0.1" min="0">
                         <!-- <label for="croot-p2" class="parameterSub">P2</label> -->
@@ -132,7 +134,8 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="cTip[0]" class="parameterSub">CW:</p>
+                        <p class="parameterSub">CW:</p>
+                        <p id="cTip[0]" class="parameterSub"></p>
                         <label for="ctip-p1" class="parameterSub">P1</label>
                         <input type="number" class="param-input" id="ctip-p1" name="ctip-p1" step="0.1" min="0">
                         <label for="ctip-p2" class="parameterSub">P2</label>
@@ -152,6 +155,8 @@
                     </div>
                     <div class="parameterSub">
                         <p id="xDelta[0]"></p>
+                        <p class="parameterSub">CW:</p>
+                        <p class="parameterSub">N/A</p>
                         <label for="xdelta-p1" class="parameterSub">P1</label>
                         <input type="number" class="param-input" id="xdelta-p1" name="xdelta-p1" value="25" step="1"
                             min="0" max="100">
@@ -173,6 +178,8 @@
                     </div>
                     <div class="parameterSub">
                         <p id="delta[1]"></p>
+                        <p class="parameterSub">CW:</p>
+                        <p class="parameterSub">N/A</p>
                         <label for="delta-p1" class="parameterSub">P1</label>
                         <input type="number" class="param-input" id="delta-p1" name="delta-p1" value="0" step="1"
                             min="-89" max="89">
@@ -193,10 +200,14 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="lambda[0]" class="parameterSub">CW:</p>
-                        <p id="lambda[1]" class="parameterSub">P1:</p>
-                        <p id="lambda[2]" class="parameterSub">P2:</p>
-                        <p id="lambda[3]" class="parameterSub">P3:</p>
+                        <p class="parameterSub">CW:</p>
+                        <p id="lambda[0]" class="parameterSub"></p>
+                        <p class="parameterSub">P1:</p>
+                        <p id="lambda[1]" class="parameterSub"></p>
+                        <p class="parameterSub">P2:</p>
+                        <p id="lambda[2]" class="parameterSub"></p>
+                        <p class="parameterSub">P3:</p>
+                        <p id="lambda[3]" class="parameterSub"></p>
                     </div>
                 </div>
 
@@ -208,10 +219,14 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="cSmc[0]" class="parameterSub">CW:</p>
-                        <p id="cSmc[1]" class="parameterSub">P1:</p>
-                        <p id="cSmc[2]" class="parameterSub">P2:</p>
-                        <p id="cSmc[3]" class="parameterSub">P3:</p>
+                        <p class="parameterSub">CW:</p>
+                        <p id="cSmc[0]" class="parameterSub"></p>
+                        <p class="parameterSub">P1:</p>
+                        <p id="cSmc[1]" class="parameterSub"></p>
+                        <p class="parameterSub">P2:</p>
+                        <p id="cSmc[2]" class="parameterSub"></p>
+                        <p class="parameterSub">P3:</p>
+                        <p id="cSmc[3]" class="parameterSub"></p>
                     </div>
                 </div>
 
@@ -223,10 +238,14 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="sHalf[0]" class="parameterSub">CW:</p>
-                        <p id="sHalf[1]" class="parameterSub">P1:</p>
-                        <p id="sHalf[2]" class="parameterSub">P2:</p>
-                        <p id="sHalf[3]" class="parameterSub">P3:</p>
+                        <p class="parameterSub">CW:</p>
+                        <p id="sHalf[0]" class="parameterSub"></p>
+                        <p class="parameterSub">P1:</p>
+                        <p id="sHalf[1]" class="parameterSub"></p>
+                        <p class="parameterSub">P2:</p>
+                        <p id="sHalf[2]" class="parameterSub"></p>
+                        <p class="parameterSub">P3:</p>
+                        <p id="sHalf[3]" class="parameterSub"></p>
                     </div>
                 </div>
 
@@ -238,10 +257,14 @@
                                 Chord</span><span class="dot"></span></p>
                     </div>
                     <div class="parameterSub">
-                        <p id="ar[0]" class="parameterSub">CW:</p>
-                        <p id="ar[1]" class="parameterSub">P1:</p>
-                        <p id="ar[2]" class="parameterSub">P2:</p>
-                        <p id="ar[3]" class="parameterSub">P3:</p>
+                        <p class="parameterSub">CW:</p>
+                        <p id="ar[0]" class="parameterSub"></p>
+                        <p class="parameterSub">P1:</p>
+                        <p id="ar[1]" class="parameterSub"></p>
+                        <p class="parameterSub">P2:</p>
+                        <p id="ar[2]" class="parameterSub"></p>
+                        <p class="parameterSub">P3:</p>
+                        <p id="ar[3]" class="parameterSub"></p>
                     </div>
                 </div>
             </section>

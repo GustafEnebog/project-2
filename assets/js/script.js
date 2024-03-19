@@ -1,10 +1,15 @@
-
-$(document).ready(function(){
+$(document).ready(function () {
   // $('.btn-success').tooltip({title: "Hooray!", delay: 1000}); 
-  $('.btn-danger').tooltip({title: "Hooray!", delay: {show: 500, hide: 100}}); 
+  $('.btn-danger').tooltip({
+    title: "Hooray!",
+    delay: {
+      show: 500,
+      hide: 100
+    }
+  });
 });
 
-var mode = document.getElementById("TestButton");
+var mode = document.getElementById("modeButton");
 
 mode.addEventListener("click", function (event) { // Help from Roo
   // check if light-mode
@@ -344,37 +349,54 @@ console.log(outlineP3Y);
 
 // Calculating the horizontal or vertical size of the drawing
 function getDrawingSize() {
-let drawingMax = 0;
-let drawingMin = 0;
-// console.log(arguments);
-for(let i = 0; i < arguments.length; i++) {
-  if(arguments[i] > drawingMax) {
-  drawingMax = arguments[i];
-  console.log(drawingMax);
-  }
-  if(arguments[i] < drawingMin) {
-    drawingMin = arguments[i];
-  console.log(drawingMin);
+  let drawingMax = 0;
+  let drawingMin = 0;
+  // console.log(arguments);
+  for (let i = 0; i < arguments.length; i++) {
+    if (arguments[i] > drawingMax) {
+      drawingMax = arguments[i];
+      console.log(drawingMax);
     }
-}
-return drawingMax - drawingMin;
+    if (arguments[i] < drawingMin) {
+      drawingMin = arguments[i];
+      console.log(drawingMin);
+    }
+  }
+  return drawingMax - drawingMin;
 }
 
 // Calculating the width of the drawing
 var drawingWidth;
+
 function getDrawingWidth() {
-  return drawingWidth = getDrawingSize(...outlineP1X, ...outlineP2X, ...outlineP3X);
-}  
+  drawingWidth = getDrawingSize(...outlineP1X, ...outlineP2X, ...outlineP3X);
+  canvas.width = drawingWidth;
+}
 
 // Calulating the height of the drawing
 var drawingHeight;
+
 function getDrawingHeight() {
-  return drawingHeight = getDrawingSize(...outlineP1Y, ...outlineP2Y, ...outlineP3Y);
-}  
+  drawingHeight = getDrawingSize(...outlineP1Y, ...outlineP2Y, ...outlineP3Y);
+  canvas.height = drawingHeight;
+}
+
+console.log(drawingWidth);
+console.log(drawingHeight);
+// Create a canvas:
+const canvas = document.getElementById("drawing");
+const ctx = canvas.getContext("2d");
+// canvas.width = drawingWidth;
+// canvas.height = drawingHeight;
+// ctx.clearRect(0, 0, drawingWidth, drawingHeight); // Change the "500" to canvas width and height once the calculations of these has been made
+
+// Style the line - General
+ctx.strokeStyle = "black";
+ctx.lineCap = "round";
 
 
 // function getDrawingSize(i, j, k) {
-  // Max values
+// Max values
 //  console.log(i);
 //  console.log(j);
 //  console.log(k);
@@ -383,13 +405,13 @@ function getDrawingHeight() {
 //  maxIntermediate[1] = Math.max(...j); // get max value from 'outlineP2X'-array
 //  maxIntermediate[2] = Math.max(...k); // get max value from 'outlineP3X'-array
 //  let drawingMax = Math.max(...maxIntermediate); // get max value of, these above, gotten max values
-  // Min values
+// Min values
 //  let minIntermediate = [null, null, null];
 //  minIntermediate[0] = Math.min(...i); // get min value from 'outlineP1X'-array
 //  minIntermediate[1] = Math.min(...j); // get min value from 'outlineP2X'-array
 //  minIntermediate[2] = Math.min(...k); // get min value from 'outlineP3X'-array
 //  let drawMin = Math.min(...minIntermediate); // get min value of, these above, gotten min values
-  // drawing width
+// drawing width
 //  return drawingMax - drawingMin; // finaly get drawing width from above gotten max and min values 
 // }
 // let drawingWidth = getDrawingSize(...outlineP1X, ...outlineP2X, ...outlineP3X);
@@ -452,16 +474,13 @@ function getDrawingHeight() {
 // drawing.height = canvasHeight;
 // drawing.width = canvasWidth;
 
-drawing.height = 600;
-drawing.width = 600;
+// drawing.height = 600;
+// drawing.width = 600;
 
-// Create a canvas:
-const canvas = document.getElementById("drawing");
-const ctx = canvas.getContext("2d");
-
-// Style the line - General
-ctx.strokeStyle = "black";
-ctx.lineCap = "round";
+// const canvas = document.querySelector("#");
+// canvas.width = 600;
+// canvas.height = 500;
+// drawScreen();
 
 
 // Panel 1
@@ -725,9 +744,9 @@ function funcForEvent() {
   // console.log(bHalf[1]*testvar);
   getDrawingWidth();
   getDrawingHeight();
-  console.log(drawingWidth);
-  console.log(drawingHeight);
-  ctx.clearRect(0, 0, 2000, 2000); // Change the "500" to canvas width and height once the calculations of these has been made
+  ctx.clearRect(0, 0, drawingWidth, drawingHeight);
+  // console.log(drawingWidth);
+  // console.log(drawingHeight);
   calcBHalf();
   calcCRoot();
   calcCTip();
