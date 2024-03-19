@@ -255,8 +255,8 @@ function calcOutlineP1() {
     outlineP1Y[0] = 0;
 
     outlineP1X[1] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1];
-    console.log(sweepP1X[1]); // null
-    console.log(-cTip[1] * 0.01 * xDelta[1]);
+    // console.log(sweepP1X[1]); // null
+    // console.log(-cTip[1] * 0.01 * xDelta[1]);
     // P1X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] - cTip[1] * 0.01 * xDelta[1];
     outlineP1Y[1] = bHalf[1];
 
@@ -338,19 +338,65 @@ function calcOutlineP3() {
 // Calculate canvas width and height
 // Width
 
+console.log(outlineP1Y);
+console.log(outlineP2Y);
+console.log(outlineP3Y);
+
+// Calculating the horizontal or vertical size of the drawing
 function getDrawingSize() {
-  let maxXIntermediate = [];
-  maxXIntermediate[0] = Math.max(...outlineP1X);
-  maxXIntermediate[1] = Math.max(...outlineP2X);
-  maxXIntermediate[2] = Math.max(...outlineP3X);
-  let drawMaxX = Math.max(...maxXIntermediate);
-  let minXIntermediate = [];
-  minXIntermediate[0] = Math.min(...outlineP1X);
-  minXIntermediate[1] = Math.min(...outlineP2X);
-  minXIntermediate[2] = Math.min(...outlineP3X);
-  let drawMinX = Math.min(...minXIntermediate);
-  return drawMaxX - drawMinX;
+let drawingMax = 0;
+let drawingMin = 0;
+// console.log(arguments);
+for(let i = 0; i < arguments.length; i++) {
+  if(arguments[i] > drawingMax) {
+  drawingMax = arguments[i];
+  console.log(drawingMax);
+  }
+  if(arguments[i] < drawingMin) {
+    drawingMin = arguments[i];
+  console.log(drawingMin);
+    }
 }
+return drawingMax - drawingMin;
+}
+
+// Calculating the width of the drawing
+var drawingWidth;
+function getDrawingWidth() {
+  return drawingWidth = getDrawingSize(...outlineP1X, ...outlineP2X, ...outlineP3X);
+}  
+
+// Calulating the height of the drawing
+var drawingHeight;
+function getDrawingHeight() {
+  return drawingHeight = getDrawingSize(...outlineP1Y, ...outlineP2Y, ...outlineP3Y);
+}  
+
+
+// function getDrawingSize(i, j, k) {
+  // Max values
+//  console.log(i);
+//  console.log(j);
+//  console.log(k);
+//  let maxIntermediate = [null, null, null];
+//  maxIntermediate[0] = Math.max(...i); // get max value from 'outlineP1X'-array
+//  maxIntermediate[1] = Math.max(...j); // get max value from 'outlineP2X'-array
+//  maxIntermediate[2] = Math.max(...k); // get max value from 'outlineP3X'-array
+//  let drawingMax = Math.max(...maxIntermediate); // get max value of, these above, gotten max values
+  // Min values
+//  let minIntermediate = [null, null, null];
+//  minIntermediate[0] = Math.min(...i); // get min value from 'outlineP1X'-array
+//  minIntermediate[1] = Math.min(...j); // get min value from 'outlineP2X'-array
+//  minIntermediate[2] = Math.min(...k); // get min value from 'outlineP3X'-array
+//  let drawMin = Math.min(...minIntermediate); // get min value of, these above, gotten min values
+  // drawing width
+//  return drawingMax - drawingMin; // finaly get drawing width from above gotten max and min values 
+// }
+// let drawingWidth = getDrawingSize(...outlineP1X, ...outlineP2X, ...outlineP3X);
+// let drawingHeight = getDrawingSize(...outlineP1Y, ...outlineP2Y, ...outlineP3Y);
+
+
+
 
 // function getDrawMaxX() {
 //   let maxXIntermediate = [];
@@ -373,25 +419,25 @@ function getDrawingSize() {
 // let canvasWidth = drawMaxX - drawMinX;
 
 // Height
-function getDrawMaxY() {
-  let maxYIntermediate = [];
-  maxYIntermediate[0] = Math.max.apply(null, outlineP1Y);
-  maxYIntermediate[1] = Math.max.apply(null, outlineP2Y);
-  maxYIntermediate[2] = Math.max.apply(null, outlineP3Y);
-  return Math.max.apply(null, maxYIntermediate);
-}
+// function getDrawMaxY() {
+//  let maxYIntermediate = [];
+//  maxYIntermediate[0] = Math.max.apply(null, outlineP1Y);
+//  maxYIntermediate[1] = Math.max.apply(null, outlineP2Y);
+//  maxYIntermediate[2] = Math.max.apply(null, outlineP3Y);
+//  return Math.max.apply(null, maxYIntermediate);
+// }
 
-function getDrawMinY() {
-  let minYIntermediate = [];
-  minYIntermediate[0] = Math.min.apply(null, outlineP1Y);
-  minYIntermediate[1] = Math.min.apply(null, outlineP2Y);
-  minYIntermediate[2] = Math.min.apply(null, outlineP3Y);
-  return Math.min.apply(null, minYIntermediate);
-}
+// function getDrawMinY() {
+//  let minYIntermediate = [];
+//  minYIntermediate[0] = Math.min.apply(null, outlineP1Y);
+//   minYIntermediate[1] = Math.min.apply(null, outlineP2Y);
+//   minYIntermediate[2] = Math.min.apply(null, outlineP3Y);
+//  return Math.min.apply(null, minYIntermediate);
+// }
 
-let drawMaxY = getDrawMaxY();
-let drawMinY = getDrawMinY();
-let canvasHeight = drawMaxY - drawMinY;
+// let drawMaxY = getDrawMaxY();
+// let drawMinY = getDrawMinY();
+// let canvasHeight = drawMaxY - drawMinY;
 // END OF - Calculate canvas width and height
 
 // Setting size of canvas
@@ -677,7 +723,10 @@ function funcForEvent() {
   // console.log(bHalf[1]);
   // console.log(testvar);
   // console.log(bHalf[1]*testvar);
-  getDrawingSize();
+  getDrawingWidth();
+  getDrawingHeight();
+  console.log(drawingWidth);
+  console.log(drawingHeight);
   ctx.clearRect(0, 0, 2000, 2000); // Change the "500" to canvas width and height once the calculations of these has been made
   calcBHalf();
   calcCRoot();
