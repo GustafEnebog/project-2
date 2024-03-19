@@ -337,29 +337,43 @@ function calcOutlineP3() {
 // let testMin3 = Math.min(...outlineP1X[0], ...outlineP1X[1], ...outlineP1X[2], ...outlineP1X[3]);
 // Calculate canvas width and height
 // Width
-function getDrawMaxX(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
+
+function getDrawingSize() {
   let maxXIntermediate = [];
-  maxXIntermediate[0] = Math.max.apply(null, outlineP1X);
-  maxXIntermediate[1] = Math.max.apply(null, outlineP2X);
-  maxXIntermediate[2] = Math.max.apply(null, outlineP3X);
-  return Math.max.apply(null, maxXIntermediate);
+  maxXIntermediate[0] = Math.max(...outlineP1X);
+  maxXIntermediate[1] = Math.max(...outlineP2X);
+  maxXIntermediate[2] = Math.max(...outlineP3X);
+  let drawMaxX = Math.max(...maxXIntermediate);
+  let minXIntermediate = [];
+  minXIntermediate[0] = Math.min(...outlineP1X);
+  minXIntermediate[1] = Math.min(...outlineP2X);
+  minXIntermediate[2] = Math.min(...outlineP3X);
+  let drawMinX = Math.min(...minXIntermediate);
+  return drawMaxX - drawMinX;
 }
 
-function getDrawMinX(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
-  let minXIntermediate = [0];
-  minXIntermediate[0] = Math.min.apply(null, outlineP1X);
-  minXIntermediate[1] = Math.min.apply(null, outlineP2X);
-  minXIntermediate[2] = Math.min.apply(null, outlineP3X);
-  return Math.min.apply(null, minXIntermediate);
-}
+// function getDrawMaxX() {
+//   let maxXIntermediate = [];
+//  maxXIntermediate[0] = Math.max.apply(null, outlineP1X);
+//  maxXIntermediate[1] = Math.max.apply(null, outlineP2X);
+//  maxXIntermediate[2] = Math.max.apply(null, outlineP3X);
+//  return Math.max.apply(null, maxXIntermediate);
+// }
 
-let drawMaxX = getDrawMaxX(outlineP1X, outlineP2X, outlineP3X);
+// function getDrawMinX() {
+//  let minXIntermediate = [0];
+//  minXIntermediate[0] = Math.min.apply(null, outlineP1X);
+//  minXIntermediate[1] = Math.min.apply(null, outlineP2X);
+//  minXIntermediate[2] = Math.min.apply(null, outlineP3X);
+//  return Math.min.apply(null, minXIntermediate);
+//}
 
-let drawMinX = getDrawMinX(outlineP1X, outlineP2X, outlineP3X);
-let canvasWidth = drawMaxX - drawMinX;
+// let drawMaxX = getDrawMaxX();
+// let drawMinX = getDrawMinX();
+// let canvasWidth = drawMaxX - drawMinX;
 
 // Height
-function getDrawMaxY(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
+function getDrawMaxY() {
   let maxYIntermediate = [];
   maxYIntermediate[0] = Math.max.apply(null, outlineP1Y);
   maxYIntermediate[1] = Math.max.apply(null, outlineP2Y);
@@ -367,15 +381,16 @@ function getDrawMaxY(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
   return Math.max.apply(null, maxYIntermediate);
 }
 
-function getDrawMinY(calcOutlineP1, calcOutlineP2, calcOutlineP3) {
+function getDrawMinY() {
   let minYIntermediate = [];
   minYIntermediate[0] = Math.min.apply(null, outlineP1Y);
   minYIntermediate[1] = Math.min.apply(null, outlineP2Y);
   minYIntermediate[2] = Math.min.apply(null, outlineP3Y);
   return Math.min.apply(null, minYIntermediate);
 }
-let drawMaxY = getDrawMaxY(outlineP1Y, outlineP2Y, outlineP3Y);
-let drawMinY = getDrawMinY(outlineP1Y, outlineP2Y, outlineP3Y);
+
+let drawMaxY = getDrawMaxY();
+let drawMinY = getDrawMinY();
 let canvasHeight = drawMaxY - drawMinY;
 // END OF - Calculate canvas width and height
 
@@ -662,7 +677,8 @@ function funcForEvent() {
   // console.log(bHalf[1]);
   // console.log(testvar);
   // console.log(bHalf[1]*testvar);
-  ctx.clearRect(0, 0, 500, 500); // Change the "500" to canvas width and height once the calculations of these has been made
+  getDrawingSize();
+  ctx.clearRect(0, 0, 2000, 2000); // Change the "500" to canvas width and height once the calculations of these has been made
   calcBHalf();
   calcCRoot();
   calcCTip();
