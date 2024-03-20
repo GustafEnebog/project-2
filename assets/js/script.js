@@ -73,6 +73,7 @@ function calcXDelta() {
   xDelta[2] = parseInt(document.getElementById('xdelta-p2').value);
   xDelta[3] = parseInt(document.getElementById('xdelta-p3').value);
   xDelta[0] = "n/a";
+  deltaAlert();
 }
 
 function calcDelta() {
@@ -80,17 +81,13 @@ function calcDelta() {
   delta[2] = parseInt(document.getElementById('delta-p2').value);
   delta[3] = parseInt(document.getElementById('delta-p3').value);
   delta[0] = "n/a";
+  deltaAlert();
 }
 
-let delta45Trig = 1;
 function deltaAlert() {
-  if (delta45Trig = 1 && delta[1] >= 45) { //  || delta[2] >= 45 || delta[3] >= 45) {
-    delta45Trig = 0;
-    console.log(delta45Trig);
+  if (delta[1] >= 60 || delta[2] >= 60 || delta[3] >= 60) { //  || delta[2] >= 45 || delta[3] >= 45) {
     alert('That is a lot, are you sure you know what you are doing!?');
-  } else if (delta[1] >= 60 || delta[2] >= 60 || delta[3] >= 60) {
-    alert('That is a extremly much, Guess you doing fins on a missile');
-  }
+  } 
 }
 
 //-------------------- CALCULATE OUTPUT USING INPUT FROM FORM FIELD --------------------
@@ -403,6 +400,8 @@ function getZoomFactor () {
     zoomFactor = 569 / drawingHeight;
   }
 return zoomFactor;
+console.log(zoomFactor);
+console.log('zoomFactor');
 }
 
 // Compensate (by adding ) for negative x values in plot arrays (sweepP1X, sweepP2X, sweepP3X, outlineP1X, outlineP2X and outlineP3X)
@@ -428,38 +427,52 @@ function getNegXCompFactor() {
 let sweepP1XC = [null, null];
 let sweepP2XC = [null, null];
 let sweepP3XC = [null, null];
+let sweepP1YC = [null, null];
+let sweepP2YC = [null, null];
+let sweepP3YC = [null, null];
 
 let outlineP1XC = [null, null, null, null];
 let outlineP2XC = [null, null, null, null];
 let outlineP3XC = [null, null, null, null];
+let outlineP1YC = [null, null, null, null];
+let outlineP2YC = [null, null, null, null];
+let outlineP3YC = [null, null, null, null];
 
 function compensateNegX() {
   negXCompFactor = getNegXCompFactor(...outlineP1X, ...outlineP2X, ...outlineP3X);
   console.log(negXCompFactor);
   console.log(sweepP1X);
+  zoomFactor = getZoomFactor();
+  console.log(zoomFactor);
   for (let i = 0; i < sweepP1X.length; i++) {
     sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * getZoomFactor ();
+    sweepP1YC[i] = sweepP1Y[i] * getZoomFactor ();
   }
   console.log(sweepP1X);
   for (let i = 0; i < sweepP2X.length; i++) {
     sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * getZoomFactor ();
+    sweepP2YC[i] = sweepP2Y[i] * getZoomFactor ();
   }
 
   for (let i = 0; i < sweepP3X.length; i++) {
     sweepP3XC[i] = (sweepP3X[i] - negXCompFactor) * getZoomFactor ();
+    sweepP3YC[i] = sweepP3Y[i] * getZoomFactor ();
   }
 
   for (let i = 0; i < outlineP1X.length; i++) {
     outlineP1XC[i] = (outlineP1X[i] - negXCompFactor) * getZoomFactor ();
+    outlineP1YC[i] = outlineP1Y[i] * getZoomFactor ();
   }
   console.log(outlineP2X);
   for (let i = 0; i < outlineP2X.length; i++) {
     outlineP2XC[i] = (outlineP2X[i] - negXCompFactor) * getZoomFactor ();
+    outlineP2YC[i] = outlineP2Y[i] * getZoomFactor ();
     console.log("I'm in a for-loop");
   }
   console.log(outlineP2XC);
   for (let i = 0; i < outlineP3X.length; i++) {
     outlineP3XC[i] = (outlineP3X[i] - negXCompFactor) * getZoomFactor ();
+    outlineP3YC[i] = outlineP3Y[i] * getZoomFactor ();
   }
 }
 
@@ -580,30 +593,30 @@ function plotOutlineP1() {
 
     // Draw leading edge
     // Define a start point
-    ctx.moveTo(outlineP1XC[0], outlineP1Y[0]);
+    ctx.moveTo(outlineP1XC[0], outlineP1YC[0]);
 
     // Define points
-    ctx.lineTo(outlineP1XC[1], outlineP1Y[1]);
+    ctx.lineTo(outlineP1XC[1], outlineP1YC[1]);
 
     // Draw it
     ctx.stroke();
 
     // Draw trailing edge
     // Define a start point
-    ctx.moveTo(outlineP1XC[2], outlineP1Y[2]);
+    ctx.moveTo(outlineP1XC[2], outlineP1YC[2]);
 
     // Define points
-    ctx.lineTo(outlineP1XC[3], outlineP1Y[3]);
+    ctx.lineTo(outlineP1XC[3], outlineP1YC[3]);
 
     // Draw it
     ctx.stroke();
 
     // Draw wing root chord
     // Define a start point
-    ctx.moveTo(outlineP1XC[0], outlineP1Y[0]);
+    ctx.moveTo(outlineP1XC[0], outlineP1YC[0]);
 
     // Define points
-    ctx.lineTo(outlineP1XC[3], outlineP1Y[3]);
+    ctx.lineTo(outlineP1XC[3], outlineP1YC[3]);
 
     // Draw it
     ctx.stroke();
@@ -616,10 +629,10 @@ function plotOutlineP1() {
     ctx.lineWidth = "1";
 
     // Define a start point
-    ctx.moveTo(outlineP1XC[1], outlineP1Y[1]);
+    ctx.moveTo(outlineP1XC[1], outlineP1YC[1]);
 
     // Define points
-    ctx.lineTo(outlineP1XC[2], outlineP1Y[2]);
+    ctx.lineTo(outlineP1XC[2], outlineP1YC[2]);
 
     // Draw it
     ctx.stroke();
@@ -638,20 +651,20 @@ function plotOutlineP2() {
 
     // Draw leading edge
     // Define a start point
-    ctx.moveTo(outlineP2XC[0], outlineP2Y[0]);
+    ctx.moveTo(outlineP2XC[0], outlineP2YC[0]);
 
     // Define points
-    ctx.lineTo(outlineP2XC[1], outlineP2Y[1]);
+    ctx.lineTo(outlineP2XC[1], outlineP2YC[1]);
 
     // Draw it
     ctx.stroke();
 
     // Draw trailing edge
     // Define a start point
-    ctx.moveTo(outlineP2XC[2], outlineP2Y[2]);
+    ctx.moveTo(outlineP2XC[2], outlineP2YC[2]);
 
     // Define points
-    ctx.lineTo(outlineP2XC[3], outlineP2Y[3]);
+    ctx.lineTo(outlineP2XC[3], outlineP2YC[3]);
 
     // Draw it
     ctx.stroke();
@@ -664,10 +677,10 @@ function plotOutlineP2() {
     ctx.lineWidth = "1";
 
     // Define a start point
-    ctx.moveTo(outlineP2XC[1], outlineP2Y[1]);
+    ctx.moveTo(outlineP2XC[1], outlineP2YC[1]);
 
     // Define points
-    ctx.lineTo(outlineP2XC[2], outlineP2Y[2]);
+    ctx.lineTo(outlineP2XC[2], outlineP2YC[2]);
 
     // Draw it
     ctx.stroke();
@@ -686,20 +699,20 @@ function plotOutlineP3() {
 
     // Draw leading edge
     // Define a start point
-    ctx.moveTo(outlineP3XC[0], outlineP3Y[0]);
+    ctx.moveTo(outlineP3XC[0], outlineP3YC[0]);
 
     // Define points
-    ctx.lineTo(outlineP3XC[1], outlineP3Y[1]);
+    ctx.lineTo(outlineP3XC[1], outlineP3YC[1]);
 
     // Draw it
     ctx.stroke();
 
     // Draw trailing edge
     // Define a start point
-    ctx.moveTo(outlineP3XC[2], outlineP3Y[2]);
+    ctx.moveTo(outlineP3XC[2], outlineP3YC[2]);
 
     // Define points
-    ctx.lineTo(outlineP3XC[3], outlineP3Y[3]);
+    ctx.lineTo(outlineP3XC[3], outlineP3YC[3]);
 
     // Draw it
     ctx.stroke();
@@ -712,10 +725,10 @@ function plotOutlineP3() {
     ctx.lineWidth = "1";
 
     // Define a start point
-    ctx.moveTo(outlineP3XC[1], outlineP3Y[1]);
+    ctx.moveTo(outlineP3XC[1], outlineP3YC[1]);
 
     // Define points
-    ctx.lineTo(outlineP3XC[2], outlineP3Y[2]);
+    ctx.lineTo(outlineP3XC[2], outlineP3YC[2]);
 
     // Draw it
     ctx.stroke();
@@ -745,10 +758,10 @@ function plotSweepP1() {
     ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
 
     // Define a start point
-    ctx.moveTo(sweepP1XC[0], sweepP1Y[0]);
+    ctx.moveTo(sweepP1XC[0], sweepP1YC[0]);
 
     // Define points
-    ctx.lineTo(sweepP1XC[1], sweepP1Y[1]);
+    ctx.lineTo(sweepP1XC[1], sweepP1YC[1]);
 
     // Draw it
     ctx.stroke();
@@ -770,10 +783,10 @@ function plotSweepP2() {
     ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
 
     // Define a start point
-    ctx.moveTo(sweepP2XC[0], sweepP2Y[0]);
+    ctx.moveTo(sweepP2XC[0], sweepP2YC[0]);
 
     // Define points
-    ctx.lineTo(sweepP2XC[1], sweepP2Y[1]);
+    ctx.lineTo(sweepP2XC[1], sweepP2YC[1]);
 
     // Draw it
     ctx.stroke();
@@ -795,10 +808,10 @@ function plotSweepP3() {
     ctx.setLineDash([10, 5]); /*dashes are 5px and spaces are 3px*/
 
     // Define a start point
-    ctx.moveTo(sweepP3XC[0], sweepP3Y[0]);
+    ctx.moveTo(sweepP3XC[0], sweepP3YC[0]);
 
     // Define points
-    ctx.lineTo(sweepP3XC[1], sweepP3Y[1]);
+    ctx.lineTo(sweepP3XC[1], sweepP3YC[1]);
 
     // Draw it
     ctx.stroke();
@@ -827,12 +840,8 @@ function funcForEvent() {
   // console.log(bHalf[1]);
   // console.log(testvar);
   // console.log(bHalf[1]*testvar);
-  getDrawingWidth();
-  getDrawingHeight();
   // console.log(negXCompFactor);
   // getDrawingNegValue()
-  compensateNegX()
-  ctx.clearRect(0, 0, drawingWidth, drawingHeight);
   // console.log(drawingWidth);
   // console.log(drawingHeight);
   calcBHalf();
@@ -857,6 +866,11 @@ function funcForEvent() {
   calcOutlineP1();
   calcOutlineP2();
   calcOutlineP3();
+  getDrawingWidth();
+  getDrawingHeight();
+  compensateNegX()
+  ctx.clearRect(0, 0, 320, 500); // drawingWidth, drawingHeight 320, 500
+  // ctx.clearRect(0, 0, 320, 500);
   plotSweepP1();
   plotSweepP2();
   plotSweepP3();

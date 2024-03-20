@@ -19,30 +19,45 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-variation-settings: "wdth"100;
+    font-variation-settings: "width"100;
 }
 
 /* html { */
 /*    color-scheme: dark light; */
 /* } */
 
+#container {
+    width: 59px;
+    height: 45px;
+    margin: auto;
+    text-align: center;
+}
+
 .drawing-area {
     background-color: white;
+    padding-left: 5%;
+    padding-right: 5%;
     /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #drawing {
     width: 320px;
-    height: 500px;
-    margin-top: 1%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-    margin-left: 1%;
+    height: 569px;
+    margin-top: 3%;
+    /* margin-right: 5%; */
+    /* margin-bottom: 3%; */
+    /* margin-left: 10px;*/
     background-color: aqua;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .input-output-area {
     background-color: lightgrey;
+    margin: 0;
 }
 
 #logo {
@@ -52,15 +67,8 @@ body {
     /* width: 90%; */
     width: 200px;
     /* max-width: 100%; */
-    padding: 10px;
+    padding-top: 10px;
     /* height: auto; */
-}
-
-#container {
-    width: 59px;
-    height: 45px;
-    margin: auto;
-    text-align: center;
 }
 
 .dark-mode {
@@ -138,7 +146,10 @@ myPlot-Overide {
         background-color: yellow;
         /* margin: 10px; */
         display: inline-block;
-        width: 49%;
+        width:100%; /* 49%; */
+        display: flex;
+        justify-content: center;
+        /*align-items: center;*/
     }
 
     .input-output-area {
