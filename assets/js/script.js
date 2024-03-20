@@ -82,10 +82,15 @@ function calcDelta() {
   delta[0] = "n/a";
 }
 
-if (delta[2] > 45) {
-  alert('That is a lot, are you sure you know what you are doing!?');
-} else if (delta[1] > 60) {
-  alert('That is a extremly much, Guess you doing fins on a missile');
+let delta45Trig = 1;
+function deltaAlert() {
+  if (delta45Trig = 1 && delta[1] >= 45) { //  || delta[2] >= 45 || delta[3] >= 45) {
+    delta45Trig = 0;
+    console.log(delta45Trig);
+    alert('That is a lot, are you sure you know what you are doing!?');
+  } else if (delta[1] >= 60 || delta[2] >= 60 || delta[3] >= 60) {
+    alert('That is a extremly much, Guess you doing fins on a missile');
+  }
 }
 
 //-------------------- CALCULATE OUTPUT USING INPUT FROM FORM FIELD --------------------
@@ -345,75 +350,6 @@ function calcOutlineP3() {
 
 
 
-
-
-// Compensate (by adding ) for negative x values in plot arrays (sweepP1X, sweepP2X, sweepP3X, outlineP1X, outlineP2X and outlineP3X)
-// since the canvas do not have negative values (origo is top left corner of canvas). 
-// This compensation will effectivly move the drawing (right) in within the bounds of the drawing.
-// Note this is only for the x-values, not the y-values
-
-// Calculating the horizontal compensation term
-function getNegXCompFactor() {
-  let negX = 0;
-  // console.log(arguments);
-  for (let i = 0; i < arguments.length; i++) {
-    if (arguments[i] < negX) {
-      negX = arguments[i];
-      console.log(negX);
-    }
-  }
-  return negX;
-}
-
-// Compensate all drawing x-coordinates using negXCompFactor
-
-let sweepP1XC = [null, null];
-let sweepP1YC = [null, null];
-let sweepP2XC = [null, null];
-let sweepP2YC = [null, null];
-let sweepP3XC = [null, null];
-let sweepP3YC = [null, null];
-
-let outlineP1XC = [null, null, null, null];
-let outlineP1YC = [null, null, null, null];
-let outlineP2XC = [null, null, null, null];
-let outlineP2YC = [null, null, null, null];
-let outlineP3XC = [null, null, null, null];
-let outlineP3YC = [null, null, null, null];
-
-function compensateNegX() {
-  negXCompFactor = getNegXCompFactor(...outlineP1X, ...outlineP2X, ...outlineP3X);
-  console.log(negXCompFactor);
-  console.log(sweepP1X);
-  for (let i = 0; i < sweepP1X.length; i++) {
-    sweepP1XC[i] = sweepP1X[i] - negXCompFactor;
-  }
-  console.log(sweepP1X);
-  for (let i = 0; i < sweepP2X.length; i++) {
-    sweepP2XC[i] = sweepP2X[i] - negXCompFactor;
-  }
-
-  for (let i = 0; i < sweepP3X.length; i++) {
-    sweepP3XC[i] = sweepP3X[i] - negXCompFactor;
-  }
- 
-  for (let i = 0; i < outlineP1X.length; i++) {
-    outlineP1XC[i] = outlineP1X[i] - negXCompFactor;
-  }
-  console.log(outlineP2X);
-  for (let i = 0; i < outlineP2X.length; i++) {
-    outlineP2XC[i] = outlineP2X[i] - negXCompFactor;
-    console.log("I'm in a for-loop");
-  }
-  console.log(outlineP2XC);
-  for (let i = 0; i < outlineP3X.length; i++) {
-    outlineP3XC[i] = outlineP3X[i] - negXCompFactor;
-  }
-}
-
-
-
-
 // Calculating the horizontal or vertical size of the drawing
 function getDrawingSize() {
   let drawingMax = 0;
@@ -437,7 +373,7 @@ var drawingWidth;
 
 function getDrawingWidth() {
   drawingWidth = getDrawingSize(...outlineP1X, ...outlineP2X, ...outlineP3X);
-  canvas.width = drawingWidth;
+  // canvas.width = drawingWidth;
 }
 
 // Calulating the height of the drawing
@@ -445,12 +381,87 @@ var drawingHeight;
 
 function getDrawingHeight() {
   drawingHeight = getDrawingSize(...outlineP1Y, ...outlineP2Y, ...outlineP3Y);
-  canvas.height = drawingHeight;
+  // canvas.height = drawingHeight;
 }
 
+/* Compensation factor to make the drawing independent of users input (changing b = 10 to b = 1000 would make the drawing 100 times larger).
+The drawing would still fit within the bounds but would be blurry if user input is to small and lines would be too thin if user input is too large.
+Initial choise of width of common CSS breakpoint of 320px and a height of 500px gives an Aspect Ratio of 320 / 500 ~= 0,64
+This lies close to the (inverse) of standard (used in e.g. YouTube-videos) 16 / 9 ~= 0,5625 so keeping the 320px width as a breakpoint
+This gives a a height of 320 x (16 / 9) ~= 569. (480px could also be used instead of 320px). The aspect ratio is defined: width / height */
 
+function getZoomFactor () {
+  let viewPortAR = (9 / 16);
+  let drawingAR = drawingWidth / drawingHeight;
+  let zoomFactor = null;
+  // Case if drawing width hits the viewport "side" first (before it hits the viewport height)
+  if (drawingAR >= viewPortAR) {
+    zoomFactor = 320 / drawingWidth;
+  }
+  // Case if drawing height hits the viewport "height" first (before it hits the viewport width)
+  else { // if (drawingAR < viewPortAR)
+    zoomFactor = 569 / drawingHeight;
+  }
+return zoomFactor;
+}
 
+// Compensate (by adding ) for negative x values in plot arrays (sweepP1X, sweepP2X, sweepP3X, outlineP1X, outlineP2X and outlineP3X)
+// since the canvas do not have negative values (origo is top left corner of canvas). 
+// This compensation will effectivly move the drawing (right) in within the bounds of the drawing.
+// Note this is only for the x-values, not the y-values
 
+// Calculating the horizontal compensation term
+function getNegXCompFactor() {
+  let negX = 0;
+  // console.log(arguments);
+  for (let i = 0; i < arguments.length; i++) {
+    if (arguments[i] < negX) {
+      negX = arguments[i];
+      console.log(negX);
+    }
+  }
+  return negX;
+}
+
+// Compensate all drawing x-coordinates using negXCompFactor
+
+let sweepP1XC = [null, null];
+let sweepP2XC = [null, null];
+let sweepP3XC = [null, null];
+
+let outlineP1XC = [null, null, null, null];
+let outlineP2XC = [null, null, null, null];
+let outlineP3XC = [null, null, null, null];
+
+function compensateNegX() {
+  negXCompFactor = getNegXCompFactor(...outlineP1X, ...outlineP2X, ...outlineP3X);
+  console.log(negXCompFactor);
+  console.log(sweepP1X);
+  for (let i = 0; i < sweepP1X.length; i++) {
+    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * getZoomFactor ();
+  }
+  console.log(sweepP1X);
+  for (let i = 0; i < sweepP2X.length; i++) {
+    sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * getZoomFactor ();
+  }
+
+  for (let i = 0; i < sweepP3X.length; i++) {
+    sweepP3XC[i] = (sweepP3X[i] - negXCompFactor) * getZoomFactor ();
+  }
+
+  for (let i = 0; i < outlineP1X.length; i++) {
+    outlineP1XC[i] = (outlineP1X[i] - negXCompFactor) * getZoomFactor ();
+  }
+  console.log(outlineP2X);
+  for (let i = 0; i < outlineP2X.length; i++) {
+    outlineP2XC[i] = (outlineP2X[i] - negXCompFactor) * getZoomFactor ();
+    console.log("I'm in a for-loop");
+  }
+  console.log(outlineP2XC);
+  for (let i = 0; i < outlineP3X.length; i++) {
+    outlineP3XC[i] = (outlineP3X[i] - negXCompFactor) * getZoomFactor ();
+  }
+}
 
 
 console.log(drawingWidth);
@@ -829,6 +840,7 @@ function funcForEvent() {
   calcCTip();
   calcXDelta();
   calcDelta();
+  deltaAlert();
   calcLambda();
   calcCSmc();
   calcSHalf();
