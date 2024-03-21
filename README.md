@@ -109,29 +109,80 @@ Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` f
 
 Happy coding!
 
+
+
+
+
+
+
 Deployed Site
 https://gustafenebog.github.io/project-2/
 
 
 
-![Image of site on different sized devices.](assets/images/readme/amiresponsive-enebog-art.jpg)
 
-# My Art Portfolio Page
-This Art Portfolio website is a shop window for my art and a place where I can market myself as an artist.
-Users of this website will be able to view a selection of my art and upcoming events. It also serves as a point of contact springboarding the users to the London based online gallery, [artfinder.com](https://www.artfinder.com/artist/gustaf-enebog/) where my art can be purchased as well as links to further social media.
 
-[View the live project here.](https://gustafenebog.github.io/CODE-project-1/index.html)
+
+
+
+
+
+![App logo](assets/images/wingit-logo.png)
+![Image of App on different sized devices.](assets/images/readme/amiresponsive-enebog-art.jpg)
+
+# Parametric Wing planform Design App
+This App creates a simple top-view drawing of a wing based on parametric input such as wing span, chord and sweep given by the user. This design method called parametric Design is the other way around to the case when the user first have to use a CAD or a drawing software to design and draw the wing and only afterward recieve or having to calculate the characteristic wing parameters. This way of designing lends itself better for otimization algoritms.
+The app is particilary usefull for hobbyist designing model airplanes as well as in Aircraft Conceptual Design since the Designer imediatly recieves updated graphics to his inputed numbers.
+
+[View the live project here.](https://gustafenebog.github.io/project-2/)
 
 
 ## Features
 
 ### Favicon
-+ The favicon is made up by the E in the Enebog-logo.
++ The favicon is made up by the W in the WINGIT-logo.
 + The favicon has been produced in all relevant file formats.
 
 ![Favicon](assets/images/readme/android-chrome-192x192-enebogart.png)
 
-### The header with the navigation bar
+
+The Drawing Area
+    Calculating the wing planforms width and Height as well as its ratio. 'getDrawingWidth'-function which in turn calls upon the 'getDrawingSize'-function. 'getDrawingHeight'-function
+
+    Moving potentially negative values (as in the case when a forward sweep wing panel moves ahead of the root leading edge). 'getNegXCompFactor'-function calculates this factor and it is applied in the 'compensateNegX'-function.
+
+    Calculating the factor (zoomFactor) and applying this to the plot coordinates in order to make the drawing the same size as the drawing sizes (canvas size of, width: 320px; height: 569px;). Responsible for this is the function 'getZoomFactor'
+
+    Plotting the drawing using different line weights and both solid and dashed line
+sweepP1XC
+sweepP2XC
+sweepP3XC
+sweepP1YC
+sweepP2YC
+sweepP3YC
+outlineP1XC
+outlineP2XC
+outlineP3XC
+outlineP1YC
+outlineP2YC
+outlineP3YC
+    The Input/Output Area
+    help section and tool tips
+      delay in displaying tooltip
+    Dark Mode
+      Toogle button
+    complete input feedback/confirmation
+    Input
+      live update using eventlistener for input
+        'funcForEvent'-function
+      Alert message
+    Output
+      Calculation of wing parameters (output) based on other wing parameters (input) using standard equations
+      Commensinc calculation of output paramaters only as all neccesary input parameters has been inputed (solved by if-statements)
+    x
+
+
+### The Drawing Area
 
   + The header features the artist Enebog-logo to the left and the four navigation links: Home, Works, About, Contact (for larger devices) or the “hamburger” icon (for smaller devices) to the right.
   + This is a single page scrolling website (with the exception of the individual art-piece-display pages the user is taken to when clicking on an art piece on the main page). These takes the user to the correct section, within the page, when a link is clicked.
@@ -187,16 +238,37 @@ Users of this website will be able to view a selection of my art and upcoming ev
 ![Large Device: "Footer"-section.](assets/images/readme/footer-laptop.jpg)
 
 ### Features remaining to be implemented
-+ Make carousel/slide show of the Hero-image on the top of the page.
-+ Add display pages for all art works in the Work-section.
-+ Make carousel/slide show of the display pages as to be able to show close-ups of details and "the making of"-pictures.
-+ Responsive design on the art display page to make the image (with annotation) perfectly filling the screen without distorting or overflowing.
-+ Possibly replacing the display-pages with a display directly in the Work-section using a modal screen.
-+ Returning from the display page to the main page should place the user exactly on the art piece in the work-section **where he originaly came** from instead of, as it is now, at the **top** of the main page.
-+ Original idea for a more irregular gallery wall.
++ Completing a Dark Mode alternative interface. The button (with javascript-code) to toggle back and forth between the dark and the default light mode is already created but has been removed since the feature/function not yet is complete.
++ A 500 ms delay for the tooltips to appear (no delay for them to disapear)
++ Removing the frame around the drawing (canvas)
++ Implementing more parameters, e.g. Aerodynamic Center, a.c. AC ac
+Neutral Point, n.p. NP
+Center of Gravity, c.g. CG
+Static Margin, s.m. SM
+Horisontal Tail Volume, VH
+Control Surface Root Chord, csc,r
+Control Surface Tip Chord, csc,t
+Control Surface Start, bsc,r
+Control Surface End, bsc,t
+LE or TE
+
++ Implementing more featuers, e.g. 
+
+•	YES: Expanding input matrix depending on two inputs (one nested into the other)
+o	Nr. of wings
+	Nr. of panels
+•	YES: Choosing unit (%, cm or m) next to input in a drop down menu
+•	YES: no “calculate”-button! Instead each making of an entry update the parameters and drawing
+•	MAYBE: Pop up instruction window upon hoover (after  1 or 2 sec.) showing also equations
+•	MAYBE: Color in input/output field characterising value
+•	MAYBE: Wings but to but alternative radio-button
+•	Let drawing (white background) field expand to wing + breathing space all around and input value grow to fit (do together with min and max height/width). OR is this too dynamics
+•	NO: simple drawing top view
 
 ## Design
-+ Since the users can be expected to often be older and less IT-savvy the website needs to be very simple and intuitive and should remain so even if more content is being added. The solution to this is a single page website with a header where the logo and navbar is always visible. As this is an artist website showing of Art, the Surface Plane with its graphics is arguably more important than the sites functional features (providing they all work, that is) since this is to work in concert with, and enhance the content. The minimalistic, uncluttered, and sober graphics of the site are not only modern and user friendly for less it-savvy artist lovers but it does also provide the perfect setting for displaying art much like the simple white walls in a real art gallery.
++ Inspiration for this clean minimalistic design came from many sites and tools including monday.com and xxxxx
+
+Since the users can be expected to often be older and less IT-savvy the website needs to be very simple and intuitive and should remain so even if more content is being added. The solution to this is a single page website with a header where the logo and navbar is always visible. As this is an artist website showing of Art, the Surface Plane with its graphics is arguably more important than the sites functional features (providing they all work, that is) since this is to work in concert with, and enhance the content. The minimalistic, uncluttered, and sober graphics of the site are not only modern and user friendly for less it-savvy artist lovers but it does also provide the perfect setting for displaying art much like the simple white walls in a real art gallery.
 
 ![Wireframe](Wireframe-p1.png "initial wireframe")
 
@@ -226,13 +298,12 @@ A font-matching-tool has been used to test combinations of "header-fonts" and "p
 ## Testing
 ### Manual testing
 + I have manually tested that:
-	+ the links work and land you on the correct page or correct section within the page.
-	+ a wrong input, e.g. email address field without an @-sign receive a complaint as well as a form submission-button-click results in a confirmation page.
-  + the links in the header works correctly.
-  + the navigation links work and the user is directed to the correct sections of the page.
-  + the navigation links change text colour when hovering over.
-  + the external link in the about section opens in a new tab and that the address is correct.
-  + “zoom on hover” work in gallery-section.
+  + The most complex function in the code (cyclomatic complexity rating of 13) can be considered "More complex to understand" and with a "moderate risk to modify" whereas the median function (cyclomatic complexity rating of 5) can be considered as a "Simple procedure to understand" and with a "little risk to modify"
+	+ the "tool tip on hover" (also known as screentips) all work.
+  + Wrong input, e.g. letters are not accepted, decimal numbers!!!
+	+ wrong input, e.g. email address field without an @-sign receive a complaint as well as a form submission-button-click results in a confirmation page.
+  + Responsive design shifts correctly at the breakpoint (width: 576px) between the drawing- and the input-output-area stacked (mobil) and side-by-side (inline) for larger devices
+
 + Manual testing has been carried out on:
   + Different browsers: Except Chrome the website has also been tested in Firefox (Safari as not been tested) where a a bug in the form element was appearing.
   + Responsiveness using different standard screen sizes testing the responsive design.
@@ -241,17 +312,21 @@ A font-matching-tool has been used to test combinations of "header-fonts" and "p
   ![Large Device: "Form"-submit confirmation page.](assets/images/readme/form-submit-confirmation.jpg)
 
 ### Validator Testing
-+ All code was tested for syntactical errors with perfect results using official validators:
-  + HTML using the using W3C-the official validator for html-code (https://validator.w3.org/)
++ All code was tested for syntactical errors with perfect results using official validators (Java Script 62 warnings all relating to potential compability issies with java script or browser versions) :
+  + HTML using the W3C-the official validator for html-code (https://validator.w3.org/)
 ![W3C result](assets/images/readme/html-validator.jpg)
   + CSS using Jigsaw-the official validator for CSS-code (https://jigsaw.w3.org/css-validator/)
 ![Jigsaw result](assets/images/readme/css-validator.jpg)
+  + Java Script using the JSHint validator for Java Script-code (https://jshint.com/)
+![JSHint result](assets/images/JSHint result.png)
   + performance, accessibility, SEO etc. using Lighthouse in Chrome developer tools.
+![Jigsaw result](assets/images/readme/css-validator.jpg)
 ![Lighthouse](assets/images/readme/chrome-dev-tools-lighthouse.jpg)
   + The reason why the Accesibility score is not perfect is because Lighthouse comes down on our continuous design-choise of a light grey (instead of a pure white) font colour on a black background, thus not reaching optimal contrast.
 ![Lighthouse point of improvement](assets/images/readme/lighthouse-accesibility-improve.jpg)
 + The code was also beautified using GitPods built in beautifyer.
 
+![The first computer Bugs.](assets/images/9th-sept-1947-first-computer-bug-harvard-markII.jpg)
 ### Bugs
 + Fixed bugs:
   + Change in logo and header height would not come through due to conflicting css-rules.
@@ -295,4 +370,4 @@ A font-matching-tool has been used to test combinations of "header-fonts" and "p
   + The about and contact sections was separated albeit they fitted well together.
 
 ### Acknowledgement
-A special thanks to my mentor at Code Institute for his nice ways and for most helpful input!
+A special thanks to my mentor at Code Institute for his time, nice ways and for most helpful input!

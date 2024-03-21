@@ -1,3 +1,6 @@
+// Conversion factor (since java script uses radians instead of degrees) to be used in sin trigonoetric function below
+const degToRad = (Math.PI / 180);
+
 $(document).ready(function () {
   // $('.btn-success').tooltip({title: "Hooray!", delay: 1000}); 
   $('.btn-danger').tooltip({
@@ -16,11 +19,11 @@ mode.addEventListener("click", function (event) { // Help from Roo
   if (event.target.classList.contains("light-mode")) {
     event.target.classList.remove("light-mode"); // remove light
     event.target.classList.add("dark-mode"); // Add dark
-    console.log("Add Dark")
+    console.log("Add Dark");
   } else {
     event.target.classList.remove("dark-mode"); // Remove dark
     event.target.classList.add("light-mode"); // Add light
-    console.log("Add Light")
+    console.log("Add Light");
   }
 });
 
@@ -87,7 +90,7 @@ function calcDelta() {
 function deltaAlert() {
   if (delta[1] >= 60 || delta[2] >= 60 || delta[3] >= 60) { //  || delta[2] >= 45 || delta[3] >= 45) {
     alert('That is a lot, are you sure you know what you are doing!?');
-  } 
+  }
 }
 
 //-------------------- CALCULATE OUTPUT USING INPUT FROM FORM FIELD --------------------
@@ -219,12 +222,9 @@ let outlineP2Y = [null, null, null, null];
 let outlineP3X = [null, null, null, null];
 let outlineP3Y = [null, null, null, null];
 
-// Conversion factor (since java script uses radians instead of degrees) to be used in sin trigonoetric function below
-const degToRad = (Math.PI / 180);
-
 // Sweep line Panel 1
 function calcSweepP1() {
-  if (cRoot[1] != "" && xDelta[1] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[1] != "") {
+  if (cRoot[1] != "" && xDelta[1] != "" && bHalf[1] != "" && delta[1] != "") { // && bHalf[2] != ""
     sweepP1X[0] = cRoot[1] * 0.01 * xDelta[1];
     sweepP1Y[0] = 0;
 
@@ -233,9 +233,10 @@ function calcSweepP1() {
   }
 }
 
+// sweepP1X[1] != "" && 
 // Sweep line Panel 2
 function calcSweepP2() {
-  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[2] != "" && bHalf[2] != "" && delta[2] != "") {
+  if (cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[2] != "") {
     sweepP2X[0] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1] + cTip[1] * 0.01 * xDelta[2];
     sweepP2Y[0] = bHalf[1];
 
@@ -246,7 +247,7 @@ function calcSweepP2() {
 
 // Sweep line Panel 3
 function calcSweepP3() {
-  if (cTip[2] != "" && xDelta[3] != "" && bHalf[3] != "" && bHalf[3] != "" && delta[3] != "") {
+  if (cTip[2] != "" && delta[2] != "" && xDelta[3] != "" && bHalf[1] != "" && bHalf[2] != "" && bHalf[3] != "") {
     sweepP3X[0] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] + cTip[2] * 0.01 * xDelta[3];
     sweepP3Y[0] = bHalf[1] + bHalf[2];
 
@@ -255,9 +256,10 @@ function calcSweepP3() {
   }
 }
 
+// sweepP1X[1] != "" && outlineP1X[1] != "" &&
 // Outline Panel 1
 function calcOutlineP1() {
-  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
+  if (cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
     outlineP1X[0] = 0;
     outlineP1Y[0] = 0;
 
@@ -276,9 +278,10 @@ function calcOutlineP1() {
   }
 }
 
+// sweepP2X[1] != "" && outlineP1X[1] != "" && outlineP1Y[1] != "" && outlineP2X[1] != "" &&
 // Outline Panel 2
 function calcOutlineP2() {
-  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
+  if (cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
     outlineP2X[0] = outlineP1X[1];
     outlineP2Y[0] = outlineP1Y[1];
 
@@ -295,9 +298,10 @@ function calcOutlineP2() {
   }
 }
 
+// sweepP3X[1] != "" && outlineP2X[1] != "" && outlineP2Y[1] != "" && outlineP3X[1] != "" &&
 // Outline Panel 3
 function calcOutlineP3() {
-  if (sweepP1X[1] != "" && cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
+  if (cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
     outlineP3X[0] = outlineP2X[1];
     outlineP3Y[0] = outlineP2Y[1];
 
@@ -373,13 +377,16 @@ function getDrawingWidth() {
   // canvas.width = drawingWidth;
 }
 
-// Calulating the height of the drawing
 var drawingHeight;
-
+// Calulating the height of the drawing
 function getDrawingHeight() {
-  drawingHeight = getDrawingSize(...outlineP1Y, ...outlineP2Y, ...outlineP3Y);
-  // canvas.height = drawingHeight;
+  drawingHeight = sweepP3Y[1];
 }
+
+//function getDrawingHeight() {
+//  drawingHeight = ;
+// canvas.height = drawingHeight;
+//}
 
 /* Compensation factor to make the drawing independent of users input (changing b = 10 to b = 1000 would make the drawing 100 times larger).
 The drawing would still fit within the bounds but would be blurry if user input is to small and lines would be too thin if user input is too large.
@@ -387,21 +394,21 @@ Initial choise of width of common CSS breakpoint of 320px and a height of 500px 
 This lies close to the (inverse) of standard (used in e.g. YouTube-videos) 16 / 9 ~= 0,5625 so keeping the 320px width as a breakpoint
 This gives a a height of 320 x (16 / 9) ~= 569. (480px could also be used instead of 320px). The aspect ratio is defined: width / height */
 
-function getZoomFactor () {
-  let viewPortAR = (9 / 16);
+function getZoomFactor() {
+  let viewPortAR = 320 / 569; // (9 / 16);
   let drawingAR = drawingWidth / drawingHeight;
   let zoomFactor = null;
   // Case if drawing width hits the viewport "side" first (before it hits the viewport height)
   if (drawingAR >= viewPortAR) {
     zoomFactor = 320 / drawingWidth;
+    console.log('the width of 320 should have been hit');
   }
   // Case if drawing height hits the viewport "height" first (before it hits the viewport width)
-  else { // if (drawingAR < viewPortAR)
+  else if (drawingAR < viewPortAR) {
     zoomFactor = 569 / drawingHeight;
+    console.log('the height of 569 should have been hit');
   }
-return zoomFactor;
-console.log(zoomFactor);
-console.log('zoomFactor');
+  return zoomFactor;
 }
 
 // Compensate (by adding ) for negative x values in plot arrays (sweepP1X, sweepP2X, sweepP3X, outlineP1X, outlineP2X and outlineP3X)
@@ -416,7 +423,6 @@ function getNegXCompFactor() {
   for (let i = 0; i < arguments.length; i++) {
     if (arguments[i] < negX) {
       negX = arguments[i];
-      console.log(negX);
     }
   }
   return negX;
@@ -439,47 +445,47 @@ let outlineP2YC = [null, null, null, null];
 let outlineP3YC = [null, null, null, null];
 
 function compensateNegX() {
+  let negXCompFactor;
   negXCompFactor = getNegXCompFactor(...outlineP1X, ...outlineP2X, ...outlineP3X);
+  console.log('negXCompFactor');
   console.log(negXCompFactor);
-  console.log(sweepP1X);
+  let zoomFactor;
   zoomFactor = getZoomFactor();
+  console.log('zoomFactor');
   console.log(zoomFactor);
   for (let i = 0; i < sweepP1X.length; i++) {
-    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * getZoomFactor ();
-    sweepP1YC[i] = sweepP1Y[i] * getZoomFactor ();
+    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * getZoomFactor();
+    sweepP1YC[i] = sweepP1Y[i] * getZoomFactor();
   }
   console.log(sweepP1X);
   for (let i = 0; i < sweepP2X.length; i++) {
-    sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * getZoomFactor ();
-    sweepP2YC[i] = sweepP2Y[i] * getZoomFactor ();
+    sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * getZoomFactor();
+    sweepP2YC[i] = sweepP2Y[i] * getZoomFactor();
   }
 
   for (let i = 0; i < sweepP3X.length; i++) {
-    sweepP3XC[i] = (sweepP3X[i] - negXCompFactor) * getZoomFactor ();
-    sweepP3YC[i] = sweepP3Y[i] * getZoomFactor ();
+    sweepP3XC[i] = (sweepP3X[i] - negXCompFactor) * getZoomFactor();
+    sweepP3YC[i] = sweepP3Y[i] * getZoomFactor();
   }
 
   for (let i = 0; i < outlineP1X.length; i++) {
-    outlineP1XC[i] = (outlineP1X[i] - negXCompFactor) * getZoomFactor ();
-    outlineP1YC[i] = outlineP1Y[i] * getZoomFactor ();
+    outlineP1XC[i] = (outlineP1X[i] - negXCompFactor) * getZoomFactor();
+    outlineP1YC[i] = outlineP1Y[i] * getZoomFactor();
   }
   console.log(outlineP2X);
   for (let i = 0; i < outlineP2X.length; i++) {
-    outlineP2XC[i] = (outlineP2X[i] - negXCompFactor) * getZoomFactor ();
-    outlineP2YC[i] = outlineP2Y[i] * getZoomFactor ();
-    console.log("I'm in a for-loop");
+    outlineP2XC[i] = (outlineP2X[i] - negXCompFactor) * getZoomFactor();
+    outlineP2YC[i] = outlineP2Y[i] * getZoomFactor();
   }
   console.log(outlineP2XC);
   for (let i = 0; i < outlineP3X.length; i++) {
-    outlineP3XC[i] = (outlineP3X[i] - negXCompFactor) * getZoomFactor ();
-    outlineP3YC[i] = outlineP3Y[i] * getZoomFactor ();
+    outlineP3XC[i] = (outlineP3X[i] - negXCompFactor) * getZoomFactor();
+    outlineP3YC[i] = outlineP3Y[i] * getZoomFactor();
   }
 }
-
-
+console.log('drawingWidth');
 console.log(drawingWidth);
-
-console.log(drawingWidth);
+console.log('drawingHeight');
 console.log(drawingHeight);
 // Create a canvas:
 const canvas = document.getElementById("drawing");
@@ -854,12 +860,32 @@ function funcForEvent() {
   calcCSmc();
   calcSHalf();
   calcAr();
-  console.log(sweepP1X);
-  console.log(sweepP2X);
-  console.log(sweepP3X);
-  console.log(outlineP1X);
-  console.log(outlineP2X);
-  console.log(outlineP3X);
+  //console.log(sweepP1X);
+  //console.log(sweepP1XC);
+  //console.log(sweepP2X);
+  //console.log(sweepP2XC);
+  //console.log(sweepP3X);
+  //console.log(sweepP3XC);
+  //console.log(outlineP1X);
+  //console.log(outlineP1XC);
+  //console.log(outlineP2X);
+  //console.log(outlineP2XC);
+  //console.log(outlineP3X);
+  //console.log(outlineP3XC);
+  console.log(sweepP1Y);
+  console.log(sweepP1YC);
+  console.log(sweepP2Y);
+  console.log(sweepP2YC);
+  console.log(sweepP3Y);
+  console.log(sweepP3YC);
+  console.log(outlineP1Y);
+  console.log(outlineP1YC);
+  console.log(outlineP2Y);
+  console.log(outlineP2YC);
+  console.log('outlineP3Y');
+  console.log(outlineP3Y);
+  console.log('outlineP3YC');
+  console.log(outlineP3YC);
   calcSweepP1();
   calcSweepP2();
   calcSweepP3();
@@ -868,7 +894,7 @@ function funcForEvent() {
   calcOutlineP3();
   getDrawingWidth();
   getDrawingHeight();
-  compensateNegX()
+  compensateNegX();
   ctx.clearRect(0, 0, 320, 500); // drawingWidth, drawingHeight 320, 500
   // ctx.clearRect(0, 0, 320, 500);
   plotSweepP1();
