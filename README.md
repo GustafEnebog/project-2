@@ -131,8 +131,8 @@ https://gustafenebog.github.io/project-2/
 ![Image of App on different sized devices.](assets/images/readme/amiresponsive-enebog-art.jpg)
 
 # Parametric Wing planform Design App
-This App creates a simple top-view drawing of a wing based on parametric input such as wing span, chord and sweep given by the user. This design method called parametric Design is the other way around to the case when the user first have to use a CAD or a drawing software to design and draw the wing and only afterward recieve or having to calculate the characteristic wing parameters. This way of designing lends itself better for otimization algoritms.
-The app is particilary usefull for hobbyist designing model airplanes as well as in Aircraft Conceptual Design since the Designer imediatly recieves updated graphics to his inputed numbers.
+This App creates a simple top-view drawing of a wing based on parametric input such as wing span, chord and sweep given by the user. This design method, called parametric Design, is the other way around to the case where the user first use a CAD or a drawing software to draw the wing and only afterward recieve or having to calculate the characteristic wing design parameters. This way of designing lends itself better for otimization algoritms.
+The app is particilary usefull for hobbyist designing model airplanes as well as in Aircraft Conceptual Design (especially as more parameters and featers are added) since the Designer imediatly recieves updated graphics to his inputed numbers.
 
 [View the live project here.](https://gustafenebog.github.io/project-2/)
 
@@ -318,11 +318,11 @@ A font-matching-tool has been used to test combinations of "header-fonts" and "p
   + CSS using Jigsaw-the official validator for CSS-code (https://jigsaw.w3.org/css-validator/)
 ![Jigsaw result](assets/images/readme/css-validator.jpg)
   + Java Script using the JSHint validator for Java Script-code (https://jshint.com/)
-![JSHint result](assets/images/JSHint result.png)
+![JSHint result](assets/images/jshint-result.jpg)
   + performance, accessibility, SEO etc. using Lighthouse in Chrome developer tools.
 ![Jigsaw result](assets/images/readme/css-validator.jpg)
-![Lighthouse](assets/images/readme/chrome-dev-tools-lighthouse.jpg)
-  + The reason why the Accesibility score is not perfect is because Lighthouse comes down on our continuous design-choise of a light grey (instead of a pure white) font colour on a black background, thus not reaching optimal contrast.
+![Lighthouse](assets/images/lighthouse-result.jpg)
+  + The low performance scoore is inherent for a calculation-heavy App and with the live update adding insult to injury.
 ![Lighthouse point of improvement](assets/images/readme/lighthouse-accesibility-improve.jpg)
 + The code was also beautified using GitPods built in beautifyer.
 
