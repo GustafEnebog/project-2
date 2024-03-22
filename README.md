@@ -272,14 +272,20 @@ o	Nr. of wings
 
 Since the users can be expected to often be older and less IT-savvy the website needs to be very simple and intuitive and should remain so even if more content is being added. The solution to this is a single page website with a header where the logo and navbar is always visible. As this is an artist website showing of Art, the Surface Plane with its graphics is arguably more important than the sites functional features (providing they all work, that is) since this is to work in concert with, and enhance the content. The minimalistic, uncluttered, and sober graphics of the site are not only modern and user friendly for less it-savvy artist lovers but it does also provide the perfect setting for displaying art much like the simple white walls in a real art gallery.
 
-![Wireframe](Wireframe-p1.png "initial wireframe")
+![wireframe color coding](assets/images/wireframe-color-coding.jpg)
+![wireframe initial idea](assets/images/wireframe-initial-idea.jpg)
+![wireframe input inline](assets/images/wireframe-input-inline.jpg)
+![wireframe input stack](assets/images/wireframe-input-stack.jpg)
+![wireframe tool tip](assets/images/wireframe-tool-tip.jpg)
+![light mode button](assets/images/light-mode.jpg)
+![dark mode button](assets/images/dark-mode.jpg)
+![parameters equations](assets/images/parameters-equations.jpg)
+![dependency matrix](assets/images/dependency-matrix.jpg)
 
 ### Colors
-+ The Black and White color theme provides a color-neutral background that does not interfere with the color theme of the actual art. It also has the secondary benefit of not distracting or drawing attention away from the art. 
-+ One accent color, orange, has been used (away from the vicinity of the gallery section) on a “call to action”-button, again, the effect of the accent color becomes more efficient with the otherwise neutral color scheme.
-+ Art is classically displayed on an either white or black background. This site does it both: white in the work-section and black on the display-page.
-+ The black background on the last two sections (“About” and “Contact”) sets these two sections apart from the rest of the site and allow the footer to “return” to a white without any dividing line.
-+ Font color on the black background sections (“About” and “Contact”) is set to a light grey rather than white for a slightly softer experience.
++ The Grey and White color theme provides a color-neutral background setting the stage for potnetial colorcoding. 
+
++ A Dark Mode including a button toggling between dark and luight mode has been prepared yet removed since it is not yet complete
 
 ### Typography
 A font-matching-tool has been used to test combinations of "header-fonts" and "paragraph-fonts" however its advice was ultimately discarded for a "gut-feel" to pick the single font "Open Sans Regular 400" with "Montserrat" as a fallback font and sans-serif as the fallback to that.
