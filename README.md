@@ -265,6 +265,8 @@ o	Nr. of wings
 •	Let drawing (white background) field expand to wing + breathing space all around and input value grow to fit (do together with min and max height/width). OR is this too dynamics
 •	NO: simple drawing top view
 
++ Make drawing area adapting to available view port instead of having to resort to the current fixed size of 320px X 569px.
+
 ## Design
 + Inspiration for this clean minimalistic design came from many sites and tools including monday.com and xxxxx
 
@@ -281,6 +283,9 @@ Since the users can be expected to often be older and less IT-savvy the website 
 
 ### Typography
 A font-matching-tool has been used to test combinations of "header-fonts" and "paragraph-fonts" however its advice was ultimately discarded for a "gut-feel" to pick the single font "Open Sans Regular 400" with "Montserrat" as a fallback font and sans-serif as the fallback to that.
+
+## Miscellanious
++ As much as it is good practise to keep variables local and to avoid global variables it is sometimes necessary and this code is such an example where relativly many global variables was necessary or the code structure would have had to become very complicated.
 
 ## Technologies Used
 + HTML5

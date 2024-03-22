@@ -39,7 +39,7 @@
         <div class="drawing-area">
             <section>
                 <!-- Header for the sake of screen readers, search engines etc. -->
-                <h2>Drawing area</h2>
+                <h2></h2>
                 <!-- logo -->
                 <img src="assets/images/wingit-logo.png" alt="Logo" id="logo">
 
@@ -52,7 +52,6 @@
         <div class="input-output-area" id="input-output-form">
             <section>
                 <!-- Header for the sake of screen readers, search engines etc. -->
-                <h2>Input/Output area</h2>
                 <!-- Nr. of Panels -->
                 <!-- <div>  -->
                 <!--     <p class="w3-tooltip"><b>Nr. of Panels</b><span style="position:absolute;left:0;bottom:18px"  -->
@@ -72,22 +71,28 @@
                 <!--<img src="assets/images/dark-mode-button.png" alt="Dark mode button" id="Dark mode button"> -->
                 <!--  </div>  -->
 
-
+                <h2></h2>
                 <!--  Help and Dark mode  -->
-                <div id="help" class="parameterSub">
-
+                <div id="help" class="parameterSub"> <!--class="flex-help-mode-container"-->
                     <!-- Help - tooltip with nomenclature -->
-                    <p class="w3-tooltip"><b>Help</b><span style="position:absolute;left:0;bottom:18px"
-                            class="w3-text w3-tag">
-                            <img src="assets/images/help-nomenclature-690px.png" alt="Drawing with nomenclature"
-                                width=100%></span></p>
+                    <!-- <p class="w3-tooltip"><b>Help</b><span style="position: ;left:0;bottom:18px"-->
+                    <!-- class="w3-text w3-tag">-->
+                    <!-- <img src="assets/images/help-nomenclature-690px.png" alt="Drawing with nomenclature" width=500></span></p>-->
+
+                    <!-- Tooltip for Help from https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_top -->
+                    <div class="tooltip-help"><b>Help</b> <!--class="flex-help-mode"-->
+                        <span class="tooltiptext-help"><img src="assets/images/help-nomenclature-690px.png"
+                                alt="Drawing with nomenclature" id="nomenclature-size"></span> <!--width=500-->
+                    </div>
+                    <div id="modeButton" class="light-mode" class="flex-help-mode"></div>
+
+
 
                     <!--height="600"-->
                     <!-- src="assets/images/help-nomenclature-1000px.png"></span></p> -->
                     <!-- Should I do an alt text here!? -->
 
                     <!-- Dark mode / Light mode - button -->
-                    <div id="modeButton" class="light-mode"></div>
                 </div>
                 <!-- https://www.google.com/search?q=change+image+after+click+event+in+css&sca_esv=7de577393d04b1f4&ei=CEn3ZeDbFOK_wPAP_YqNgAs&ved=0ahUKEwjg_42xiPyEAxXiHxAIHX1FA7AQ4dUDCBA&uact=5&oq=change+image+after+click+event+css&gs_lp=Egxnd3Mtd2l6LXNlcnAiImNoYW5nZSBpbWFnZSBhZnRlciBjbGljayBldmVudCBjc3MqAggASABQAFgAcAB4AJABAJgBAKABAKoBALgBAcgBAJgCAKACAJgDAJIHAKAHAA&sclient=gws-wiz-serp#fpstate=ive&vld=cid:8fa0e9b2,vid:yWexyb0VkLI,st:0 -->
 
@@ -101,7 +106,14 @@
                     <!--        Half of Span (right wing half)</span><span class="dot"></span></p>-->
                     <!--<button class="btn btn-danger btn-md">Hover over me (500ms)</button>-->
                     <!--Test to be removed!!!!!!!-->
-
+                    <!--<div class="parameterHead">-->
+                     <!--   <p class="w3-tooltip"><b>c<sub>root</sub></b><span style="position:absolute;left:0;bottom:18px"-->
+                            <!--           class="w3-text w3-tag">c<sub>root</sub>= Root-->
+                     <!--           Chord</span><span class="dot"></span></p>-->
+                    <!--</div>-->
+                    <div class="tooltip" class="width-special-b-half"><b>b<sub>half</sub></b>
+                        <span class="tooltiptext">b<sub>half</sub> = Half span (Span of one wing half)                          Chord</span>
+                    </div>
                     <div class="parameterSub">
                         <p class="parameterSub">CW:</p>
                         <p id="bHalf[0]" class="parameterSub"></p>
@@ -118,8 +130,11 @@
                 <div>
                     <div class="parameterHead">
                         <p class="w3-tooltip"><b>c<sub>root</sub></b><span style="position:absolute;left:0;bottom:18px"
-                                class="w3-text w3-tag">c<sub>root</sub>= Root
+                                class="w3-text w3-tag">c<sub>root</sub> = Root
                                 Chord</span><span class="dot"></span></p>
+                    </div>
+                    <div class="tooltip" class="width-special-c-root"><b>c<sub>root</sub></b>
+                        <span class="tooltiptext" class="width-special-c-root">c<sub>root</sub> = Root Chord</span>
                     </div>
                     <div class="parameterSub">
                         <p class="parameterSub">CW:</p>
@@ -143,6 +158,9 @@
                                 class="w3-text w3-tag">c<sub>tip</sub>= Tip
                                 Chord</span><span class="dot"></span></p>
                     </div>
+                    <div class="tooltip"><b>c<sub>tip</sub></b>
+                        <span class="tooltiptext">c<sub>tip</sub> = Tip Chord</span>
+                    </div>
                     <div class="parameterSub">
                         <p class="parameterSub">CW:</p>
                         <p id="cTip[0]" class="parameterSub"></p>
@@ -162,6 +180,11 @@
                                 class="w3-text w3-tag">x<sub>Λ</sub>= Chord
                                 position (starting at Leading Edge) for
                                 sweep</span><span class="dot"></span></p>
+                    </div>
+                    <div class="tooltip"><b>x<sub>Λ</sub></b>
+                        <span class="tooltiptext">x<sub>Λ</sub> = Chord
+                            position (starting at Leading Edge) for
+                            sweep</span>
                     </div>
                     <div class="parameterSub">
                         <p id="xDelta[0]"></p>
@@ -186,6 +209,10 @@
                                 class="w3-text w3-tag">Λ= Sweep angle measured
                                 at x<sub>Λ</sub></span><span class="dot"></span></p>
                     </div>
+                    <div class="tooltip"><b>Λ</b></sub></b>
+                        <span class="tooltiptext">Λ = Sweep angle measured
+                            at x<sub>Λ</sub></span>
+                    </div>
                     <div class="parameterSub">
                         <p id="delta[1]"></p>
                         <p class="parameterSub">CW:</p>
@@ -205,9 +232,12 @@
                 <!-- Lambda -->
                 <div>
                     <div class="parameterHead">
-                        <p class="w3-tooltip"><b>Lambda</b><span style="position:absolute;left:0;bottom:18px"
-                                class="w3-text w3-tag">c<sub>tip</sub>= Tip
+                        <p class="w3-tooltip"><b>λ</b><span style="position:absolute;left:0;bottom:18px"
+                                class="w3-text w3-tag">c<sub>tip</sub> = Tip
                                 Chord</span><span class="dot"></span></p>
+                    </div>
+                    <div class="tooltip"><b>λ</b></sub></b>
+                        <span class="tooltiptext">λ = c<sub>tip</sub> / c<sub>root</sub></span>
                     </div>
                     <div class="parameterSub">
                         <p class="parameterSub">CW:</p>
@@ -225,8 +255,11 @@
                 <div>
                     <div class="parameterHead">
                         <p class="w3-tooltip"><b>c<sub>smc</sub></b><span style="position:absolute;left:0;bottom:18px"
-                                class="w3-text w3-tag">c<sub>tip</sub>= Tip
+                                class="w3-text w3-tag">c<sub>tip</sub> = Tip
                                 Chord</span><span class="dot"></span></p>
+                    </div>
+                    <div class="tooltip"><b>c<sub>smc</sub></b></sub></b>
+                        <span class="tooltiptext">c<sub>smc </sub> = c<sub>root</sub> + c<sub>tip</sub> / 2</span>
                     </div>
                     <div class="parameterSub">
                         <p class="parameterSub">CW:</p>
@@ -244,8 +277,11 @@
                 <div>
                     <div class="parameterHead">
                         <p class="w3-tooltip"><b>S<sub>half</sub></b><span style="position:absolute;left:0;bottom:18px"
-                                class="w3-text w3-tag">c<sub>tip</sub>= Tip
+                                class="w3-text w3-tag">c<sub>tip</sub> = Tip
                                 Chord</span><span class="dot"></span></p>
+                    </div>
+                    <div class="tooltip"><b>S<sub>half</sub></b>
+                        <span class="tooltiptext">S<sub>half </sub> = c<sub>smc</sub> x b<sub>half</sub></span>
                     </div>
                     <div class="parameterSub">
                         <p class="parameterSub">CW:</p>
@@ -265,6 +301,9 @@
                         <p class="w3-tooltip"><b>AR</b><span style="position:absolute;left:0;bottom:18px"
                                 class="w3-text w3-tag">c<sub>tip</sub>= Tip
                                 Chord</span><span class="dot"></span></p>
+                    </div>
+                    <div class="tooltip"><b>AR</b></sub></b>
+                        <span class="tooltiptext">AR = b<sub>half</sub> / c<sub>smc</sub></span>
                     </div>
                     <div class="parameterSub">
                         <p class="parameterSub">CW:</p>

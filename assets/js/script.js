@@ -1,6 +1,9 @@
 // Conversion factor (since java script uses radians instead of degrees) to be used in sin trigonoetric function below
 const degToRad = (Math.PI / 180);
 
+const canvasWidthFix = 320;
+const canvasHeightFix = 569;
+
 $(document).ready(function () {
   // $('.btn-success').tooltip({title: "Hooray!", delay: 1000}); 
   $('.btn-danger').tooltip({
@@ -396,18 +399,26 @@ This gives a a height of 320 x (16 / 9) ~= 569. (480px could also be used instea
 
 function getZoomFactor() {
   let viewPortAR = 320 / 569; // (9 / 16);
+  console.log('viewPortAR');
+  console.log(viewPortAR);
   let drawingAR = drawingWidth / drawingHeight;
+  console.log('drawingAR', drawingAR);
   let zoomFactor = null;
+  console.log('drawingWidth');
+  console.log(drawingWidth);
+  console.log('drawingHeight');
+  console.log(drawingHeight);
   // Case if drawing width hits the viewport "side" first (before it hits the viewport height)
   if (drawingAR >= viewPortAR) {
-    zoomFactor = 320 / drawingWidth;
+    zoomFactor = canvasWidthFix / drawingWidth;
     console.log('the width of 320 should have been hit');
   }
   // Case if drawing height hits the viewport "height" first (before it hits the viewport width)
   else if (drawingAR < viewPortAR) {
-    zoomFactor = 569 / drawingHeight;
+    zoomFactor = canvasHeightFix / drawingHeight;
     console.log('the height of 569 should have been hit');
   }
+  console.log('zoomFactor', zoomFactor);
   return zoomFactor;
 }
 
@@ -444,6 +455,12 @@ let outlineP1YC = [null, null, null, null];
 let outlineP2YC = [null, null, null, null];
 let outlineP3YC = [null, null, null, null];
 
+zoomFactor = getZoomFactor();
+console.log('zoomFactor-------OutsideFunc');
+console.log(zoomFactor);
+
+
+
 function compensateNegX() {
   let negXCompFactor;
   negXCompFactor = getNegXCompFactor(...outlineP1X, ...outlineP2X, ...outlineP3X);
@@ -454,33 +471,35 @@ function compensateNegX() {
   console.log('zoomFactor');
   console.log(zoomFactor);
   for (let i = 0; i < sweepP1X.length; i++) {
-    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * getZoomFactor();
-    sweepP1YC[i] = sweepP1Y[i] * getZoomFactor();
+    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * (zoomFactor/2);
+    sweepP1YC[i] = sweepP1Y[i] * (zoomFactor/4);
+    console.log('I really DO get calculated')
   }
   console.log(sweepP1X);
   for (let i = 0; i < sweepP2X.length; i++) {
-    sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * getZoomFactor();
-    sweepP2YC[i] = sweepP2Y[i] * getZoomFactor();
+    sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * (getZoomFactor()/2);
+    sweepP2YC[i] = sweepP2Y[i] * (getZoomFactor()/4);
+    console.log('Me Too')
   }
 
   for (let i = 0; i < sweepP3X.length; i++) {
-    sweepP3XC[i] = (sweepP3X[i] - negXCompFactor) * getZoomFactor();
-    sweepP3YC[i] = sweepP3Y[i] * getZoomFactor();
+    sweepP3XC[i] = (sweepP3X[i] - negXCompFactor) * (getZoomFactor()/2);
+    sweepP3YC[i] = sweepP3Y[i] * (getZoomFactor()/4);
   }
 
   for (let i = 0; i < outlineP1X.length; i++) {
-    outlineP1XC[i] = (outlineP1X[i] - negXCompFactor) * getZoomFactor();
-    outlineP1YC[i] = outlineP1Y[i] * getZoomFactor();
+    outlineP1XC[i] = (outlineP1X[i] - negXCompFactor) * (getZoomFactor()/2);
+    outlineP1YC[i] = outlineP1Y[i] * (getZoomFactor()/4);
   }
   console.log(outlineP2X);
   for (let i = 0; i < outlineP2X.length; i++) {
-    outlineP2XC[i] = (outlineP2X[i] - negXCompFactor) * getZoomFactor();
-    outlineP2YC[i] = outlineP2Y[i] * getZoomFactor();
+    outlineP2XC[i] = (outlineP2X[i] - negXCompFactor) * (getZoomFactor()/2);
+    outlineP2YC[i] = outlineP2Y[i] * (getZoomFactor()/4);
   }
   console.log(outlineP2XC);
   for (let i = 0; i < outlineP3X.length; i++) {
-    outlineP3XC[i] = (outlineP3X[i] - negXCompFactor) * getZoomFactor();
-    outlineP3YC[i] = outlineP3Y[i] * getZoomFactor();
+    outlineP3XC[i] = (outlineP3X[i] - negXCompFactor) * (getZoomFactor()/2);
+    outlineP3YC[i] = outlineP3Y[i] * (getZoomFactor()/4);
   }
 }
 console.log('drawingWidth');
