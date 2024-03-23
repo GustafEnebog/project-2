@@ -1,140 +1,14 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome Gustaf Enebog,
-
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
-
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
-
-
-
-
-
-
-
-Deployed Site
-https://gustafenebog.github.io/project-2/
-
-
-
-
-
-
-
-
-
 
 ![App logo](assets/images/wingit-logo.png)
-![Image of App on different sized devices.](assets/images/readme/amiresponsive-enebog-art.jpg)
+[View the live project here](https://gustafenebog.github.io/project-2/)
+
 
 # Parametric Wing planform Design App
-This App creates a simple top-view drawing of a wing based on parametric input such as wing span, chord and sweep given by the user. This design method, called parametric Design, is the other way around to the case where the user first use a CAD or a drawing software to draw the wing and only afterward recieve or having to calculate the characteristic wing design parameters. This way of designing lends itself better for otimization algoritms.
-The app is particilary usefull for hobbyist designing model airplanes as well as in Aircraft Conceptual Design (especially as more parameters and featers are added) since the Designer imediatly recieves updated graphics to his inputed numbers.
+This App creates a simple top-view drawing of a wing based on parametric user-input such as for example wing span, chord and sweep give. This way of designing lends itself better for otimization algoritms and works the other way around to when a designer/user first use CAD/drawing software to first draw the wing and afterward recieve or having to calculate the wing design parameters.
 
-[View the live project here.](https://gustafenebog.github.io/project-2/)
+The app is particilary usefull for hobbyist designing model airplanes as well as (as more features and parameters are being added) for Aircraft Conceptual Designers since the user imediatly recieves a live updated graphics to his inputed numbers.
+
+![Image of App on different sized devices.](assets/images/readme/amiresponsive-enebog-art.jpg)
 
 ## Index – Table of Contents
 * [User Experience (UX)](#user-experience-ux) 
@@ -147,9 +21,22 @@ The app is particilary usefull for hobbyist designing model airplanes as well as
 * [Credits](#credits)
 
 ## User Experience (UX)
+Aas a user I want to be able to :
 
+1. Easily determine the purpose of the website.
+2. Play around (step up and down or type in form field) with different values of Wing Design Parameters to view...
+ - a live updated drawing of the wing planform
+ - live updated dependent parameters outputed as they are calculated using the inputed independent parameters
+3. View graphical legend defining the characteristic Wing Design Parameters in the form of a hover over tool tip
+3. View legends for variable symbols in the form of a hover over tool tip
+3. Toogle between a default light mode and a dark mode.
 
 ## Features
+The Logotype
+The Drawing Area
+The Input/Output Area
+
+
 The Drawing Area
     Calculating the wing planforms width and Height as well as its ratio. 'getDrawingWidth'-function which in turn calls upon the 'getDrawingSize'-function. 'getDrawingHeight'-function
 
@@ -199,48 +86,6 @@ outlineP3YC
 ![Mobil: "Header"-section with drop-down nav menu.](assets/images/readme/nav-elements-iphon14promax.jpg)
 ![Large Device: "Header"-section.](assets/images/readme/header-laptop.jpg)
 
-### "Hero”-image
-  + The top of the page features a high-resolution image of an art piece with a text overlay to give the user a wow-effect and at the same time highlighting upcoming events.
-
-![Mobil: "Hero"-image.](assets/images/readme/hero-iphon14promax.jpg)
-![Large Device: "Hero"-image.](assets/images/readme/hero-laptop.jpg)
-
-### The Works-section
-  + The Works-section displays three galleries with nine art pieces each displayed in a 3x3 grid.
-  + The images of the art-pieces zooms to a larger size when hovered on larger displays (see the zoomed image of the braided flask below).
-  + The user can click an art-piece if he want to see a larger display of it.
-  + Currently the display page of only one art pieces has been implemented which is the first image (braided flask).
-
-![Mobil: "Work"-section.](assets/images/readme/work-iphon14promax.jpg)
-![Large Device: "Work"-section.](assets/images/readme/work-laptop.jpg)
-
-### The full-size display-page
-  + When an art piece is clicked in the Works-section the user is taken to a separate display page (unique for each art piece) where the art is annotated and display in a larger size.
-
-![Mobil: "Display"-page.](assets/images/readme/display-page-iphon14promax.jpg)
-![Large Device: "Display"-page.](assets/images/readme/display-page-laptop.jpg)
-
-### The ABOUT-section
-  + This section features a photo of the artist together with a short bio explaining his process, favorite motives and mediums and his reasons for drawing and painting.
-  + A splach of white ink (taken from the Enebog-logo) has been added as an accent.
-
-![Mobil: "About"-section.](assets/images/readme/about-iphon14promax.jpg)
-![Large Device: "About"-section.](assets/images/readme/about-laptop.jpg)
-
-### The Contact-section with form
-  + The contact section provides postal address, email and telephone number to the artist. All fields (except subject) are reqiered to be filled in and filled in correctly before the message is allowed to be submitted.
-  + The contact section also provide a form which the user can use as a way of reaching out to the artist directly.
-  + The bright orange submit-button acts here as a "call-to-action" button, the action being to reach out to the artist.
-
-![Mobil: "Contact"-section.](assets/images/readme/contact-w-form-iphon14promax.jpg)
-![Large Device: "Contact"-section.](assets/images/readme/contact-w-form-laptop.jpg)
-
-### The Footer
-+ The footer contain icons linking to all the places the artist can be found in social media including a link to the London based online gallery, Artfinder, where Enebog’s art can be acquired.
-
-![Mobil: "Footer"-section.](assets/images/readme/footer-iphon14promax.jpg)
-![Large Device: "Footer"-section.](assets/images/readme/footer-laptop.jpg)
-
 ### Features remaining to be implemented
 + Evaluating if a revision of the code structure and handling of events could allow the number of global variables to be reduced.
 + Completing a Dark Mode alternative interface. The button (with javascript-code) to toggle back and forth between the dark and the default light mode is already created but has been removed since the feature/function not yet is complete.
@@ -256,6 +101,11 @@ Control Surface Tip Chord, csc,t
 Control Surface Start, bsc,r
 Control Surface End, bsc,t
 LE or TE
++ The drawing coordinates are are faulty for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ
++ Implement radiobuttons (and functionality) for:
+  + Showing right wing half instead of leaft as is now the case (write function that multiples y-coordiantes with -1 and then subtracts half span)
+  + Showing the whole wing, i.e. both left and right wing halves (write functions that subtracts half span to left wing half and then add right wing half)
+  + Rotate wing into a horisontal position write function that transposes plot coordiantes or use the [canvas rotate method](https://www.w3schools.com/jsref/canvas_rotate.asp)
 
 + Implementing more featuers, e.g. 
 
@@ -276,13 +126,13 @@ o	Nr. of wings
 + A Dark Mode including a button toggling between dark and luight mode has been prepared yet removed since it is not yet complete
 
 
-## User Experience (UX)
+## Design
 + The interface is simple and plain with and a focus on the relevant aspects, the drawing and the input/output area. The drawing area is at top, (below the breakpoint) and to the left (above the breakpoint) and the opposite for the input/output area.
 
 interface
 Inspiration for this clean minimalistic design came from many sites and tools including monday.com and xxxxx
 
-Since the users can be expected to often be older and less IT-savvy the website needs to be very simple and intuitive and should remain so even if more content is being added. The solution to this is a single page website with a header where the logo and navbar is always visible. As this is an artist website showing of Art, the Surface Plane with its graphics is arguably more important than the sites functional features (providing they all work, that is) since this is to work in concert with, and enhance the content. The minimalistic, uncluttered, and sober graphics of the site are not only modern and user friendly for less it-savvy artist lovers but it does also provide the perfect setting for displaying art much like the simple white walls in a real art gallery.
+
 
 ![wireframe color coding](assets/images/wireframe-color-coding.jpg)
 ![wireframe initial idea](assets/images/wireframe-initial-idea.jpg)
@@ -319,6 +169,7 @@ Noto Sans has been used as a font since it features greek letters necessary for 
 
 ## Technologies Used
 + [HTML 5](https://html.spec.whatwg.org/multipage/) Website structure and content
++ [canvas (2D) element in HTML 5](https://www.w3schools.com/html/html5_canvas.asp) To generate bitmap drawings of the wing planform.
 + [CSS3](https://www.w3.org/TR/CSS/#css)
 + [Java Script]( https://262.ecma-international.org/6.0/)
 + [Google Fonts:](https://fonts.google.com/) To import font family "Open Sans Regular 400", "Montserrat" into the style.css file which is used on all pages.
@@ -396,8 +247,7 @@ I have tested that this page works on different screen sizes from iPhone 5 (320p
 
 ### Readme
 + Inspiration for this readme-file has been taken from the readme-files of:
-  + Code Institute "Coding Club"
-  + Code Institues "Love Running"
+  + ANAGRAM word puzzle website by elainebroche
   + rock-paper-scissors by mittnamnkenny
 
 ### Code
