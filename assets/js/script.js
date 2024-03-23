@@ -352,7 +352,13 @@ function calcOutlineP3() {
 // Calculate canvas width and height
 // Width
 
-
+/*
+* docstring
+* @param [number} a - the first number
+  @param [number}
+  @returns [number}
+  @example [number}
+*/
 
 // Calculating the horizontal or vertical size of the drawing
 function getDrawingSize() {
@@ -471,35 +477,35 @@ function compensateNegX() {
   console.log('zoomFactor');
   console.log(zoomFactor);
   for (let i = 0; i < sweepP1X.length; i++) {
-    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * (zoomFactor/2);
-    sweepP1YC[i] = sweepP1Y[i] * (zoomFactor/4);
+    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * zoomFactor;
+    sweepP1YC[i] = sweepP1Y[i] * zoomFactor;
     console.log('I really DO get calculated')
   }
   console.log(sweepP1X);
   for (let i = 0; i < sweepP2X.length; i++) {
-    sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * (getZoomFactor()/2);
-    sweepP2YC[i] = sweepP2Y[i] * (getZoomFactor()/4);
+    sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * getZoomFactor();
+    sweepP2YC[i] = sweepP2Y[i] * getZoomFactor();
     console.log('Me Too')
   }
 
   for (let i = 0; i < sweepP3X.length; i++) {
-    sweepP3XC[i] = (sweepP3X[i] - negXCompFactor) * (getZoomFactor()/2);
-    sweepP3YC[i] = sweepP3Y[i] * (getZoomFactor()/4);
+    sweepP3XC[i] = (sweepP3X[i] - negXCompFactor) * getZoomFactor();
+    sweepP3YC[i] = sweepP3Y[i] * getZoomFactor();
   }
 
   for (let i = 0; i < outlineP1X.length; i++) {
-    outlineP1XC[i] = (outlineP1X[i] - negXCompFactor) * (getZoomFactor()/2);
-    outlineP1YC[i] = outlineP1Y[i] * (getZoomFactor()/4);
+    outlineP1XC[i] = (outlineP1X[i] - negXCompFactor) * getZoomFactor();
+    outlineP1YC[i] = outlineP1Y[i] * getZoomFactor();
   }
   console.log(outlineP2X);
   for (let i = 0; i < outlineP2X.length; i++) {
-    outlineP2XC[i] = (outlineP2X[i] - negXCompFactor) * (getZoomFactor()/2);
-    outlineP2YC[i] = outlineP2Y[i] * (getZoomFactor()/4);
+    outlineP2XC[i] = (outlineP2X[i] - negXCompFactor) * getZoomFactor();
+    outlineP2YC[i] = outlineP2Y[i] * getZoomFactor();
   }
   console.log(outlineP2XC);
   for (let i = 0; i < outlineP3X.length; i++) {
-    outlineP3XC[i] = (outlineP3X[i] - negXCompFactor) * (getZoomFactor()/2);
-    outlineP3YC[i] = outlineP3Y[i] * (getZoomFactor()/4);
+    outlineP3XC[i] = (outlineP3X[i] - negXCompFactor) * getZoomFactor();
+    outlineP3YC[i] = outlineP3Y[i] * getZoomFactor();
   }
 }
 console.log('drawingWidth');
@@ -845,6 +851,24 @@ function plotSweepP3() {
     ctx.setLineDash([]);
   }
 }
+
+
+    ctx.strokeStyle = "blue";
+
+
+
+        ctx.lineWidth = "4";
+ctx.setLineDash([5, 3]); /*dashes are 5px and spaces are 3px*/
+
+    // Define a start point
+    ctx.moveTo(0, 0);
+
+    // Define points
+    ctx.lineTo(320, 569);
+
+    // Draw it
+    ctx.stroke();
+
 
 
 // let displayHoriz = 1

@@ -136,16 +136,20 @@ The app is particilary usefull for hobbyist designing model airplanes as well as
 
 [View the live project here.](https://gustafenebog.github.io/project-2/)
 
+## Index – Table of Contents
+* [User Experience (UX)](#user-experience-ux) 
+* [Features](#features)
+* [Design](#design)
+* [Miscellanious](#miscellanious)
+* [Technologies Used](#technologies-used)
+* [Testing](#testing)
+* [Deployment](#deployment)
+* [Credits](#credits)
+
+## User Experience (UX)
+
 
 ## Features
-
-### Favicon
-+ The favicon is made up by the W in the WINGIT-logo.
-+ The favicon has been produced in all relevant file formats.
-
-![Favicon](assets/images/readme/android-chrome-192x192-enebogart.png)
-
-
 The Drawing Area
     Calculating the wing planforms width and Height as well as its ratio. 'getDrawingWidth'-function which in turn calls upon the 'getDrawingSize'-function. 'getDrawingHeight'-function
 
@@ -238,6 +242,7 @@ outlineP3YC
 ![Large Device: "Footer"-section.](assets/images/readme/footer-laptop.jpg)
 
 ### Features remaining to be implemented
++ Evaluating if a revision of the code structure and handling of events could allow the number of global variables to be reduced.
 + Completing a Dark Mode alternative interface. The button (with javascript-code) to toggle back and forth between the dark and the default light mode is already created but has been removed since the feature/function not yet is complete.
 + A 500 ms delay for the tooltips to appear (no delay for them to disapear)
 + Removing the frame around the drawing (canvas)
@@ -267,8 +272,15 @@ o	Nr. of wings
 
 + Make drawing area adapting to available view port instead of having to resort to the current fixed size of 320px X 569px.
 
-## Design
-+ Inspiration for this clean minimalistic design came from many sites and tools including monday.com and xxxxx
+
++ A Dark Mode including a button toggling between dark and luight mode has been prepared yet removed since it is not yet complete
+
+
+## User Experience (UX)
++ The interface is simple and plain with and a focus on the relevant aspects, the drawing and the input/output area. The drawing area is at top, (below the breakpoint) and to the left (above the breakpoint) and the opposite for the input/output area.
+
+interface
+Inspiration for this clean minimalistic design came from many sites and tools including monday.com and xxxxx
 
 Since the users can be expected to often be older and less IT-savvy the website needs to be very simple and intuitive and should remain so even if more content is being added. The solution to this is a single page website with a header where the logo and navbar is always visible. As this is an artist website showing of Art, the Surface Plane with its graphics is arguably more important than the sites functional features (providing they all work, that is) since this is to work in concert with, and enhance the content. The minimalistic, uncluttered, and sober graphics of the site are not only modern and user friendly for less it-savvy artist lovers but it does also provide the perfect setting for displaying art much like the simple white walls in a real art gallery.
 
@@ -281,25 +293,37 @@ Since the users can be expected to often be older and less IT-savvy the website 
 ![dark mode button](assets/images/dark-mode.jpg)
 ![parameters equations](assets/images/parameters-equations.jpg)
 ![dependency matrix](assets/images/dependency-matrix.jpg)
+![unsolved bug drawing overflow of canvas boundaries](assets/images/unsolved-bug-wing-overflow.jpg)
+![Noto Sans font](assets/images/noto-sans-google-font.jpg)
+![Monday.com](assets/images/monday-com.jpg)
+![Color example](assets/images/color-example.jpg)
 
 ### Colors
-+ The Grey and White color theme provides a color-neutral background setting the stage for potnetial colorcoding. 
++ The Grey and White color theme provides a color-neutral background setting the stage for potential colorcoding.
 
-+ A Dark Mode including a button toggling between dark and luight mode has been prepared yet removed since it is not yet complete
+lightgrey #d3d3d3 or rgb(211, 211, 211)
+
+## Features
+
+### Favicon
++ The favicon is made up by the W in the WINGIT-logo.
++ The favicon has been produced in all relevant file formats.
+
+![Favicon](assets/images/readme/android-chrome-192x192-enebogart.png)
 
 ### Typography
-A font-matching-tool has been used to test combinations of "header-fonts" and "paragraph-fonts" however its advice was ultimately discarded for a "gut-feel" to pick the single font "Open Sans Regular 400" with "Montserrat" as a fallback font and sans-serif as the fallback to that.
+Noto Sans has been used as a font since it features greek letters necessary for the some of the input/output parameters. "Montserrat" and sans-serif is used as fallback fonts.
 
 ## Miscellanious
 + As much as it is good practise to keep variables local and to avoid global variables it is sometimes necessary and this code is such an example where relativly many global variables was necessary or the code structure would have had to become very complicated.
 
 ## Technologies Used
-+ HTML5
-+ CSS3
++ [HTML 5](https://html.spec.whatwg.org/multipage/) Website structure and content
++ [CSS3](https://www.w3.org/TR/CSS/#css)
++ [Java Script]( https://262.ecma-international.org/6.0/)
 + [Google Fonts:](https://fonts.google.com/) To import font family "Open Sans Regular 400", "Montserrat" into the style.css file which is used on all pages.
 + [Font Awesome:](https://fontawesome.com/) used in footer section to social icons and "hamburger"-icon in navbar for smaller devices.
 + [Balsamiq:](https://balsamiq.com/) Super nice program for creating wireframe drafts of the website.
-+ [Fontpair:](Fontpair.co) was used to test combinations of fonts.
 + [Krita:](https://krita.org/en/) Used for creating, editing and re-sizing images (bitmap art).
 + [Clip Studio Paint:](https://www.clipstudio.net/en/) Used for creating and editing vectorgraphics (as well as bitmap-art) such as the Enebog-logo.
 + [Am I Responsive:](http://ami.responsivedesign.is) Checking the responsiveness and generating the image in the beginning of this document showing my website on different devices/screensizes.
@@ -321,6 +345,14 @@ A font-matching-tool has been used to test combinations of "header-fonts" and "p
   + name, email and message is required to submit the form in the contact section.
   + the email input field must contain @ symbol to submit the form in the contact section.
   ![Large Device: "Form"-submit confirmation page.](assets/images/readme/form-submit-confirmation.jpg)
+
+  I have tested that this page works using macOS (Macbook Air).
+I have tested that this page works in the following browsers using macOS: Chrome, Safari and Firefox.
+I have tested this page works on iOS devices using Safari browser (iPhone X and iPad Air).
+
+Responsivness
+Chrome developer tool have been used to check the responsivness.
+I have tested that this page works on different screen sizes from iPhone 5 (320px wide) and very large screens like 5K iMac Pro (5120 x 2880 px).
 
 ### Validator Testing
 + All code was tested for syntactical errors with perfect results using official validators (Java Script 62 warnings all relating to potential compability issies with java script or browser versions) :
@@ -366,19 +398,12 @@ A font-matching-tool has been used to test combinations of "header-fonts" and "p
 + Inspiration for this readme-file has been taken from the readme-files of:
   + Code Institute "Coding Club"
   + Code Institues "Love Running"
-  + My Bonsai Page by mittnamnkenny
+  + rock-paper-scissors by mittnamnkenny
 
 ### Code
 + The code for the header with navbar, form and footer from Code Institute's "Love Running" was used as a starting point for my code.
 + Code that is supposed to making the whole page clickable (not just back arrow) is taken from a forum however I am sorry to say that I have not been able to retrieve the source back to give credit.
 + "Zoom on Hoover" code snippet from 3W Schools (https://www.w3schools.com/howto/howto_css_zoom_hover.asp) has been used and modified to make images in the galleries in the work-section zoom when they are being hovered.
-
-### Earlier implementation
-+ The Features and Design sections has been based on Jesse James Garretts five pillars of webdesign.
-+ Enebog art has already been implemented in a Squarespace-template-version. This new version has a changed design and it improves on weak points of the Squarespace-version:
-  + The all-important art was not displayed directly upfront but one or two clicks away.
-  + Even after one click all of the art was not displayed in a single grid but required the user to step through each gallery one picture at a time.
-  + The about and contact sections was separated albeit they fitted well together.
 
 ### Acknowledgement
 A special thanks to my mentor at Code Institute for his time, nice ways and for most helpful input!
