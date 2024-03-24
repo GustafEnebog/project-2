@@ -4,17 +4,6 @@ const degToRad = (Math.PI / 180);
 const canvasWidthFix = 320;
 const canvasHeightFix = 569;
 
-$(document).ready(function () {
-  // $('.btn-success').tooltip({title: "Hooray!", delay: 1000}); 
-  $('.btn-danger').tooltip({
-    title: "Hooray!",
-    delay: {
-      show: 500,
-      hide: 100
-    }
-  });
-});
-
 var mode = document.getElementById("modeButton");
 
 mode.addEventListener("click", function (event) { // Help from Roo
@@ -453,10 +442,7 @@ function compensateNegX() {
     outlineP3YC[i] = outlineP3Y[i] * getZoomFactor();
   }
 }
-console.log('drawingWidth');
-console.log(drawingWidth);
-console.log('drawingHeight');
-console.log(drawingHeight);
+
 // Create a canvas:
 const canvas = document.getElementById("drawing");
 const ctx = canvas.getContext("2d");

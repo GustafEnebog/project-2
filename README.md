@@ -7,7 +7,7 @@ This App creates a simple top-view drawing of a wing based on parametric user-in
 
 The app is particilary usefull for hobbyist designing model airplanes as well as (as more features and parameters are being added) for Aircraft Conceptual Designers since the user imediatly recieves a live updated graphics to his inputed numbers.
 
-![Image of App on different sized devices.](assets/images/readme/amiresponsive-enebog-art.jpg)
+![Image of App on different sized devices.](assets/images/am-i-responsive-wingit.jpg)
 
 ## Index – Table of Contents
 * [User Experience (UX)](#user-experience-ux) 
@@ -70,15 +70,18 @@ outlineP3YC
 ### The Input/Output Area
 
 ![light mode button](assets/images/light-mode.jpg)
+
 ![dark mode button](assets/images/dark-mode.jpg)
 
 ### Maths and Algorithms
 
 Reason for sizing drawing coordinates to match canvas coordinates is becasue canvas is a bitmap and not a svg ()
 Unlike Scalable Vector Graphics (SVG) the html element "Canvas" is a bitmap which pixelate when scaled up. For this reason it is very important to scale up the drawing to the same (or larger) size as the canvas size.
+
 ![parameters equations](assets/images/parameters-equations.jpg)
+
 ![dependency matrix](assets/images/dependency-matrix.jpg)
-![negative x values](assets/images/compensate-neg-x-values.jpg)
+
 ![limiting space](assets/images/limiting-space.jpg)
 
 ![Flow chart for function creating the zoom factor](assets/images/flow-chart.jpg)
@@ -111,14 +114,18 @@ Unlike Scalable Vector Graphics (SVG) the html element "Canvas" is a bitmap whic
 
 ## Design
 + The interface is simple and plain with and a focus on the relevant aspects, the drawing and the input/output area. The drawing area is at top, (below the breakpoint) and to the left (above the breakpoint) and the opposite for the input/output area.
+
 ![wireframe initial idea](assets/images/wireframe-initial-idea.jpg)
 
 interface
 Inspiration for this clean minimalistic design came from many sites and tools including monday.com and xxxxx![Monday.com](assets/images/monday-com.jpg)
 
 ![wireframe input inline](assets/images/wireframe-input-inline.jpg)
+
 ![wireframe input stack](assets/images/wireframe-input-stack.jpg)
+
 The useage of tool tips allows the design to be less cluttered yet still having the information easily accessible
+
 ![wireframe tool tip](assets/images/wireframe-tool-tip.jpg)
 
 ### Logo
@@ -128,8 +135,11 @@ The useage of tool tips allows the design to be less cluttered yet still having 
 + The Grey and White color theme provides a color-neutral background setting the stage for potential colorcoding.
 
 lightgrey #d3d3d3 or rgb(211, 211, 211)
+
 ![Color example](assets/images/color-example.jpg)
+
 ![wireframe color coding](assets/images/wireframe-color-coding.jpg)
+
 ## Features
 
 ### Favicon
@@ -140,22 +150,24 @@ lightgrey #d3d3d3 or rgb(211, 211, 211)
 
 ### Typography
 Noto Sans has been used as a font since it features greek letters necessary for the some of the input/output parameters. "Montserrat" and sans-serif is used as fallback fonts.
+
 ![Noto Sans font](assets/images/noto-sans-google-font.jpg)
+
 ## Miscellanious
 + As much as it is good practise to keep variables local and to avoid global variables it is sometimes necessary and this code is such an example where relativly many global variables was necessary or the code structure would have had to become very complicated.
 
 ## Technologies Used
-+ [HTML 5](https://html.spec.whatwg.org/multipage/) Website structure and content
-+ [canvas (2D) element in HTML 5](https://www.w3schools.com/html/html5_canvas.asp) To generate bitmap drawings of the wing planform.
-+ [CSS3](https://www.w3.org/TR/CSS/#css)
-+ [Java Script]( https://262.ecma-international.org/6.0/)
-+ [Google Fonts:](https://fonts.google.com/) To import font family "Open Sans Regular 400", "Montserrat" into the style.css file which is 
-+ [Balsamiq:](https://balsamiq.com/) Super nice program for creating wireframe drafts of the website.
-+ [Krita:](https://krita.org/en/) Used for creating, editing and re-sizing images (bitmap art).
-+ [Clip Studio Paint:](https://www.clipstudio.net/en/) Used for creating and editing vectorgraphics (as well as bitmap-art) such as the Enebog-logo.
-+ [Am I Responsive:](http://ami.responsivedesign.is) Checking the responsiveness and generating the image in the beginning of this document showing my website on different devices/screensizes.
-+ [GitPod](https://www.gitpod.io/) GitPod has been used as a cloud based IDE from which code was commited and pushed to GitHub.
-+ [GitHub:](https://github.com/) GitHub is used to store the code that has been pushed from GitPod.
++ [HTML 5 -](https://html.spec.whatwg.org/multipage/) App structure and content
++ [Canvas (2D) element in HTML 5 -](https://www.w3schools.com/html/html5_canvas.asp) Bitmap drawings of wing planform
++ [CSS3 -](https://www.w3.org/TR/CSS/#css) App styling
++ [Java Script -]( https://262.ecma-international.org/6.0/) Interactivity
++ [Google Fonts -](https://fonts.google.com/) Import used font families
++ [Balsamiq -](https://balsamiq.com/) Wireframe drafts
++ [Krita -](https://krita.org/en/) Creating and editing images (bitmap)
++ [Clip Studio Paint -](https://www.clipstudio.net/en/) Creating and editing images (vectorgraphics and bitmap)
++ [Am I Responsive -](http://ami.responsivedesign.is) Responsiveness check and generating multi-device image in the begin of this readme
++ [GitPod -](https://www.gitpod.io/) Cloud based IDE
++ [GitHub -](https://github.com/) Cloud based code storage
 
 ## Testing
 ### Manual testing
@@ -168,19 +180,9 @@ Noto Sans has been used as a font since it features greek letters necessary for 
   + Responsive design shifts correctly at the breakpoint (width: 576px) between the drawing- and the input-output-area stacked (mobil) and side-by-side (inline) for larger devices
 
 + Manual testing has been carried out on:
-  + Different browsers: Except Chrome the website has also been tested in Firefox (Safari as not been tested) where a a bug in the form element was appearing.
-  + Responsiveness using different standard screen sizes testing the responsive design.
-  + name, email and message is required to submit the form in the contact section.
-  + the email input field must contain @ symbol to submit the form in the contact section.
-
-
-  I have tested that this page works using macOS (Macbook Air).
-I have tested that this page works in the following browsers using macOS: Chrome, Safari and Firefox.
-I have tested this page works on iOS devices using Safari browser (iPhone X and iPad Air).
-
-Responsivness
-Chrome developer tool have been used to check the responsivness.
-I have tested that this page works on different screen sizes from iPhone 5 (320px wide) and very large screens like 5K iMac Pro (5120 x 2880 px).
+  + Different browsers: Chrome, Firefox, Edge and Safari
+  + Laptop, tablet (Ipad Air 5) and mobile (Samsung Galaxy A50 and Iphone 11)
+  + Responsiveness using the device toolbar in Dev tools
 
 ### Validator Testing
 + All code was tested for syntactical errors with perfect results using official validators (Java Script 62 warnings all relating to potential compability issies with java script or browser versions) :
@@ -198,19 +200,17 @@ I have tested that this page works on different screen sizes from iPhone 5 (320p
 + The code was also beautified using GitPods built in beautifyer.
 
 ![The first computer Bugs.](assets/images/9th-sept-1947-first-computer-bug-harvard-markII.jpg)
+
 ### Bugs
 + Fixed bugs:
-  + Change in logo and header height would not come through due to conflicting css-rules.
-  + Page overflowed horizontaly (slider appeared).
-  + "Underline on hover" in large display navbar disapeared due to a typo.
-  + Hamburge-icon could not be vertically centered.
-  + One-page-scroll-navigation stopped to far down in the work-, about- and contact-sections.
-  + The most evil bug of the project width="320" height="569"
-+ Remaining bugs:
-  + The drawing coordinates are are faulty for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ
-  + The form flows down into the footer (or vice versa) in Firefox.
-  + The "click-anywhere-on-page"-link on the display page has stopped working in the last versions.
+  + The most evil and headachy (if that is a word) bug of the project was the drawing overflowing the canvas boundary. The bug fix was to not only set the canvas width="320" height="569" in the CSS-file but also directly in the canvas element in the html-file. The solution came as a result of determining that all the plot coordinates where correct using dev-tools (see below compilation of error elimination). The deceptivness of this bug was that canvas seem to be working with two different sizes yet dev tools was showing only one of these.
+
 ![unsolved bug drawing overflow of canvas boundaries](assets/images/unsolved-bug-wing-overflow.jpg)
+
++ Remaining bugs:
+  + The drawing coordinates are erronious () for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ. For this reason the negative sweep angle, Δ unfortunatly also becomes unavailable despite being in full working order.
+
+![negative x values](assets/images/compensate-neg-x-values.jpg)
 
 ### Deployment
 + Go to your GitHub repo and choose the **settings** tab and then **Pages** on the left-hand sidebar and then make sure that the following is set as below:
@@ -221,8 +221,6 @@ I have tested that this page works on different screen sizes from iPhone 5 (320p
 + Go to the **github-pages** under the **Deployment** section, further down on the right hand side.
 + Now you can see the URL to your deployed site under **Active deployments**. Click on the URL to go to your site. The URL will follow the following format: your-username.github.io/your project name/
 
-![Deployment](assets/images/readme/deployment.jpg)
-
 ## Credits
 
 ### Readme
@@ -231,9 +229,8 @@ I have tested that this page works on different screen sizes from iPhone 5 (320p
   + rock-paper-scissors by mittnamnkenny
 
 ### Code
-+ The code for the header with navbar, form and footer from Code Institute's "Love Running" was used as a starting point for my code.
-+ Code that is supposed to making the whole page clickable (not just back arrow) is taken from a forum however I am sorry to say that I have not been able to retrieve the source back to give credit.
-+ "Zoom on Hoover" code snippet from 3W Schools (https://www.w3schools.com/howto/howto_css_zoom_hover.asp) has been used and modified to make images in the galleries in the work-section zoom when they are being hovered.
++ The code Institute tutor for help on the eventlistener and dark mode toggle button.
++ API Code snippet for tool tips from 3W Schools https://www.w3schools.com/howto/howto_css_zoom_hover.asp
 
 ### Acknowledgement
 A special thanks to my mentor at Code Institute for his time, nice ways and for most helpful input!

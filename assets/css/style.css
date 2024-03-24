@@ -77,8 +77,8 @@ body {
 }
 
 .parameterSub {
-    padding-left: 5%;
-    padding-bottom: 15%;
+    padding-left: 0;
+    /* padding-bottom: 0; */
     display: block;
     white-space: nowrap;
     /* max-width */
@@ -200,13 +200,15 @@ myPlot-Overide {
     top: -5px;
     right: 105%;
 }
-
 /* Tooltips for "Input/output parameters" - END */
 
+/* dark light mode - START */
 .dark-mode {
     width: 59px;
     height: 45px;
     background-image: url("../images/light-mode-button-stack.png");
+    /* ctx.strokeStyle = "white"; */
+    /* background-color: black; */
 }
 
 .light-mode {
@@ -214,6 +216,7 @@ myPlot-Overide {
     height: 45px;
     background-image: url("../images/dark-mode-button-stack.png");
 }
+/* dark light mode - END */
 
 /* help and mode "row" */
 img.flex-help-mode {
