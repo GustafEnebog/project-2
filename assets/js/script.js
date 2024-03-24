@@ -37,10 +37,6 @@ let cTip = [null, null, null, null];
 let xDelta = [null, null, null, null];
 let delta = [null, null, null, null];
 
-// var canvas = document.getElementById('drawing'); // according to tip from "Faheel" at https://stackoverflow.com/questions/34772957/how-to-make-canvas-responsive
-// var heightRatio = 1,5;
-// canvas.height = canvas.width * heightRatio;
-
 // Get the inputs from the html-form
 function calcBHalf() {
   bHalf[1] = parseInt(document.getElementById('bhalf-p1').value);
@@ -55,8 +51,6 @@ function calcBHalf() {
 
 function calcCRoot() {
   cRoot[1] = parseInt(document.getElementById('croot-p1').value);
-  // cRoot[2] = parseInt(document.getElementById('croot-p2').innerText);
-  // cRoot[3] = parseInt(document.getElementById('croot-p3').innerText);
   if (cRoot[1] != "") {
     cRoot[0] = cRoot[1];
     cRoot[1] = cRoot[1]; // Unique to this parameter since the root chord for the complete wing and the first panel is the same 
@@ -91,7 +85,7 @@ function calcDelta() {
 }
 
 function deltaAlert() {
-  if (delta[1] >= 60 || delta[2] >= 60 || delta[3] >= 60) { //  || delta[2] >= 45 || delta[3] >= 45) {
+  if (delta[1] >= 60 || delta[2] >= 60 || delta[3] >= 60) {
     alert('That is a lot, are you sure you know what you are doing!?');
   }
 }
@@ -236,7 +230,6 @@ function calcSweepP1() {
   }
 }
 
-// sweepP1X[1] != "" && 
 // Sweep line Panel 2
 function calcSweepP2() {
   if (cTip[1] != "" && xDelta[1] != "" && xDelta[2] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[2] != "") {
@@ -259,7 +252,6 @@ function calcSweepP3() {
   }
 }
 
-// sweepP1X[1] != "" && outlineP1X[1] != "" &&
 // Outline Panel 1
 function calcOutlineP1() {
   if (cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
@@ -267,13 +259,9 @@ function calcOutlineP1() {
     outlineP1Y[0] = 0;
 
     outlineP1X[1] = sweepP1X[1] - cTip[1] * 0.01 * xDelta[1];
-    // console.log(sweepP1X[1]); // null
-    // console.log(-cTip[1] * 0.01 * xDelta[1]);
-    // P1X[1] = sweepP2X[1] - cTip[2] * 0.01 * xDelta[2] - cTip[1] * 0.01 * xDelta[1];
     outlineP1Y[1] = bHalf[1];
 
     outlineP1X[2] = outlineP1X[1] + cTip[1];
-    // P1X[2] = sweepP1X[1] + cTip[1] * 0.01 * (100 - xDelta[1]);
     outlineP1Y[2] = bHalf[1];
 
     outlineP1X[3] = cRoot[1];
@@ -281,7 +269,6 @@ function calcOutlineP1() {
   }
 }
 
-// sweepP2X[1] != "" && outlineP1X[1] != "" && outlineP1Y[1] != "" && outlineP2X[1] != "" &&
 // Outline Panel 2
 function calcOutlineP2() {
   if (cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
@@ -301,7 +288,6 @@ function calcOutlineP2() {
   }
 }
 
-// sweepP3X[1] != "" && outlineP2X[1] != "" && outlineP2Y[1] != "" && outlineP3X[1] != "" &&
 // Outline Panel 3
 function calcOutlineP3() {
   if (cTip[1] != "" && xDelta[1] != "" && bHalf[1] != "" && cRoot[1] != "") {
@@ -323,42 +309,6 @@ function calcOutlineP3() {
 
 
 //-------------------- PLOTTING WINGPANEL USING CANVAS - THE STARTING POINT FOR BELOW CODE COMES FROM https://www.w3schools.com/graphics/canvas_shapes.asp --------------------
-
-// let outlineP1XTEST = [-1, 0, 1, 2];
-// let testMin;
-// let testMax;
-// console.log(Math.min(...outlineP1XTEST));
-// console.log(Math.max(...outlineP1X));
-// testMin = Math.min(...outlineP1XTEST);
-// testMax = Math.max(...outlineP1XTEST);
-
-
-// TEST
-// let outlineP1XTEST = [-1, 0, 1, 2];
-// testMin = Math.min(...outlineP1XTEST);
-// testMax = Math.max(...outlineP1XTEST);
-
-// function testing() {
-// testMin = Math.min(...outlineP1X);
-// testMax = Math.max(...outlineP1X);
-// console.log(testMin);
-// console.log(testMax);
-// console.log(outlineP1X);
-// }
-
-// test = Math.max.apply(...outlineP1X);
-// let testMax2 = Math.max(...outlineP1X[0], ...outlineP1X[1], ...outlineP1X[2], ...outlineP1X[3]);
-// let testMin3 = Math.min(...outlineP1X[0], ...outlineP1X[1], ...outlineP1X[2], ...outlineP1X[3]);
-// Calculate canvas width and height
-// Width
-
-/*
-* docstring
-* @param [number} a - the first number
-  @param [number}
-  @returns [number}
-  @example [number}
-*/
 
 // Calculating the horizontal or vertical size of the drawing
 function getDrawingSize() {
@@ -391,11 +341,6 @@ var drawingHeight;
 function getDrawingHeight() {
   drawingHeight = sweepP3Y[1];
 }
-
-//function getDrawingHeight() {
-//  drawingHeight = ;
-// canvas.height = drawingHeight;
-//}
 
 /* Compensation factor to make the drawing independent of users input (changing b = 10 to b = 1000 would make the drawing 100 times larger).
 The drawing would still fit within the bounds but would be blurry if user input is to small and lines would be too thin if user input is too large.
@@ -515,102 +460,10 @@ console.log(drawingHeight);
 // Create a canvas:
 const canvas = document.getElementById("drawing");
 const ctx = canvas.getContext("2d");
-// canvas.width = drawingWidth;
-// canvas.height = drawingHeight;
-// ctx.clearRect(0, 0, drawingWidth, drawingHeight); // Change the "500" to canvas width and height once the calculations of these has been made
 
 // Style the line - General
 ctx.strokeStyle = "black";
 ctx.lineCap = "round";
-
-
-// function getDrawingSize(i, j, k) {
-// Max values
-//  console.log(i);
-//  console.log(j);
-//  console.log(k);
-//  let maxIntermediate = [null, null, null];
-//  maxIntermediate[0] = Math.max(...i); // get max value from 'outlineP1X'-array
-//  maxIntermediate[1] = Math.max(...j); // get max value from 'outlineP2X'-array
-//  maxIntermediate[2] = Math.max(...k); // get max value from 'outlineP3X'-array
-//  let drawingMax = Math.max(...maxIntermediate); // get max value of, these above, gotten max values
-// Min values
-//  let minIntermediate = [null, null, null];
-//  minIntermediate[0] = Math.min(...i); // get min value from 'outlineP1X'-array
-//  minIntermediate[1] = Math.min(...j); // get min value from 'outlineP2X'-array
-//  minIntermediate[2] = Math.min(...k); // get min value from 'outlineP3X'-array
-//  let drawMin = Math.min(...minIntermediate); // get min value of, these above, gotten min values
-// drawing width
-//  return drawingMax - drawingMin; // finaly get drawing width from above gotten max and min values 
-// }
-// let drawingWidth = getDrawingSize(...outlineP1X, ...outlineP2X, ...outlineP3X);
-// let drawingHeight = getDrawingSize(...outlineP1Y, ...outlineP2Y, ...outlineP3Y);
-
-
-
-
-// function getDrawMaxX() {
-//   let maxXIntermediate = [];
-//  maxXIntermediate[0] = Math.max.apply(null, outlineP1X);
-//  maxXIntermediate[1] = Math.max.apply(null, outlineP2X);
-//  maxXIntermediate[2] = Math.max.apply(null, outlineP3X);
-//  return Math.max.apply(null, maxXIntermediate);
-// }
-
-// function getDrawMinX() {
-//  let minXIntermediate = [0];
-//  minXIntermediate[0] = Math.min.apply(null, outlineP1X);
-//  minXIntermediate[1] = Math.min.apply(null, outlineP2X);
-//  minXIntermediate[2] = Math.min.apply(null, outlineP3X);
-//  return Math.min.apply(null, minXIntermediate);
-//}
-
-// let drawMaxX = getDrawMaxX();
-// let drawMinX = getDrawMinX();
-// let canvasWidth = drawMaxX - drawMinX;
-
-// Height
-// function getDrawMaxY() {
-//  let maxYIntermediate = [];
-//  maxYIntermediate[0] = Math.max.apply(null, outlineP1Y);
-//  maxYIntermediate[1] = Math.max.apply(null, outlineP2Y);
-//  maxYIntermediate[2] = Math.max.apply(null, outlineP3Y);
-//  return Math.max.apply(null, maxYIntermediate);
-// }
-
-// function getDrawMinY() {
-//  let minYIntermediate = [];
-//  minYIntermediate[0] = Math.min.apply(null, outlineP1Y);
-//   minYIntermediate[1] = Math.min.apply(null, outlineP2Y);
-//   minYIntermediate[2] = Math.min.apply(null, outlineP3Y);
-//  return Math.min.apply(null, minYIntermediate);
-// }
-
-// let drawMaxY = getDrawMaxY();
-// let drawMinY = getDrawMinY();
-// let canvasHeight = drawMaxY - drawMinY;
-// END OF - Calculate canvas width and height
-
-// Setting size of canvas
-
-// canvasHeight = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
-// canvasWidth = (Math.max(...plotArrayY) - Math.min(...plotArrayY));
-// var canvas = document.querySelector('canvas'); // Credit to https://www.youtube.com/@KevinPowell (if I remember correctly!)
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-
-
-// drawing.height = canvasHeight;
-// drawing.width = canvasWidth;
-
-// drawing.height = 600;
-// drawing.width = 600;
-
-// const canvas = document.querySelector("#");
-// canvas.width = 600;
-// canvas.height = 500;
-// drawScreen();
-
 
 // Panel 1
 function plotOutlineP1() {
@@ -771,16 +624,6 @@ function plotOutlineP3() {
 function plotSweepP1() {
   if (cRoot[1] != "" && xDelta[1] != "" && bHalf[1] != "" && bHalf[2] != "" && delta[1] != "") {
 
-    // If Display Horizontal is choosen (Transposing x asssignes y and y assignes x)
-    // if (displayHoriz == 1) {
-    //  for (let i = 0; i < 2; i++) {
-    //      let sweepP1XTemp[0] = sweepP1X[0];
-    //      sweepP1X[0] = sweepP1Y[0];
-    //      sweepP1Y[0] = sweepP1XTemp[0];
-    //  }
-    // }
-
-    // ---------- Plot ----------
     // Define a new path: 
     ctx.beginPath();
 
@@ -852,47 +695,8 @@ function plotSweepP3() {
   }
 }
 
-
-    ctx.strokeStyle = "blue";
-
-
-
-        ctx.lineWidth = "4";
-ctx.setLineDash([5, 3]); /*dashes are 5px and spaces are 3px*/
-
-    // Define a start point
-    ctx.moveTo(0, 0);
-
-    // Define points
-    ctx.lineTo(320, 569);
-
-    // Draw it
-    ctx.stroke();
-
-
-
-// let displayHoriz = 1
-
-// If Display Horizontal is choosen -> Rotate
-//   if (displayHoriz == 1) {
-//       ctx.rotate(-45 * Math.PI / 180);
-//  }
-
 //-------------------- LET IT ALL HAPPEN (EVENTLISTENER)! --------------------
 function funcForEvent() {
-  // console.log("funcForEvent");
-  // console.log(testMin);
-  // console.log(testMax);
-  // console.log(outlineP1X);
-  // testing();
-  // let testvar = Math.tan(degToRad * delta[1]);
-  // console.log(bHalf[1]);
-  // console.log(testvar);
-  // console.log(bHalf[1]*testvar);
-  // console.log(negXCompFactor);
-  // getDrawingNegValue()
-  // console.log(drawingWidth);
-  // console.log(drawingHeight);
   calcBHalf();
   calcCRoot();
   calcCTip();
@@ -903,32 +707,6 @@ function funcForEvent() {
   calcCSmc();
   calcSHalf();
   calcAr();
-  //console.log(sweepP1X);
-  //console.log(sweepP1XC);
-  //console.log(sweepP2X);
-  //console.log(sweepP2XC);
-  //console.log(sweepP3X);
-  //console.log(sweepP3XC);
-  //console.log(outlineP1X);
-  //console.log(outlineP1XC);
-  //console.log(outlineP2X);
-  //console.log(outlineP2XC);
-  //console.log(outlineP3X);
-  //console.log(outlineP3XC);
-  console.log(sweepP1Y);
-  console.log(sweepP1YC);
-  console.log(sweepP2Y);
-  console.log(sweepP2YC);
-  console.log(sweepP3Y);
-  console.log(sweepP3YC);
-  console.log(outlineP1Y);
-  console.log(outlineP1YC);
-  console.log(outlineP2Y);
-  console.log(outlineP2YC);
-  console.log('outlineP3Y');
-  console.log(outlineP3Y);
-  console.log('outlineP3YC');
-  console.log(outlineP3YC);
   calcSweepP1();
   calcSweepP2();
   calcSweepP3();
@@ -938,8 +716,7 @@ function funcForEvent() {
   getDrawingWidth();
   getDrawingHeight();
   compensateNegX();
-  ctx.clearRect(0, 0, 320, 500); // drawingWidth, drawingHeight 320, 500
-  // ctx.clearRect(0, 0, 320, 500);
+  ctx.clearRect(0, 0, 320, 569); 
   plotSweepP1();
   plotSweepP2();
   plotSweepP3();
@@ -947,20 +724,6 @@ function funcForEvent() {
   plotOutlineP2();
   plotOutlineP3();
 }
-
-// Alternative 1 - Should I use "changes" instead of "oninput"
-// document.body.addEventListener("click", funcForEvent);
-
-// Alternative 2
-//let paramInputs = document.querySelectorAll(".paramInput");
-//for (let paramInput of paramInputs) { // for (let i = 0; i < variableInputs.length; i++) {
-//paramInput.addEventListener('change', funcForEvent);
-//}
-
-// Alternative 3
-// document.getElementById('input-output-form').addEventListener('click', funcForEvent)
-
-// Alternative 4
 
 document.querySelectorAll('.param-input').forEach(function (input) {
   input.addEventListener('input', funcForEvent);
