@@ -3,9 +3,9 @@
 [View the live project here](https://gustafenebog.github.io/project-2/)
 
 # Parametric Wing planform Design App
-This App creates a simple top-view drawing of a wing based on parametric user-input such as for example wing span, chord and sweep. This way of designing lends itself better for otimization algoritms and works the other way around to when a designer/user first use CAD/drawing-software to first draw the wing and afterward recieve or having to calculate the wing design parameters.
+This App creates a simple top-view drawing of a wing based on parametric user-input such as for example wing span, chord and sweep. This way of designing lends itself better for optimization algorithms and works the other way around to when a designer/user first use CAD/drawing-software to first draw the wing and afterward receive or having to calculate the wing design parameters.
 
-The app is particilary usefull for hobbyist designing model airplanes as well as (as more features and parameters are being added) for Aircraft Conceptual Designers since the user imediatly recieves a live updated graphics to his inputed numbers.
+The app is particularly useful for hobbyist designing model airplanes as well as (as more features and parameters are being added) for Aircraft Conceptual Designers since the user immediately receives a live updated graphics to his inputted numbers.
 
 ![Image of App on different sized devices.](assets/images/am-i-responsive-wingit.jpg)
 
@@ -13,31 +13,31 @@ The app is particilary usefull for hobbyist designing model airplanes as well as
 * [User Experience (UX)](#user-experience-ux) 
 * [Features](#features)
 * [Design](#design)
-* [Miscellanious](#miscellanious)
+* [Miscellaneous](#miscellaneous)
 * [Technologies Used](#technologies-used)
 * [Testing](#testing)
 * [Deployment](#deployment)
 * [Credits](#credits)
 
 ## User Experience (UX)
-As a user I want to be able to :
+As a user I want to be able to:
 
 + Easily determine the purpose of the website.
 + Play around (step up and down or type in form field) with different values of Wing Design Parameters to view...
   + A live updated drawing of the wing planform
-  + live updated dependent parameters outputed as they are calculated using the inputed independent parameters
-+ View graphical legend defining the characteristic Wing Design Parameters in the form of a hover over tool tip
+  + live updated dependent parameters outputted as they are calculated using the inputted independent parameters.
++ View graphical legend defining the characteristic Wing Design Parameters in the form of a hover over tool tip (also known as screen tips)
 + View legends for variable symbols in the form of hover over tool tip
-+ Toogle between a default light mode and a dark mode.
++ Togle between a default light mode and a dark mode.
 
 ## Features
 
 ### The Drawing Area
     Calculating the wing planforms width and Height as well as its ratio. 'getDrawingWidth'-function which in turn calls upon the 'getDrawingSize'-function. 'getDrawingHeight'-function
 
-    Moving potentially negative values (as in the case when a forward sweep wing panel moves ahead of the root leading edge). 'getNegXCompFactor'-function calculates this factor and it is applied in the 'compensateNegX'-function.
+    Moving potentially negative values (as in the case when a forward sweep wing panel moves ahead of the root leading edge). 'getNegXCompFactor'-function calculates this factor, and it is applied in the 'compensateNegX'-function.
 
-    Calculating the factor (zoomFactor) and applying this to the plot coordinates in order to make the drawing the same size as the drawing sizes (canvas size of, width: 320px; height: 569px;). Responsible for this is the function 'getZoomFactor'
+    Calculating the factor (zoomFactor) and applying this to the plot coordinates to make the drawing the same size as the drawing sizes (canvas size of, width: 320px; height: 569px;). Responsible for this is the function 'getZoomFactor'
 
     Plotting the drawing using different line weights and both solid and dashed line
 sweepP1XC
@@ -56,7 +56,7 @@ outlineP3YC
     help section and tool tips
       delay in displaying tooltip
     Dark Mode
-      Toogle button
+      Togle button
     complete input feedback/confirmation
     Input
       live update using eventlistener for input
@@ -64,7 +64,7 @@ outlineP3YC
       Alert message
     Output
       Calculation of wing parameters (output) based on other wing parameters (input) using standard equations
-      Commensinc calculation of output paramaters only as all neccesary input parameters has been inputed (solved by if-statements)
+      Compensating calculation of output paramaters only as all necessary input parameters has been inputed (solved by if-statements)
     x
 
 ### The Input/Output Area
@@ -92,24 +92,24 @@ Unlike Scalable Vector Graphics (SVG) the html element "Canvas" is a bitmap whic
   + Neutral Point, n.p.
   + Center of Gravity, c.g.
   + Static Margin, s.m.
-  + Horisontal Tail Volume, VH
+  + Horizontal Tail Volume, VH
   + Control Surface Root Chord, csc,r
   + Control Surface Tip Chord, csc,t
   + Control Surface Start, bsc,r
   + Control Surface End, bsc,t
-  + Control Surface at LE, TE or inbetween
+  + Control Surface at LE, TE or in-between
   + etc.
-+ Implementing more featuers, e.g. 
-  + Free chooise of nr. of wings
-  + Free chooise of wing panels
-+ More display options (toggle with radiobuttons)
-  + Implement radiobuttons (and functionality) for:
-  + Showing right wing half instead of left as is now the case (write function that multiples y-coordiantes with -1 and then subtracts half span)
-  + Showing the whole wing, i.e. both left and right wing halves (write functions that subtracts half span to left wing half and then add right wing half)
-  + Rotate wing into a horisontal position (write function that transposes plot coordiantes or use the [canvas rotate method](https://www.w3schools.com/jsref/canvas_rotate.asp)
++ Implementing more features, e.g. 
+  + Free choice of nr. of wings
+  + Free choice of wing panels
++ More display options (toggle with radio buttons)
+  + Implement radio buttons (and functionality) for:
+  + Showing right wing half instead of left as is now the case (write function that multiples y-coordinates with -1 and then subtracts half span)
+  + Showing the whole wing, i.e. both left- and right- wing halves (write functions that subtracts half span to left wing half and then add right wing half)
+  + Rotate wing into a horizontal position (write function that transposes plot coordiantes or use the [canvas rotate method](https://www.w3schools.com/jsref/canvas_rotate.asp))
 + Make drawing- (canvas) area adapt (responsive design) to available view port instead of having to resort to a fixed size (currently set to 320px X 569px) 
 + Evaluating if a revision of the code structure and handling of events could allow the number of global variables to be reduced.
-+ A 500 ms delay for the tooltips to appear after having been hovered over (no delay for them to disapear)
++ A 500 ms delay for the tooltips to appear after having been hovered over (no delay for them to disappear)
 + Completing a Dark Mode alternative interface. The button (with javascript-code) to toggle back and forth between the dark- and the default light- mode is already created but has been removed since the feature is not yet fully working.
 
 ## Design
@@ -118,13 +118,13 @@ Unlike Scalable Vector Graphics (SVG) the html element "Canvas" is a bitmap whic
 ![wireframe initial idea](assets/images/wireframe-initial-idea.jpg)
 
 interface
-Inspiration for this clean minimalistic design came from many sites and tools including monday.com and xxxxx![Monday.com](assets/images/monday-com.jpg)
+Inspiration for this clean minimalistic design came from many sites and tools including monday.com![Monday.com](assets/images/monday-com.jpg)
 
 ![wireframe input inline](assets/images/wireframe-input-inline.jpg)
 
 ![wireframe input stack](assets/images/wireframe-input-stack.jpg)
 
-The useage of tool tips allows the design to be less cluttered yet still having the information easily accessible
+The usage of tool tips allows the design to be less cluttered yet still having the information easily accessible
 
 ![wireframe tool tip](assets/images/wireframe-tool-tip.jpg)
 
@@ -149,12 +149,12 @@ lightgrey #d3d3d3 or rgb(211, 211, 211)
 ![Favicon](assets/images/favicon.jpg)
 
 ### Typography
-Noto Sans has been used as a font since it features greek letters necessary for the some of the input/output parameters. "Montserrat" and sans-serif is used as fallback fonts.
+Noto Sans has been used as a font since it features Greek letters necessary for the some of the input/output parameters. "Montserrat" and sans-serif is used as fallback fonts.
 
 ![Noto Sans font](assets/images/noto-sans-google-font.jpg)
 
 ## Miscellanious
-+ As much as it is good practise to keep variables local and to avoid global variables it is sometimes necessary and this code is such an example where relativly many global variables was necessary or the code structure would have had to become very complicated.
++ As much as it is good practise to keep variables local and to avoid global variables it is sometimes necessary and this code is such an example where relatively many global variables was necessary or the code structure would have had to become very complicated.
 
 ## Technologies Used
 + [HTML 5 -](https://html.spec.whatwg.org/multipage/) App structure and content
@@ -174,7 +174,7 @@ Noto Sans has been used as a font since it features greek letters necessary for 
 + I have manually tested that:
   + The most complex function in the code (cyclomatic complexity rating of 13) can be considered "More complex to understand" and with a "moderate risk to modify" whereas the median function (cyclomatic complexity rating of 5) can be considered as a "Simple procedure to understand" and with a "little risk to modify"
 	+ That all output parameters have been calculated correctly
-  + the "tool tip on hover" (also known as screentips) all work.
+  + the "tool tip on hover" all work.
   + Wrong input, e.g. letters are not accepted, decimal numbers!!!
 	+ wrong input, e.g. email address field without an @-sign receive a complaint as well as a form submission-button-click results in a confirmation page.
   + Responsive design shifts correctly at the breakpoint (width: 576px) between the drawing- and the input-output-area stacked (mobil) and side-by-side (inline) for larger devices
@@ -185,7 +185,7 @@ Noto Sans has been used as a font since it features greek letters necessary for 
   + Responsiveness using the device toolbar in Dev tools
 
 ### Validator Testing
-+ All code was tested for syntactical errors with perfect results using official validators (Java Script 62 warnings all relating to potential compability issies with java script or browser versions) :
++ All code was tested for syntactical errors with perfect results using official validators (Java Script 62 warnings relating to potential compability issues with java script or browser versions):
   + HTML using the W3C-the official validator for html-code (https://validator.w3.org/)
 ![W3C result](assets/images/readme/html-validator.jpg)
   + CSS using Jigsaw-the official validator for CSS-code (https://jigsaw.w3.org/css-validator/)
@@ -195,7 +195,7 @@ Noto Sans has been used as a font since it features greek letters necessary for 
   + performance, accessibility, SEO etc. using Lighthouse in Chrome developer tools.
 ![Jigsaw result](assets/images/readme/css-validator.jpg)
 ![Lighthouse](assets/images/lighthouse-result.jpg)
-  + The low performance scoore is inherent for a calculation-heavy App and with the live update adding insult to injury.
+  + The low performance score is inherent for a calculation-heavy App and with the live update adding insult to injury.
 ![Lighthouse point of improvement](assets/images/readme/lighthouse-accesibility-improve.jpg)
 + The code was also beautified using GitPods built in beautifyer.
 
@@ -203,12 +203,12 @@ Noto Sans has been used as a font since it features greek letters necessary for 
 
 ### Bugs
 + Fixed bugs:
-  + The most evil and headachy (if that is a word) bug of the project was the drawing overflowing the canvas boundary. The bug fix was to not only set the canvas width="320" height="569" in the CSS-file but also directly in the canvas element in the html-file. The solution came as a result of determining that all the plot coordinates where correct using dev-tools (see below compilation of error elimination). The deceptivness of this bug was that canvas seem to be working with two different sizes yet dev tools was showing only one of these.
+  + The most evil and headachy (if that is a word) bug of the project was the drawing overflowing the canvas boundary. The bug fix was to not only set the canvas width="320" height="569" in the CSS-file but also directly in the canvas element in the html-file. The solution came as a result of determining that all the plot coordinates where correct using dev-tools (see below compilation of error elimination). The deceptiveness of this bug was that canvas seem to be working with two different sizes, yet dev tools was showing only one of these.
 
 ![unsolved bug drawing overflow of canvas boundaries](assets/images/unsolved-bug-wing-overflow.jpg)
 
 + Remaining bugs:
-  + The drawing coordinates are erronious () for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ. For this reason the negative sweep angle, Δ unfortunatly also becomes unavailable despite being in full working order.
+  + The drawing coordinates are erroneous () for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ. For this reason the negative sweep angle, Δ unfortunately also becomes unavailable despite being in full working order.
 
 ![negative x values](assets/images/compensate-neg-x-values.jpg)
 

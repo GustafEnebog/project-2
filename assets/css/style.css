@@ -97,15 +97,6 @@ input[type=number] {
     margin-left: 10px
 }
 
-.dot-two {
-    height: 10px;
-    width: 10px;
-    background-color: #00ff55;
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: 10px
-}
-
 myPlot-Overide {
     color-line: black;
 }
@@ -219,9 +210,10 @@ myPlot-Overide {
 /* dark light mode - END */
 
 /* help and mode "row" */
-img.flex-help-mode {
-    float: right;
-}
+/* img.flex-help-mode {  */
+/*     float: right; */
+/* }  */
+
 
 /* MEDIA QUERYS */
 
