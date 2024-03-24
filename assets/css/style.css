@@ -16,10 +16,10 @@ body {
     /* avoid completly black to make easier for the eyes */
     /* Font from Google fonts using link (placed in index.html header) */
     font-family: "Noto Sans", sans-serif;
-    font-optical-sizing: auto;
+    /* font-optical-sizing: auto;  */
     font-weight: 400;
     font-style: normal;
-    font-variation-settings: 100;
+    /* font-variation-settings: 100; */
 }
 
 /* html { */
@@ -53,7 +53,7 @@ body {
 
 .input-output-area {
     background-color: lightgrey;
-    margin: 20;
+    margin: 20%;
     /* border: red; */
     padding-left: 30px;
     padding-top: 10px;
@@ -97,9 +97,9 @@ input[type=number] {
     margin-left: 10px
 }
 
-myPlot-Overide {
-    color-line: black;
-}
+/* myPlot-Overide {  */
+/*     color-line: black;  */
+/* }  */
 
 /* Tooltip for "Help" adapted from https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_top */
 .tooltip-help {
