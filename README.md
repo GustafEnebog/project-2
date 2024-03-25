@@ -132,7 +132,7 @@ The usage of tool tips allows the design to be less cluttered yet still having t
 ## Features
 
 ### The Logo and Favicon
-+ The font Nasalization was used for the logo becasue it feels Modern, exciting, and scientific (https://www.dafont.com/nasalization.font)
++ The font Nasalization was used for the logo becasue it feels Modern, exciting, and hightec (https://www.dafont.com/nasalization.font)
 + The favicon is made up by the W in the WINGIT-logo.
 + The favicon has been produced in all relevant file formats.
 
@@ -204,7 +204,7 @@ Noto Sans has been used as a font since it features Greek letters necessary for 
 ![unsolved bug drawing overflow of canvas boundaries](assets/images/unsolved-bug-wing-overflow.jpg)
 
 + Remaining bugs:
-  + The drawing coordinates are erroneous () for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ. For this reason the negative sweep angle, Δ unfortunately also becomes unavailable despite being in full working order.
+  + The drawing coordinates are erroneous () for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ. For this reason the negative sweep angle, Δ unfortunately also becomes unavailable despite being in full working order. The sourse of this error probably lies in the calulation of the sweep and that the if-statement throws it out when the sweep angle is zero. Note however that tan(0) = 0.
   + Below image shows (on the inner wing panel on top) that negative sweep angles is perfectly possible thanks to the getNegXCompFactor function.
 
 ![negative x values](assets/images/compensate-neg-x-values.jpg)
