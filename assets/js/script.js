@@ -6,16 +6,19 @@ const canvasHeightFix = 569;
 
 var mode = document.getElementById("modeButton");
 
-mode.addEventListener("click", function (event) { // Help from Roo
-  // check if light-mode
+mode.addEventListener("click", function (event) {
   if (event.target.classList.contains("light-mode")) {
     event.target.classList.remove("light-mode"); // remove light
     event.target.classList.add("dark-mode"); // Add dark
     console.log("Add Dark");
+    // Alternative if I want a white-lined drawing in dark mode instead of red as set further down: ctx.strokeStyle = "white";
+    document.body.style.background = 'black'
   } else {
     event.target.classList.remove("dark-mode"); // Remove dark
     event.target.classList.add("light-mode"); // Add light
     console.log("Add Light");
+    // Alternative if I want a black-lined drawing in dark mode instead of red as set further down: ctx.strokeStyle = "black";
+    document.body.style.background = 'white'
   }
 });
 
@@ -297,7 +300,8 @@ function calcOutlineP3() {
 }
 
 
-//-------------------- PLOTTING WINGPANEL USING CANVAS - THE STARTING POINT FOR BELOW CODE COMES FROM https://www.w3schools.com/graphics/canvas_shapes.asp --------------------
+
+//-------------------- ANALYSING AND ADAPTING PLOT COORDINATES TO BE PLOTTED USING CANVAS --------------------
 
 // Calculating the horizontal or vertical size of the drawing
 function getDrawingSize() {
@@ -319,11 +323,10 @@ var drawingWidth;
 
 function getDrawingWidth() {
   drawingWidth = getDrawingSize(...outlineP1X, ...outlineP2X, ...outlineP3X);
-  // canvas.width = drawingWidth;
 }
 
-var drawingHeight;
 // Calulating the height of the drawing
+var drawingHeight;
 function getDrawingHeight() {
   drawingHeight = sweepP3Y[1];
 }
@@ -334,6 +337,7 @@ Initial choise of width of common CSS breakpoint of 320px and a height of 500px 
 This lies close to the (inverse) of standard (used in e.g. YouTube-videos) 16 / 9 ~= 0,5625 so keeping the 320px width as a breakpoint
 This gives a a height of 320 x (16 / 9) ~= 569. (480px could also be used instead of 320px). The aspect ratio is defined: width / height */
 
+// Calculating the yoomfactor compensation term
 function getZoomFactor() {
   let viewPortAR = 320 / 569; // (9 / 16);
   let drawingAR = drawingWidth / drawingHeight;
@@ -365,8 +369,7 @@ function getNegXCompFactor() {
   return negX;
 }
 
-// Compensate all drawing x-coordinates using negXCompFactor
-
+// Adding the negXCompFactor and the getZoomFactor to the plot coordinates
 let sweepP1XC = [null, null];
 let sweepP2XC = [null, null];
 let sweepP3XC = [null, null];
@@ -419,12 +422,14 @@ function compensateNegX() {
   }
 }
 
+//-------------------- PLOTTING WINGPANEL USING CANVAS --------------------
+//-------------------- THE STARTING POINT FOR BELOW CODE COMES FROM https://www.w3schools.com/graphics/canvas_shapes.asp --------------------
 // Create a canvas:
 const canvas = document.getElementById("drawing");
 const ctx = canvas.getContext("2d");
 
 // Style the line - General
-ctx.strokeStyle = "black";
+ctx.strokeStyle = "red";
 ctx.lineCap = "round";
 
 // Panel 1
@@ -687,6 +692,10 @@ function funcForEvent() {
   plotOutlineP3();
 }
 
+// Function call to draw the drawing on canvas before any event have been triggered by input into the input fields
+funcForEvent();
+
+// Evvent listener
 document.querySelectorAll('.param-input').forEach(function (input) {
   input.addEventListener('input', funcForEvent);
   // Check if the Enter key was pressed

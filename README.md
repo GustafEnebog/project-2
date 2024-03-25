@@ -28,6 +28,9 @@ As a user I want to be able to:
   + A live updated drawing of the wing planform
   + live updated dependent parameters outputted as they are calculated using the inputted independent parameters.
 + View graphical legend defining the characteristic Wing Design Parameters in the form of a hover over tool tip (also known as screen tips)
+
+![Ideal position of tool tip to not cover parameters in input output area](assets/images/help-tool-tip-ideal-pos.jpg)
+
 + View legends for variable symbols in the form of hover over tool tip
 + Togle between a default light mode and a dark mode.
 
@@ -36,9 +39,14 @@ As a user I want to be able to:
 + The Input/Output Area
 + Live updating of drawing and calculated output via eventlistener listening to form field inputs
 + Tool tips with nomenclature and symbols
-+ Dark mode
 
-![light mode button](assets/images/light-mode.jpg)    ![dark mode button](assets/images/dark-mode.jpg)
+![Light mode button](assets/images/light-mode-button.jpg)
+
+![Dark mode button](assets/images/dark-mode-button.jpg)
+
++ A Dark mode alternative (Light mode being default)
+
+![light mode](assets/images/light-mode.jpg)    ![dark mode](assets/images/dark-mode.jpg)
 
 + Alert message for extreme input values
 
@@ -101,6 +109,7 @@ The following "dependency matrix" shows which variable can be calculated from th
 + Evaluating if a revision of the code structure and handling of events could allow the number of global variables to be reduced.
 + A 500 ms delay for the tooltips to appear after having been hovered over (no delay for them to disappear)
 + Completing a Dark Mode alternative interface. The button (with javascript-code) to toggle back and forth between the dark- and the default light- mode is already created but has been removed since the feature is not yet fully working.
++ Rounding off setting to output parameters.
 
 ## Design
 The interface is simple and plain with a focus on the relevant aspects, the drawing and the input/output area. The drawing area is at top, (below the breakpoint) and to the left (above the breakpoint) and the opposite for the input/output area.
@@ -139,7 +148,7 @@ The usage of tool tips allows the design to be less cluttered yet still having t
 ![Favicon](assets/images/favicon.jpg)
 
 ### Typography
-Noto Sans has been used as a font since it features Greek letters necessary for some of the input/output parameters. "Montserrat" and sans-serif is used as fallback fonts.
+Noto Sans has been used as a font since it features Greek letters necessary for some of the input/output parameters. Sans-serif is used as fallback fonts.
 
 ![Noto Sans font](assets/images/noto-sans-google-font.jpg)
 
@@ -200,12 +209,17 @@ Noto Sans has been used as a font since it features Greek letters necessary for 
 ### Bugs
 + Fixed bugs:
   + The most evil and headachy (if that is a word) bug of the project was the drawing overflowing the canvas boundary. The bug fix was to not only set the canvas width="320" height="569" in the CSS-file but also directly in the canvas element in the html-file. The solution came as a result of determining that all the plot coordinates where correct using dev-tools (see below compilation of error elimination). The deceptiveness of this bug was that canvas seem to be working with two different sizes, yet dev tools was showing only one of these.
+  + Drawing not generated until first input change. Solved by placing a function call to "funcForEvent" function at end of javascript-file  
 
 ![unsolved bug drawing overflow of canvas boundaries](assets/images/unsolved-bug-wing-overflow.jpg)
 
 + Remaining bugs:
   + The drawing coordinates are erroneous () for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ. For this reason the negative sweep angle, Δ unfortunately also becomes unavailable despite being in full working order. The sourse of this error probably lies in the calulation of the sweep and that the if-statement throws it out when the sweep angle is zero. Note however that tan(0) = 0.
   + Below image shows (on the inner wing panel on top) that negative sweep angles is perfectly possible thanks to the getNegXCompFactor function.
+  + Help tooltip is covering input area above breakpoint (for larger devices). I can have moved the tootip to the left but then it would not have been visible below the breakpoint (for small devices)
+  + Alert message appears a twise (nagging!)instead of one time when inputting delta values above 60.
+  + Minor styling issues in input/output area such as the positioning of the dark mode button and to much space between the input fields.  
+
 
 ![negative x values](assets/images/compensate-neg-x-values.jpg)
 

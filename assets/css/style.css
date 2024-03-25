@@ -22,10 +22,6 @@ body {
     font-variation-settings: 100;   /* */
 }
 
-/* html { */
-/*    color-scheme: dark light; */
-/* } */
-
 #container {
     width: 59px;
     height: 45px;
@@ -34,7 +30,6 @@ body {
 }
 
 .drawing-area {
-    background-color: white;
     padding-left: 5%;
     padding-right: 5%;
     display: flex;
@@ -53,8 +48,6 @@ body {
 
 .input-output-area {
     background-color: lightgrey;
-    /* margin: 20;  */
-    /* border: red; */
     padding-left: 30px;
     padding-top: 10px;
 }
@@ -69,14 +62,9 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    /* width: 90%; */
     width: 200px;
-    /* max-width: 100%; */
     padding-top: 10px;
-    /* height: auto; */
 }
-
-/* This where Dark mode and light mode classes where from the start */
 
 .parameter-head {
     text-align: center;
@@ -84,10 +72,8 @@ body {
 
 .parameter-sub {
     padding-left: 0;
-    /* padding-bottom: 0; */
     display: block;
     white-space: nowrap;
-    /* max-width */
 }
 
 input[type=number] {
@@ -103,10 +89,6 @@ input[type=number] {
     margin-left: 10px
 }
 
-/* myPlot-Overide {  */
-/*     color-line: black;  */
-/* }  */
-
 /* Tooltip for "Help" adapted from https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_top */
 .tooltip-help {
     position: relative;
@@ -117,7 +99,6 @@ input[type=number] {
 .tooltip-help .tooltiptext-help {
     visibility: hidden;
     width: 411px;
-    /* 120px; */
     background-color: black;
     color: #fff;
     text-align: center;
@@ -126,10 +107,8 @@ input[type=number] {
     position: absolute;
     z-index: 1;
     /* Position the tooltip */
-    top: -5%;
-    /* 150%;*/
-    left: -1500%;
-    /* 105 50%; */
+    top: 100%;
+    left: 130%;
     margin-left: -60px;
 }
 
@@ -204,8 +183,6 @@ input[type=number] {
     width: 59px;
     height: 45px;
     background-image: url("../images/light-mode-button-stack.png");
-    /* ctx.strokeStyle = "white"; */
-    /* background-color: black; */
 }
 
 .light-mode {
@@ -215,11 +192,6 @@ input[type=number] {
 }
 /* dark light mode - END */
 
-/* help and mode "row" */
-/* img.flex-help-mode {  */
-/*     float: right; */
-/* }  */
-
 
 /* MEDIA QUERYS */
 
@@ -228,8 +200,6 @@ input[type=number] {
     .container {
         display: flex;
         flex-direction: row;
-        /* flex-wrap: nowrap; */
-        /* width: 50%; */
     }
 
     .drawing-area {
@@ -238,18 +208,13 @@ input[type=number] {
         align-items: stretch;
         display: inline-block;
         width: 100%;
-        /* 49%; */
         display: flex;
         justify-content: center;
-        /*align-items: center;*/
     }
 
     .input-output-area {
-        /* display: flex; */
         width: 576px;
-        /* margin-right: 20px; */
         display: inline-block;
-        /* width: 49%; */
     }
 
     .parameterSub {
@@ -259,15 +224,9 @@ input[type=number] {
 
     .tooltip-help .tooltiptext-help {
         width: 511px;
-        /* 120px; */
     }
 
     #nomenclature-size {
         width: 500px;
     }
 }
-
-/* Large devices (laptops and desktops, 992px and up) */
-@media screen and (min-width: 992px) {}
-
-@media screen and (min-width: 1200px) {}
