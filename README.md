@@ -1,5 +1,6 @@
 
 ![App logo](assets/images/wingit-logo.png)
+
 [View the live project here](https://gustafenebog.github.io/project-2/)
 
 # Parametric Wing planform Design App
@@ -31,60 +32,50 @@ As a user I want to be able to:
 + Togle between a default light mode and a dark mode.
 
 ## Features
++ The Drawing Area
++ The Input/Output Area
++ Live updating of drawing and calculated output via eventlistener listening to form field inputs
++ Tool tips with nomenclature and symbols
++ Dark mode
 
-### The Drawing Area
-    Calculating the wing planforms width and Height as well as its ratio. 'getDrawingWidth'-function which in turn calls upon the 'getDrawingSize'-function. 'getDrawingHeight'-function
+![light mode button](assets/images/light-mode.jpg)    ![dark mode button](assets/images/dark-mode.jpg)
 
-    Moving potentially negative values (as in the case when a forward sweep wing panel moves ahead of the root leading edge). 'getNegXCompFactor'-function calculates this factor, and it is applied in the 'compensateNegX'-function.
++ Alert message for extreme input values
 
-    Calculating the factor (zoomFactor) and applying this to the plot coordinates to make the drawing the same size as the drawing sizes (canvas size of, width: 320px; height: 569px;). Responsible for this is the function 'getZoomFactor'
+![alert message for delta values above 60 degrees](assets/images/alert-message.jpg)
 
-    Plotting the drawing using different line weights and both solid and dashed line
-sweepP1XC
-sweepP2XC
-sweepP3XC
-sweepP1YC
-sweepP2YC
-sweepP3YC
-outlineP1XC
-outlineP2XC
-outlineP3XC
-outlineP1YC
-outlineP2YC
-outlineP3YC
-    The Input/Output Area
-    help section and tool tips
-      delay in displaying tooltip
-    Dark Mode
-      Togle button
-    complete input feedback/confirmation
-    Input
-      live update using eventlistener for input
-        'funcForEvent'-function
-      Alert message
-    Output
-      Calculation of wing parameters (output) based on other wing parameters (input) using standard equations
-      Compensating calculation of output paramaters only as all necessary input parameters has been inputed (solved by if-statements)
-    x
+### Algorithms
 
-### The Input/Output Area
+1. When an input is made an eventlistener triggers the function 'funcForEvent' which triggers all the functions
+2. The input values in function 'calcBHalf', 'calcCRoot' etc. is fetched
+3. The function 'deltaAlert' alerts user if user input is extreme
+4. The output values in function 'calcLambda', 'calcCSmc' etc. are being calculated
+5. The plot coordinates are being calculated in the functions 'calcSweepP1', 'calcSweepP2' etc.
+6. 'getDrawingWidth' calculates the drawing width by calling the 'getDrawingSize' function 
+7. 'getDrawingHeight' calculates the drawing height
+8. The 'getZoomFactor' takes the drawing width and height and calculates how much the drawing coordinates should be scaled so that the drawing and canvas size is the same (see flowchart for this function below).
+9. 'getNegXCompFactor'-function calculates how much the drawing should be "moved to the right" in order to not have any negative x-values (out of bounds for canvas).
+10. 'compensateNegX'-function apply the negXCompFactor and zoomFactor to the plot coordinates 
+The plot coordinates are being ploted in the 'plotOutlineP1C', 'plotOutlineP2C' etc. functions.
 
-![light mode button](assets/images/light-mode.jpg)
-
-![dark mode button](assets/images/dark-mode.jpg)
-
-### Maths and Algorithms
-
-Reason for sizing drawing coordinates to match canvas coordinates is becasue canvas is a bitmap and not a svg ()
 Unlike Scalable Vector Graphics (SVG) the html element "Canvas" is a bitmap which pixelate when scaled up. For this reason it is very important to scale up the drawing to the same (or larger) size as the canvas size.
-
-![parameters equations](assets/images/parameters-equations.jpg)
-
-![dependency matrix](assets/images/dependency-matrix.jpg)
 
 ![limiting space](assets/images/limiting-space.jpg)
 
+The function for determining zoomfactor to keep the drawing within the canvas boundaries (scaling the drawing to be the same size as the canvas) 
+
 ![Flow chart for function creating the zoom factor](assets/images/flow-chart.jpg)
+
+As much as it is good practise to keep variables local and to avoid global variables it is sometimes necessary and this code is such an example where relatively many global variables was necessary or the code structure would have had to become very complicated.
+
+### Underlying equations
+The following equations define the relations between the different input variables. The first expression represent its most common and direct form followed by other expressions that allows the parameters to be calculated with other sets of parameters.
+
+![parameters equations](assets/images/parameters-equations.jpg)
+
+The following "dependency matrix" shows which variable can be calculated from the other variables in the first column and row and in some cases a third parameter within parantesis.
+
+![dependency matrix](assets/images/dependency-matrix.jpg)
 
 ### Features remaining to be implemented
 + Implementing more parameters, e.g:
@@ -101,9 +92,8 @@ Unlike Scalable Vector Graphics (SVG) the html element "Canvas" is a bitmap whic
   + etc.
 + Implementing more features, e.g. 
   + Free choice of nr. of wings
-  + Free choice of wing panels
-+ More display options (toggle with radio buttons)
-  + Implement radio buttons (and functionality) for:
+  + Free choice of nr. wing panels
++ More display options (toggle with radio buttons):
   + Showing right wing half instead of left as is now the case (write function that multiples y-coordinates with -1 and then subtracts half span)
   + Showing the whole wing, i.e. both left- and right- wing halves (write functions that subtracts half span to left wing half and then add right wing half)
   + Rotate wing into a horizontal position (write function that transposes plot coordiantes or use the [canvas rotate method](https://www.w3schools.com/jsref/canvas_rotate.asp))
@@ -113,12 +103,16 @@ Unlike Scalable Vector Graphics (SVG) the html element "Canvas" is a bitmap whic
 + Completing a Dark Mode alternative interface. The button (with javascript-code) to toggle back and forth between the dark- and the default light- mode is already created but has been removed since the feature is not yet fully working.
 
 ## Design
-+ The interface is simple and plain with and a focus on the relevant aspects, the drawing and the input/output area. The drawing area is at top, (below the breakpoint) and to the left (above the breakpoint) and the opposite for the input/output area.
+The interface is simple and plain with a focus on the relevant aspects, the drawing and the input/output area. The drawing area is at top, (below the breakpoint) and to the left (above the breakpoint) and the opposite for the input/output area.
 
 ![wireframe initial idea](assets/images/wireframe-initial-idea.jpg)
 
 interface
-Inspiration for this clean minimalistic design came from many sites and tools including monday.com![Monday.com](assets/images/monday-com.jpg)
+Inspiration for this clean minimalistic design came from tools and apps among them monday.com
+
+![Monday.com](assets/images/monday-com.jpg)
+
+The input fields was laid out in a way as to harmonize with the wing planform geometry.
 
 ![wireframe input inline](assets/images/wireframe-input-inline.jpg)
 
@@ -128,13 +122,8 @@ The usage of tool tips allows the design to be less cluttered yet still having t
 
 ![wireframe tool tip](assets/images/wireframe-tool-tip.jpg)
 
-### Logo
-
-
 ### Colors
-+ The Grey and White color theme provides a color-neutral background setting the stage for potential colorcoding.
-
-lightgrey #d3d3d3 or rgb(211, 211, 211)
++ The lightgrey #d3d3d3 and White color theme provides a color-neutral background setting the stage for potential colorcoding.
 
 ![Color example](assets/images/color-example.jpg)
 
@@ -142,19 +131,17 @@ lightgrey #d3d3d3 or rgb(211, 211, 211)
 
 ## Features
 
-### Favicon
+### The Logo and Favicon
++ The font Nasalization was used for the logo becasue it feels Modern, exciting, and scientific (https://www.dafont.com/nasalization.font)
 + The favicon is made up by the W in the WINGIT-logo.
 + The favicon has been produced in all relevant file formats.
 
 ![Favicon](assets/images/favicon.jpg)
 
 ### Typography
-Noto Sans has been used as a font since it features Greek letters necessary for the some of the input/output parameters. "Montserrat" and sans-serif is used as fallback fonts.
+Noto Sans has been used as a font since it features Greek letters necessary for some of the input/output parameters. "Montserrat" and sans-serif is used as fallback fonts.
 
 ![Noto Sans font](assets/images/noto-sans-google-font.jpg)
-
-## Miscellanious
-+ As much as it is good practise to keep variables local and to avoid global variables it is sometimes necessary and this code is such an example where relatively many global variables was necessary or the code structure would have had to become very complicated.
 
 ## Technologies Used
 + [HTML 5 -](https://html.spec.whatwg.org/multipage/) App structure and content
@@ -171,13 +158,12 @@ Noto Sans has been used as a font since it features Greek letters necessary for 
 
 ## Testing
 ### Manual testing
-+ I have manually tested that:
-  + The most complex function in the code (cyclomatic complexity rating of 13) can be considered "More complex to understand" and with a "moderate risk to modify" whereas the median function (cyclomatic complexity rating of 5) can be considered as a "Simple procedure to understand" and with a "little risk to modify"
++ I have manually tested:
 	+ That all output parameters have been calculated correctly
   + the "tool tip on hover" all work.
-  + Wrong input, e.g. letters are not accepted, decimal numbers!!!
-	+ wrong input, e.g. email address field without an @-sign receive a complaint as well as a form submission-button-click results in a confirmation page.
+  + Wrong input type, e.g. strings are not accepted.
   + Responsive design shifts correctly at the breakpoint (width: 576px) between the drawing- and the input-output-area stacked (mobil) and side-by-side (inline) for larger devices
+  + The most complex function in the code (cyclomatic complexity rating of 13) can be considered "More complex to understand" and with a "moderate risk to modify" whereas the median function (cyclomatic complexity rating of 5) can be considered as a "Simple procedure to understand" and with a "little risk to modify"
 
 + Manual testing has been carried out on:
   + Different browsers: Chrome, Firefox, Edge and Safari
@@ -186,17 +172,27 @@ Noto Sans has been used as a font since it features Greek letters necessary for 
 
 ### Validator Testing
 + All code was tested for syntactical errors with perfect results using official validators (Java Script 62 warnings relating to potential compability issues with java script or browser versions):
+
   + HTML using the W3C-the official validator for html-code (https://validator.w3.org/)
-![W3C result](assets/images/readme/html-validator.jpg)
+
+![W3C result](assets/images/wingit-html-validator.jpg)
+
   + CSS using Jigsaw-the official validator for CSS-code (https://jigsaw.w3.org/css-validator/)
-![Jigsaw result](assets/images/readme/css-validator.jpg)
+
+![Jigsaw result](assets/images/wingit-css-validator.jpg)
+
   + Java Script using the JSHint validator for Java Script-code (https://jshint.com/)
+
 ![JSHint result](assets/images/jshint-result.jpg)
+
   + performance, accessibility, SEO etc. using Lighthouse in Chrome developer tools.
-![Jigsaw result](assets/images/readme/css-validator.jpg)
+
 ![Lighthouse](assets/images/lighthouse-result.jpg)
+
   + The low performance score is inherent for a calculation-heavy App and with the live update adding insult to injury.
-![Lighthouse point of improvement](assets/images/readme/lighthouse-accesibility-improve.jpg)
+
+![Lighthouse reasons for poor 'Best Practices'-score](assets/images/lighthouse-point-of-improvement.jpg)
+
 + The code was also beautified using GitPods built in beautifyer.
 
 ![The first computer Bugs.](assets/images/9th-sept-1947-first-computer-bug-harvard-markII.jpg)
@@ -209,6 +205,7 @@ Noto Sans has been used as a font since it features Greek letters necessary for 
 
 + Remaining bugs:
   + The drawing coordinates are erroneous () for sweep angle, Δ of 0 which is why this angle is taken out of the allowed input range the sweep angle, Δ. For this reason the negative sweep angle, Δ unfortunately also becomes unavailable despite being in full working order.
+  + Below image shows (on the inner wing panel on top) that negative sweep angles is perfectly possible thanks to the getNegXCompFactor function.
 
 ![negative x values](assets/images/compensate-neg-x-values.jpg)
 

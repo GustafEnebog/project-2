@@ -303,15 +303,12 @@ function calcOutlineP3() {
 function getDrawingSize() {
   let drawingMax = 0;
   let drawingMin = 0;
-  // console.log(arguments);
   for (let i = 0; i < arguments.length; i++) {
     if (arguments[i] > drawingMax) {
       drawingMax = arguments[i];
-      console.log(drawingMax);
     }
     if (arguments[i] < drawingMin) {
       drawingMin = arguments[i];
-      console.log(drawingMin);
     }
   }
   return drawingMax - drawingMin;
@@ -339,26 +336,16 @@ This gives a a height of 320 x (16 / 9) ~= 569. (480px could also be used instea
 
 function getZoomFactor() {
   let viewPortAR = 320 / 569; // (9 / 16);
-  console.log('viewPortAR');
-  console.log(viewPortAR);
   let drawingAR = drawingWidth / drawingHeight;
-  console.log('drawingAR', drawingAR);
   let zoomFactor = null;
-  console.log('drawingWidth');
-  console.log(drawingWidth);
-  console.log('drawingHeight');
-  console.log(drawingHeight);
   // Case if drawing width hits the viewport "side" first (before it hits the viewport height)
   if (drawingAR >= viewPortAR) {
     zoomFactor = canvasWidthFix / drawingWidth;
-    console.log('the width of 320 should have been hit');
   }
   // Case if drawing height hits the viewport "height" first (before it hits the viewport width)
   else if (drawingAR < viewPortAR) {
     zoomFactor = canvasHeightFix / drawingHeight;
-    console.log('the height of 569 should have been hit');
   }
-  console.log('zoomFactor', zoomFactor);
   return zoomFactor;
 }
 
@@ -370,7 +357,6 @@ function getZoomFactor() {
 // Calculating the horizontal compensation term
 function getNegXCompFactor() {
   let negX = 0;
-  // console.log(arguments);
   for (let i = 0; i < arguments.length; i++) {
     if (arguments[i] < negX) {
       negX = arguments[i];
@@ -396,30 +382,20 @@ let outlineP2YC = [null, null, null, null];
 let outlineP3YC = [null, null, null, null];
 
 zoomFactor = getZoomFactor();
-console.log('zoomFactor-------OutsideFunc');
-console.log(zoomFactor);
-
-
 
 function compensateNegX() {
   let negXCompFactor;
   negXCompFactor = getNegXCompFactor(...outlineP1X, ...outlineP2X, ...outlineP3X);
-  console.log('negXCompFactor');
-  console.log(negXCompFactor);
   let zoomFactor;
   zoomFactor = getZoomFactor();
-  console.log('zoomFactor');
-  console.log(zoomFactor);
   for (let i = 0; i < sweepP1X.length; i++) {
-    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * zoomFactor;
-    sweepP1YC[i] = sweepP1Y[i] * zoomFactor;
-    console.log('I really DO get calculated')
+    sweepP1XC[i] = (sweepP1X[i] - negXCompFactor) * getZoomFactor();
+    sweepP1YC[i] = sweepP1Y[i] * getZoomFactor();
   }
   console.log(sweepP1X);
   for (let i = 0; i < sweepP2X.length; i++) {
     sweepP2XC[i] = (sweepP2X[i] - negXCompFactor) * getZoomFactor();
     sweepP2YC[i] = sweepP2Y[i] * getZoomFactor();
-    console.log('Me Too')
   }
 
   for (let i = 0; i < sweepP3X.length; i++) {
